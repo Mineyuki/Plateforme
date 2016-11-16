@@ -1,0 +1,18 @@
+#logo{
+	float : left;
+}
+
+#navigation{
+	text-align : left;
+	margin-top : 2em;
+}
+
+#recherche{
+	text-align : right;
+	margin-top : -4em;
+}
+
+#loupe{
+	width: 30px;
+	height: 30px;
+}
