@@ -1,60 +1,55 @@
 <!DOCTYPE html>
 <html>
-  <head>
-     <meta charset="utf-8">
-    <title>Diplôme	Interuniversitaire</title>
-    <!-- Bootstrap -->
-	<link href="css/provisoire.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet" >
-    <link rel="shortcut icon" href="logoTransparent.png"/>
-    <script src="js/bootstrap-dropdown.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/bootstrap.js"></script>
-  </head>
-  <body>
 
-  <nav class="navbar navbar-default" role="navigation"style="text-align: center;"> 
-    <div class="container-fluid"> 
-        <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
+	<head>
+		<meta charset="utf-8">
+		<title>Diplôme	Interuniversitaire</title>
+		
+	<!-- Bootstrap -->
+	
+		<link href="css/provisoire.css" rel="stylesheet">
+		<link href="css/bootstrap.css" rel="stylesheet" >
+		<link rel="shortcut icon" href="logoTransparent.png"/>
 
-		</div>
-		<span id="logo"><a href="Accueil.html"><img src="logoTransparent.png"></a></span>
-		<div id="navigation">
-        <ul class="nav navbar-nav h4" style="display: inline-block;float: none;">
-            <!--<li><a href="#home"><img style="width:40px;height:40px" src="LogoTransparent.png" alt=""></a></li>-->
-            <!--<li><a href="Accueil.html"><img src="logoTransparent.png"></a></li>-->
-			<!--<li><a href="Accueil.html">Accueil</a></li>-->
-            <li class="dropdown"><a href="#formation"  class="dropdown-toggle" data-toggle="dropdown">Formation<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">formation1</a></li>
-                    <li><a href="#">formation2</a></li>
-                </ul>
-            </li>
-            <li><a href="Ressource.html">Ressource</a></li>
-            <li><a href="Travail.html">Espace de travail</a></li>
-            <li><a href="Rendez-vous.html">Rendez-vous</a></li>
-            <li><a href="Actualite.html">Actualites</a></li>
-            <li><a href="Forum.html">Forum</a></li>
-            <li><a href="connexion.html"><span class="glyphicon glyphicon-log-in"></span> Connexion</a></li>
-        </ul>
-		</div>
-		<div id="recherche">
-        <form class="navbar-form navbar-right " role="search">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Rechercher">
-            </div>
-            <button type="submit" class="btn btn-default"><img id="loupe" src="loupe.png"></button>
-        </form>
-		</div>
-    </div> 
-</nav>
+		<script src="js/bootstrap-dropdown.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/bootstrap.js"></script>
+	</head>
+	
+	<body>
+
+		<!-- start navigation -->
+		
+		<nav class="navbar navbar-default navbar-fixed-top" role="navigation"> 
+			
+			<div class="container-fluid"> 
+			
+				<ul class="nav navbar-nav">
+					<li><a href="Accueil.html"><img id="logo" src="LogoTransparent.png"></a></li>
+					<li class="navigation"><a href="formation.html">Formation</a></li>
+					<li class="navigation"><a href="Ressource.html">Ressource</a></li>
+					<li class="navigation"><a href="Travail.html">Espace de travail</a></li>
+					<li class="navigation"><a href="Rendez-vous.html">Rendez-vous</a></li>
+					<li class="navigation"><a href="Actualite.html">Actualites</a></li>
+					<li class="navigation"><a href="Forum.html">Forum</a></li>
+					<li class="navigation"><a href="connexion.html"><span class="glyphicon glyphicon-log-in"></span> Connexion</a></li>
+				</ul>
+				
+				<div id="recherche">
+					<form class="navbar-form navbar-left" role="search">
+						
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Rechercher">
+						</div>
+							
+						<button type="submit" class="btn btn-default"><img id="loupe" src="loupe.png" ></button>
+					</form>
+				</div>
+				
+			</div>
+				
+		</nav>
 
 <div class="container">
     

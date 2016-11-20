@@ -1,15 +1,17 @@
 #logo{
 	float : left;
+	width : 5em;
+	height : 5em;
 }
 
-#navigation{
-	text-align : left;
-	margin-top : 2em;
+.navigation{
+	font-size : 1.5em;
+	margin-top : 1em;
 }
 
 #recherche{
-	text-align : right;
-	margin-top : -4em;
+	text-align : left;
+	margin-top : 1.4em;
 }
 
 #loupe{
