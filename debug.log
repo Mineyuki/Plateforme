@@ -1,6 +1,17 @@
+<<<<<<< HEAD
 [1125/092212:ERROR:crash_report_database_win.cc(425)] unexpected header
 [1125/120856:ERROR:crash_report_database_win.cc(425)] unexpected header
 [1125/121856:ERROR:crash_report_database_win.cc(425)] unexpected header
 [1125/121856:ERROR:crash_report_database_win.cc(425)] unexpected header
 [1125/122356:ERROR:crash_report_database_win.cc(425)] unexpected header
 [1125/123856:ERROR:crash_report_database_win.cc(425)] unexpected header
+=======
+[1122/231617:ERROR:crash_report_database_win.cc(425)] unexpected header
+[1122/234755:ERROR:crash_report_database_win.cc(425)] unexpected header
+[1123/144917:ERROR:crash_report_database_win.cc(425)] unexpected header
+[1123/145917:ERROR:crash_report_database_win.cc(425)] unexpected header
+[1123/145917:ERROR:crash_report_database_win.cc(425)] unexpected header
+[1123/150417:ERROR:crash_report_database_win.cc(425)] unexpected header
+[1123/151917:ERROR:crash_report_database_win.cc(425)] unexpected header
+[1124/222628:ERROR:crash_report_database_win.cc(425)] unexpected header
+>>>>>>> viviane
