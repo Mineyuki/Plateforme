@@ -1,6 +1,5 @@
 CREATE TABLE events (
-    id int not null AUTO_INCREMENT,
+    id serial primary key,
     DateH datetime ,
     title varchar(255),
-    PRIMARY KEY (ID)
 );
