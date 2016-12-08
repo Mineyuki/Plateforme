@@ -125,11 +125,8 @@ require('Fonctions.php');
 				ajouterEvent($_POST['date'], $_POST['event']);
 			
 		}
-		else
-			echo 'pas marché';
 	}
-	else
-		echo 'serieux';
+
 		
 	
 	
@@ -141,5 +138,8 @@ require('Fonctions.php');
 		39:47
 	*/
 
-	require('fin.html');
+
 ?>
+
+</body>
+</html>

@@ -9,12 +9,12 @@ class Date{
 	
 	function getEvents($year){
 		global $bd;
-		$req = $bd->prepare('select id, title, date from events where year(date)= :year');
+		$req = $bd->prepare('select id, title, dateh from events where year(dateh)= :year');
 		$req->bindValue(':year', $year);
 		$req->execute();
 		$r = array();
 		while($d = $req->fetch(PDO::FETCH_OBJ)){
-			$r[strtotime($d->date)][$d->id] = $d->title;
+			$r[strtotime($d->dateh)][$d->id] = $d->title;
 		}
 		return $r;
 	}
@@ -57,8 +57,8 @@ function ajouterEvent($date, $title){
 		$res = $reqID->fetch(PDO::FETCH_NUM);
 		echo $res[0];
 		$id = $res[0]+1;
-		$req = $bd->prepare('insert into events (date, title) values ( :date, :title)');
-		$req->bindValue(':date', $date);
+		$req = $bd->prepare('insert into events (dateh, title) values ( :dateh, :title)');
+		$req->bindValue(':dateh', $date);
 		$req->bindValue(':title', $title);
 		$req->execute();
 		
