@@ -26,7 +26,7 @@
 				<ul class="nav navbar-nav">
 					<li><a href="Accueil.html"><img id="logo" src="Logo_IUT_Villetaneuse.png" alt="Accueil"></a></li>
 					<li class="dropdown navigation">
-						<a href="Formation.html" class="dropdown-toogle">Formation</a>
+						<a href="Formation.html" class="dropdown-toogle">Formation<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="GEA.html">Formations en Gestion, Comptabilité, Ressources Humaines, Management</a></li>
 							<li><a href="CJ.html">Formations en Juridique, Notariat, Finance</a></li>
