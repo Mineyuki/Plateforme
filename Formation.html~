@@ -11,10 +11,11 @@
 		<link href="css/bootstrap.css" rel="stylesheet" >
 		<link rel="shortcut icon" href="Logo_IUT_Villetaneuse.png"/>
 
-		<script src="js/bootstrap-dropdown.js"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+		<script src="js/bootstrap.js"></script>		
 		<script src="js/bootstrap.min.js"></script>
-		<script src="js/bootstrap.js"></script>
+		<script src="js/bootstrap-dropdown.js"></script>
+		
 	</head>
 		
 	<body>
@@ -25,12 +26,21 @@
 				
 				<ul class="nav navbar-nav">
 					<li><a href="Accueil.html"><img id="logo" src="Logo_IUT_Villetaneuse.png" alt="Accueil"></a></li>
-					<li class="navigation"><a href="Formation.html">Formation</a></li>
+					<li class="dropdown navigation">
+						<a href="Formation.html" class="dropdown-toogle" data-toggle="dropdown">Formation<span class="caret"</span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="GEA.html">Formations en Gestion, Comptabilité, Ressources Humaines, Management</a></li>
+							<li><a href="CJ.html">Formations en Juridique, Notariat, Finance</a></li>
+							<li><a href="INFO.html">Formations en Informatique, Systèmes, Logiciels</a></li>
+							<li><a href="RT.html">Formations en Réseaux, Télécommunications</a></li>
+							<li><a href="GEII.html">Formations en Électronique, Électricité, Informatique Industrielle, Nanotechnologies</a></li>
+						</ul>
+					</li>			
 					<li class="navigation"><a href="Ressource.html">Ressource</a></li>
 					<li class="navigation"><a href="Travail.html">Espace de travail</a></li>
 					<li class="navigation"><a href="Rendez-vous.html">Rendez-vous</a></li>
 					<li class="navigation"><a href="Actualite.html">Actualites</a></li>
-					<li class="navigation"><a href="Forum.html">Forum</a></li>
+					<li class="navigation"><a href="Forum.html">Forum</a></li>   
 					<li class="navigation"><a href="connexion.html"><span class="glyphicon glyphicon-user"></span> Connexion</a></li>
 				</ul>
 					
@@ -49,14 +59,40 @@
 					
 		</nav>
 		
-		<h1 class="text-center">Formation Continue - Nos formations par domaine</h1>
+		<div class="container">
+			<h1 class="text-center">Formation Continue - Nos formations par domaine</h1>
+			<hr>
+		</div>
+	
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
+		<ul class="dropdown-menu" role="menu">
+			<li><a href="GEA.html">Formations en Gestion, Comptabilité, Ressources Humaines, Management</a></li>
+			<li><a href="CJ.html">Formations en Juridique, Notariat, Finance</a></li>
+			<li><a href="INFO.html">Formations en Informatique, Systèmes, Logiciels</a></li>
+			<li><a href="RT.html">Formations en Réseaux, Télécommunications</a></li>
+			<li><a href="GEII.html">Formations en Électronique, Électricité, Informatique Industrielle, Nanotechnologies</a></li>
+		</ul>
 
-		<section class="row">
-			<article class="col-md-5">
-				<h3 class="text-justify">Nouveauté 2016 : Formation Modulaire et Diplômante Interuniversitaire</h3>
-				Diplôme InterUniversitaire (DIU) Management des Équipes et des Projets en Milieu Industriel
-			</article>
-		</section>
+		<div class="container-fluid">
+			<section class="row">
+				<article class="col-md-offset-1">
+					<h3 class="text-justify">Nouveauté 2016 : Formation Modulaire et Diplômante Interuniversitaire</h3>
+					<p>Diplôme InterUniversitaire (DIU) <a href="DocumentsFormations/Plaquette-DIU-MEPMI.pdf">Management des Équipes et des Projets en Milieu Industriel</a></p>
+					<p>Calendrier <a href="DocumentsFormations/Calendrier-2017-DIU-MEPMI-session-1.pdf">Session 1</a><br/>
+					Calendrier <a href="DocumentsFormations/Calendrier-2016-DIU-MEPMI-session-2.pdf">Session 2</a></p>
+					<p>Télécharger <a href="DocumentsFormations/DIU-MEPMI-prog-détaillé-jan16.pdf">le programme détaillé</a></p>
+					<p>Télécharger <a href="DocumentsFormations/Dossier-de-candidature-DIU.pdf">le dossier de candidature</a></p>
+					<p><strong><u>Tarifs du DIU :</u></strong></p>
+					<p>Formation complète : 12 960€ TTC (*)<br/>
+					Niveau 1 seul : 9 410€ TTC (*)<br/>
+					Niveau 2 seul : 5 410€ TTC (*) (**)<br/>
+					(*) Sous réserve d’acceptation du CA de l’Université<br/>
+					(**) Le niveau 2 n’est accessible qu’en complément du niveau 1<br/>
+					La formation n’est pas assujettie à la TVA
+					</p>
+				</article>
+			</section>
+		</div>
 
 		<hr class="featurette-divider">
 		
