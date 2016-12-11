@@ -25,7 +25,7 @@
 				
 				<ul class="nav navbar-nav">
 					<li><a href="Accueil.html"><img id="logo" src="Logo_IUT_Villetaneuse.png" alt="Accueil"></a></li>
-					<li class="navigation"><a href="formation.html">Formation</a></li>
+					<li class="navigation"><a href="Formation.html">Formation</a></li>
 					<li class="navigation"><a href="Ressource.html">Ressource</a></li>
 					<li class="navigation"><a href="Travail.html">Espace de travail</a></li>
 					<li class="navigation"><a href="Rendez-vous.html">Rendez-vous</a></li>
@@ -49,6 +49,15 @@
 					
 		</nav>
 		
+		<h1 class="text-center">Formation Continue - Nos formations par domaine</h1>
+
+		<section class="row">
+			<article class="col-md-5">
+				<h3 class="text-justify">Nouveauté 2016 : Formation Modulaire et Diplômante Interuniversitaire</h3>
+				Diplôme InterUniversitaire (DIU) Management des Équipes et des Projets en Milieu Industriel
+			</article>
+		</section>
+
 		<hr class="featurette-divider">
 		
 		<footer class="main-footer">
