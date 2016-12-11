@@ -3724,7 +3724,7 @@ tbody.collapse.in {
 }
 .btn-group .dropdown-toggle:active,
 .btn-group.open .dropdown-toggle {
-  outline: 0;
+ /* outline: 0;*/
 }
 .btn-group > .btn + .dropdown-toggle {
   padding-left: 8px;

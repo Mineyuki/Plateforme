@@ -27,7 +27,7 @@
 				<ul class="nav navbar-nav">
 					<li><a href="Accueil.html"><img id="logo" src="Logo_IUT_Villetaneuse.png" alt="Accueil"></a></li>
 					<li class="dropdown navigation">
-						<a href="Formation.html" class="dropdown-toogle" data-toggle="dropdown">Formation<span class="caret"</span></a>
+						<a href="Formation.html" class="dropdown-toogle">Formation<span class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="GEA.html">Formations en Gestion, Comptabilité, Ressources Humaines, Management</a></li>
 							<li><a href="CJ.html">Formations en Juridique, Notariat, Finance</a></li>
@@ -63,15 +63,6 @@
 			<h1 class="text-center">Formation Continue - Nos formations par domaine</h1>
 			<hr>
 		</div>
-	
-		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
-		<ul class="dropdown-menu" role="menu">
-			<li><a href="GEA.html">Formations en Gestion, Comptabilité, Ressources Humaines, Management</a></li>
-			<li><a href="CJ.html">Formations en Juridique, Notariat, Finance</a></li>
-			<li><a href="INFO.html">Formations en Informatique, Systèmes, Logiciels</a></li>
-			<li><a href="RT.html">Formations en Réseaux, Télécommunications</a></li>
-			<li><a href="GEII.html">Formations en Électronique, Électricité, Informatique Industrielle, Nanotechnologies</a></li>
-		</ul>
 
 		<div class="container-fluid">
 			<section class="row">
