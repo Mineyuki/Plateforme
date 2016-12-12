@@ -4712,10 +4712,10 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .breadcrumb > li + li:before {
   content: "/\00a0";
   padding: 0 5px;
-  color: gray;
+  color: black;
 }
 .breadcrumb > .active {
-  color: gray;
+  color: black;
 }
 .pagination {
   display: inline-block;
