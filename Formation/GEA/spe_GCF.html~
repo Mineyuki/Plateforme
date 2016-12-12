@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>DUT GEA Spécialité : Gestion Ressources Humaines</title>
+		<title>DUT GEA Spécialité : Gestion Comptable et Financière</title>
 		
 	<!-- Bootstrap -->
 	
@@ -57,12 +57,13 @@
 			</div>
 					
 		</nav>
-
+		
+		<!--Indique l'emplacement actuel de la page au sein de la hiérarchie de navigation -->
 		<ol class="breadcrumb">
 			<li><a href="../../Accueil.html">Accueil</a></li>
-			<li><a href="../Formation.html">Formations</a></li>
+			<li><a href="../../Formation.html">Formations</a></li>
 			<li><a href="../GEA.html">Formations en Gestion, Comptabilité, Ressources Humaines, Management</a></li>
-			<li class="active">DUT GEA Spécialité : Gestion Ressources Humaines</li>
+			<li class="active">DUT GEA Spécialité : Gestion Comptable et Financière</li>
 		</ol>
 		
 		<div class="container">
@@ -74,9 +75,9 @@
 			<section class="row">
 				<article class="col-md-offset-1 col-md-10">
 					<h4>DUT Gestion des Entreprises et des Administrations (GEA)</h4>
-					<h3><strong>Spécialité : Gestion Ressources Humaines</strong></h3>
+					<h3><strong>Spécialité : Gestion Comptable et Financière</strong></h3>
 					<p>Pré-requis : niveau Bac et 3 ans d’expérience professionnelles</p>
-					<p>Télécharger : <a href="../DocumentsFormations/dut-gea-grh-fc.pdf">Fiche Formation</a></p>
+					<p>Télécharger : <a href="../DocumentsFormations/dut-gea-gcf-fc.pdf">Fiche Formation</a></p>
 					<hr>
 				</article>
 				<article class="col-md-offset-1 col-md-10">

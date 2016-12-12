@@ -40,7 +40,7 @@
 					<li class="navigation"><a href="Rendez-vous.html">Rendez-vous</a></li>
 					<li class="navigation"><a href="Actualite.html">Actualites</a></li>
 					<li class="navigation"><a href="Forum.html">Forum</a></li>   
-					<li class="navigation"><a href="connexion.php"><span class="glyphicon glyphicon-user"></span> Connexion</a></li>
+					<li class="navigation"><a href="connexion.html"><span class="glyphicon glyphicon-user"></span> Connexion</a></li>
 				</ul>
 					
 				<div id="recherche">

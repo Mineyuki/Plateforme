@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>Diplôme	Interuniversitaire</title>
+		<title>Formation</title>
 		
 	<!-- Bootstrap -->
 	
@@ -41,7 +41,7 @@
 					<li class="navigation"><a href="Rendez-vous.html">Rendez-vous</a></li>
 					<li class="navigation"><a href="Actualite.html">Actualites</a></li>
 					<li class="navigation"><a href="Forum.html">Forum</a></li>   
-					<li class="navigation"><a href="connexion.html"><span class="glyphicon glyphicon-user"></span> Connexion</a></li>
+					<li class="navigation"><a href="connexion.php"><span class="glyphicon glyphicon-user"></span> Connexion</a></li>
 				</ul>
 					
 				<div id="recherche">
@@ -59,6 +59,11 @@
 					
 		</nav>
 		
+		<ol class="breadcrumb">
+			<li><a href="../Accueil.html">Accueil</a></li>
+			<li class="active">Formations</a></li>
+		</ol>
+
 		<div class="container">
 			<h1 class="text-center">Formation Continue - Nos formations par domaine</h1>
 			<hr>
@@ -90,6 +95,7 @@
 			<section class="row">
 				<aside class="col-md-offset-1">
 					<h3 class="text-justify">Accès aux différentes formations :</h3>
+					<p><a href="Formation/DIU.html">Nouveauté 2016 : Formation Modulaire et Diplômante Interuniversitaire</a></p>
 					<p><a href="Formation/GEA.html">Formations en Gestion, Comptabilité, Ressources Humaines, Management</a></p>
 					<p><a href="Formation/CJ.html">Formations en Juridique, Notariat, Finance</a></p>
 					<p><a href="Formation/INFO.html">Formations en Informatique, Systèmes, Logiciels</a></p>
