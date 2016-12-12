@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>Formations en Gestion, Comptabilité, Ressources Humaines, Management</title>
+		<title>Formation Modulaire et Diplômante Interuniversitaire</title>
 		
 	<!-- Bootstrap -->
 	
@@ -62,38 +62,33 @@
 		<ol class="breadcrumb">
 			<li><a href="../Accueil.html">Accueil</a></li>
 			<li><a href="../Formation.html">Formations</a></li>
-			<li class="active">Formations en Gestion, Comptabilité, Ressources Humaines, Management</a></li>
+			<li class="active">Formation Modulaire et Diplômante Interuniversitaire</a></li>
 		</ol>
 
 		<div class="container">
-			<h1 class="text-center">Formations en Gestion, Comptabilité, Ressources Humaines, Management</h1>
+			<h1 class="text-center">Nouveauté 2016 : Formation Modulaire et Diplômante Interuniversitaire</h1>
 			<hr>
 		</div>
 
 		<div class="container">
 			<section class="row">
 				<article class="col-md-offset-1">
-					<h3>DUT Gestion des Entreprises et des Administrations (GEA)</h3>
-					<p>Pré-requis : niveau Bac et 3 ans d’expérience professionnelles</p>
-				</article>
-				<article class="col-md-offset-1">
-					<h4><strong><a href="GEA/spe_GRH.html">> Spécialité : Gestion Ressources Humaines</a></strong></h4>
-					<h4><strong><a href="GEA/spe_GCF.html">> Spécialité : Gestion Comptable et Financière</a></strong></h4>
-					<h4><strong><a href="GEA/spe_GMO.html">> Spécialité : Gestion et Management des Organisations</a></strong></h4>
-				</article>
-				<article class="col-md-offset-1">
-					<h3>Licence Professionnelle Gestion des Ressources Humaines (GRH)</h3>
-				</article>
-				<article class="col-md-offset-1">
-					<h4><strong><a href="GRH/spe_GRH.html">> Spécialité : Métiers de la GRH : Formation, compétences et emploi</a></strong></h4>
-				</article>
-				<article class="col-md-offset-1">
-					<h3>Licence Professionnelle Métiers de la Gestion et de la Comptabilité</h3>
-				</article>
-				<article class="col-md-offset-1">
-					<h4><strong><a href="MGC/spe_CP.html">> Spécialité : Comptabilité et paie</a></strong></h4>
+					<p>Diplôme InterUniversitaire (DIU) <a href="Formation/DocumentsFormations/Plaquette-DIU-MEPMI.pdf">Management des Équipes et des Projets en Milieu Industriel</a></p>
+					<p>Calendrier <a href="Formation/DocumentsFormations/Calendrier-2017-DIU-MEPMI-session-1.pdf">Session 1</a><br/>
+					Calendrier <a href="Formation/DocumentsFormations/Calendrier-2016-DIU-MEPMI-session-2.pdf">Session 2</a></p>
+					<p>Télécharger <a href="Formation/DocumentsFormations/DIU-MEPMI-prog-détaillé-jan16.pdf">le programme détaillé</a></p>
+					<p>Télécharger <a href="Formation/DocumentsFormations/Dossier-de-candidature-DIU.pdf">le dossier de candidature</a></p>
+					<p><strong><u>Tarifs du DIU :</u></strong></p>
+					<p>Formation complète : 12 960€ TTC (*)<br/>
+					Niveau 1 seul : 9 410€ TTC (*)<br/>
+					Niveau 2 seul : 5 410€ TTC (*) (**)<br/>
+					(*) Sous réserve d’acceptation du CA de l’Université<br/>
+					(**) Le niveau 2 n’est accessible qu’en complément du niveau 1<br/>
+					La formation n’est pas assujettie à la TVA
+					</p>
 				</article>
 			</section>
+			<hr>
 		</div>
 
 		<hr class="featurette-divider">
