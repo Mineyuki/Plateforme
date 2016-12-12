@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>DUT GEA Spécialité : Gestion Ressources Humaines</title>
+		<title>DUT GEA Spécialité : Gestion et Management des Organisations</title>
 		
 	<!-- Bootstrap -->
 	
@@ -58,12 +58,13 @@
 			</div>
 					
 		</nav>
-
+		
+		<!--Indique l'emplacement actuel de la page au sein de la hiérarchie de navigation -->
 		<ol class="breadcrumb">
 			<li><a href="../../Accueil.html">Accueil</a></li>
-			<li><a href="../Formation.html">Formations</a></li>
+			<li><a href="../../Formation.html">Formations</a></li>
 			<li><a href="../GEA.html">Formations en Gestion, Comptabilité, Ressources Humaines, Management</a></li>
-			<li class="active">DUT GEA Spécialité : Gestion Ressources Humaines</li>
+			<li class="active">DUT GEA Spécialité : Gestion et Management des Organisations</li>
 		</ol>
 		
 		<div class="container">
@@ -75,25 +76,25 @@
 			<section class="row">
 				<article class="col-md-offset-1 col-md-10">
 					<h4>DUT Gestion des Entreprises et des Administrations (GEA)</h4>
-					<h3><strong>Spécialité : Gestion Ressources Humaines</strong></h3>
+					<h3><strong>Spécialité : Gestion et Management des Organisations</strong></h3>
 					<p>Pré-requis : niveau Bac et 3 ans d’expérience professionnelles</p>
-					<p>Télécharger : <a href="../DocumentsFormations/dut-gea-grh-fc.pdf">Fiche Formation</a></p>
+					<p>Télécharger : <a href="../DocumentsFormations/dut-gea-gmo-fc.pdf">Fiche Formation</a></p>
 					<hr>
 				</article>
 				<article class="col-md-offset-1 col-md-10">
 					<h5><u>Objectifs de la formation :</u></h5>
 					<ul>
-						<li>Réaliser des tâches et assumer des responsabilités spécificiques à l’administration du personnel.</li>
-						<li>Participer à la mise en place de méthodes et d’outils de gestion prévisionnelle des effectifs 
-et des compétences.</li>
-						<li>Contribuer à l’élaboration de diagnostics sociaux et au fonctionnement des institutions représentatives du personnel.</li>
+						<li>Acquérir une solide connaissance dans les différents domaines liés à la gestion d’une organisation privée ou publique.</li>
+						<li>La formation permet de développer les compétences du gestionnaire généraliste et d’appréhender de façon globale le système entreprise.</li>
 					</ul>
 					<h5><u>Débouchés professionnels</u></h5>
-					<p>Ce professionnel travaille dans les services du personnel et des ressources humaines.</p>
+					<p>Ce professionnel travaille dans les petites et moyennes organisations (entreprises, associations, 
+collectivités locales), en cabinet, dans les banques et les assurances.</p>
 					<ul>
-						<li>Assistant de gestion des resources humaines</li>
-						<li>Gestionnaire de la paie, du recrutement, de la formation...</li>
-						<li>Chargé de gestion des effectifs</li>
+						<li>Adjoint du responsable de petites et moyennes organisations</li>
+						<li>Assistant comptable en entreprise ou en cabinet</li>
+						<li>Assistant au contrôle de gestion</li>
+						<li>Collaborateur dans les banques et les assurances</li>
 					</ul>
 					<h5><u>Publics concernés</u></h5>
 					<ul>
@@ -121,7 +122,7 @@ et des compétences.</li>
 						<li>Formation à <strong>temps partiel</strong>, ou <strong>en alternance</strong> sur 2 ans.</li>
 					</ul>
 					<p>Le cycle de formation conduit, après validation des différents modules, et du stage, à la délivrance 
-du D.U.T GEA option Gestion des Ressources Humaines (Niveau III), soit 120 Crédits Européens.</p>
+du D.U.T GEA option Gestion et Management des Organisations (Niveau III), soit 120 Crédits Européens</p>
 					<hr>
 				</article>
 				<article class="col-md-offset-1 col-md-10">
