@@ -28,7 +28,6 @@
 					<li class="dropdown navigation">
 						<a href="Formation.html" class="dropdown-toogle">Formation</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="Formation/DIU.html">Formation Modulaire et Diplômante Interuniversitaire</a></li>
 							<li><a href="Formation/GEA.html">Formations en Gestion, Comptabilité, Ressources Humaines, Management</a></li>
 							<li><a href="Formation/CJ.html">Formations en Juridique, Notariat, Finance</a></li>
 							<li><a href="Formation/INFO.html">Formations en Informatique, Systèmes, Logiciels</a></li>

@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>Formations en Gestion, Comptabilité, Ressources Humaines, Management</title>
+		<title>Diplôme	Interuniversitaire</title>
 		
 	<!-- Bootstrap -->
 	
@@ -28,7 +28,6 @@
 					<li class="dropdown navigation">
 						<a href="../Formation.html" class="dropdown-toogle">Formation</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="DIU.html">Formation Modulaire et Diplômante Interuniversitaire</a></li>
 							<li><a href="GEA.html">Formations en Gestion, Comptabilité, Ressources Humaines, Management</a></li>
 							<li><a href="CJ.html">Formations en Juridique, Notariat, Finance</a></li>
 							<li><a href="INFO.html">Formations en Informatique, Systèmes, Logiciels</a></li>
@@ -41,7 +40,7 @@
 					<li class="navigation"><a href="../Rendez-vous.html">Rendez-vous</a></li>
 					<li class="navigation"><a href="../Actualite.html">Actualites</a></li>
 					<li class="navigation"><a href="../Forum.html">Forum</a></li>   
-					<li class="navigation"><a href="../connexion.php"><span class="glyphicon glyphicon-user"></span> Connexion</a></li>
+					<li class="navigation"><a href="../connexion.html"><span class="glyphicon glyphicon-user"></span> Connexion</a></li>
 				</ul>
 					
 				<div id="recherche">
@@ -59,31 +58,6 @@
 					
 		</nav>
 		
-		<ol class="breadcrumb">
-			<li><a href="../Accueil.html">Accueil</a></li>
-			<li><a href="../Formation.html">Formations</a></li>
-			<li class="active">Formations en Gestion, Comptabilité, Ressources Humaines, Management</a></li>
-		</ol>
-
-		<div class="container">
-			<h1 class="text-center">Formations en Gestion, Comptabilité, Ressources Humaines, Management</h1>
-			<hr>
-		</div>
-
-		<div class="container">
-			<section class="row">
-				<article class="col-md-offset-1">
-					<h3>DUT Gestion des Entreprises et des Administrations (GEA)</h3>
-					<p>Pré-requis : niveau Bac et 3 ans d’expérience professionnelles</p>
-				</article>
-				<article class="col-md-offset-1">
-					<h4><strong><a href="GEA/spe_GRH">> Spécialité : Gestion Ressources Humaines</a></strong></h4>
-					<h4><strong><a href="GEA/spe_GCF">> Spécialité : Gestion Comptable et Financière</a></strong></h4>
-					<h4><strong><a href="GEA/spe_GMO">> Spécialité : Gestion et Management des Organisations</a></strong></h4>
-				</article>
-			</section>
-		</div>
-
 		<hr class="featurette-divider">
 		
 		<footer class="main-footer">

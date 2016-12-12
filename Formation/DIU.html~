@@ -28,6 +28,7 @@
 					<li class="dropdown navigation">
 						<a href="../Formation.html" class="dropdown-toogle">Formation</a>
 						<ul class="dropdown-menu" role="menu">
+							<li><a href="DIU.html">Formation Modulaire et Diplômante Interuniversitaire</a></li>
 							<li><a href="GEA.html">Formations en Gestion, Comptabilité, Ressources Humaines, Management</a></li>
 							<li><a href="CJ.html">Formations en Juridique, Notariat, Finance</a></li>
 							<li><a href="INFO.html">Formations en Informatique, Systèmes, Logiciels</a></li>
@@ -72,7 +73,6 @@
 		<div class="container">
 			<section class="row">
 				<article class="col-md-offset-1">
-					<h3></h3>
 					<p>Diplôme InterUniversitaire (DIU) <a href="Formation/DocumentsFormations/Plaquette-DIU-MEPMI.pdf">Management des Équipes et des Projets en Milieu Industriel</a></p>
 					<p>Calendrier <a href="Formation/DocumentsFormations/Calendrier-2017-DIU-MEPMI-session-1.pdf">Session 1</a><br/>
 					Calendrier <a href="Formation/DocumentsFormations/Calendrier-2016-DIU-MEPMI-session-2.pdf">Session 2</a></p>
