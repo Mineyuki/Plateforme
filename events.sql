@@ -1,6 +1,7 @@
 CREATE TABLE events (
-    id int not null AUTO_INCREMENT,
+    id serial primary key,
+	mail varchar(50),
     DateH datetime ,
     title varchar(255),
-    PRIMARY KEY (ID)
+	Foreign key (mail) references membres (mail)
 );

@@ -1,5 +1,7 @@
-<!doctype html>
 <?php session_start(); ?>
+
+
+<!doctype html>
 <html>
 	<head>
 		<meta charset="utf-8"/>
@@ -33,8 +35,7 @@
 			function radioclick (b) {
 				document.getElementById('div1').style.display = (b=="vous"? 'none':'block');
 				document.getElementById('div2').style.display = (b=="gEtudiant"? 'none':'block');
-				document.getElementById('div3').style.display = (b? 'none':'block');
-				document.getElementById('div4').style.display = (b? 'none':'block');
+
 			}	
 		</script>
 	</head>
@@ -50,9 +51,10 @@ require('Fonctions.php');
 	$dates = $date->getAll($year);
 	print_r($_SESSION);
 ?>
+	<?php require('Navigation.php'); ?>
 	
 	<div class="row">
-	<div class="col-md-3 formEvent" style="padding-top: 200px; padding-left:40px;">
+	<div class="col-md-3 formEvent" style="padding-top: 100px; padding-left:40px;">
 	
 	<h3>Ajouter un événement</h3>
 		<form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
@@ -69,16 +71,11 @@ require('Fonctions.php');
 				vous <input type="radio" name="categ" value="vous" onclick="radioclick(this.value);" /><br>
 				etudiant <input type="radio" name="categ" value="gEtudiant" onclick="radioclick(this.value);" /><br>
 				</p>
-				<p id="div1" style="display: none; padding-left: 30px;">
-				un seul étudiant <input type="radio" name="pOm" value="seul" onclick="radioclick(true);" /><br>
-				en groupe		 <input type="radio" name="pOm" value="groupe" onclick="radioclick(true);"/><br>
-				</p>
-				
-				<select id="div3" name="seul" style="display: none;">
-					<option value="1"> value1 </option>
-				</select>
-				<select id="div4" name="groupe" style="display: none;">
-					<option value="1"> value2 </option>
+				<select id="div1" name="selection" style="display: none; margin-left: 30px;">
+					<option value="grp1"> groupe 1 </option>
+					<option value="grp2"> groupe 2 </option>
+					<option value="etd1"> etudiant 1 </option>
+					<option value="..."> ... </option>
 				</select>
 				
 				
@@ -91,7 +88,7 @@ require('Fonctions.php');
 		</form>
 	</div>
 	
-		<div class="col-md-6">
+		<div class="col-md-9">
 			<!--		a rajouter: le fait de pouvoir changer de mois en appuyant sur une fleche -->
 			<div class="year">
 				<?php echo $year; ?>
@@ -124,10 +121,16 @@ require('Fonctions.php');
 									<?php }?>
 									
 						<!-- affiche le jour et permet ensuite de sauter une ligne quand on arrive a dimanche -->
-									<td class="day">
+									<td >
 										<div class="relative">
+										<div class="day">
 										<a onclick="document.getElementById('date').value='<?php echo $year ."-" .$m. "-".$d; ?>';" >
 										<?php echo $d; ?>
+										</div>
+										</div>
+										<div class="daytitle">
+											<?php echo $date->days[$w-1]; ?> <?php echo $d; ?> <?php echo $date->months[$m-1]; ?>
+										</div>
 											<ul class="events">
 												<?php if(isset($events[$time])){
 													foreach($events[$time] as $e){ ?>
@@ -136,7 +139,7 @@ require('Fonctions.php');
 												} ?>
 											</ul>
 										</a>
-										</div>
+										
 									</td>
 									
 								<?php if($w == 7) echo '</tr><tr>'; } ?>
@@ -152,7 +155,7 @@ require('Fonctions.php');
 		
 			
 		</div>
-	<div class="col-md-3 "></div>
+	
 	</div>
 	
 <?php
@@ -180,3 +183,5 @@ require('Fonctions.php');
 
 </body>
 </html>
+
+<?php require('Footer.php'); ?>

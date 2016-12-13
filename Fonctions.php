@@ -1,6 +1,6 @@
 <?php
 
-require('connexion.php');
+require('cnx.php');
 
 class Date{
 	
