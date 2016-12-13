@@ -60,8 +60,7 @@ require('cnx.php');
 					$_SESSION['email'] = $res['mail'];
 					$_SESSION['categorie'] = $res['categorie'];
 					echo'<p> Bonjour, vous êtes connecté avec l\'adresse mail :'.$_SESSION['email'].' ! </p>';
-					
-					header('Location: Calendrier.php');
+					header('Location: Accueil.php');
 						/*Prendre les informations necessaire
 							rediriger vers la page (a définir)*/
 				}

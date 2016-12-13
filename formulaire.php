@@ -102,7 +102,9 @@ if (isset($_POST['email']) && $_POST['email2'] && $_POST['mdp'] && $_POST['mdp2'
 						$insertUsr->execute();
 						$erreur = " Votre compte a été créer ";
 						session_start();
-						header('Location: Calendrier.php');
+						$_SESSION['email'] = $res['mail'];
+						$_SESSION['categorie'] = $res['categorie'];
+						header('Location: Accueil.php');
 					}
 					else
 					{

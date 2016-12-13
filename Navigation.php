@@ -4,7 +4,7 @@
 				
 				<ul class="nav navbar-nav">
 					<?php if($_SESSION['categorie'] != ''){ ?>
-					<li><a href="Accueil.php"><img id="logo" src="image/Logo_IUT_Villetaneuse.png" alt="Accueil"></a></li>
+					<li><a href="Accueil.php"><img id="logo" src="image/LogoTransparent.png" alt="Accueil"></a></li>
 					<?php } ?>
 					<li class="dropdown navigation">
 						<a href="Formation.html" class="dropdown-toogle">Formation</a>
@@ -20,8 +20,12 @@
 					<li class="navigation"><a href="Travail.php">Espace de travail</a></li>
 					<li class="navigation"><a href="Rendez-vous.php">Rendez-vous</a></li>
 					<li class="navigation"><a href="Actualite.php">Actualites</a></li>
-					<li class="navigation"><a href="Forum.php">Forum</a></li>   
+					<li class="navigation"><a href="Forum.php">Forum</a></li>
+					<?php if($_SESSION['categorie'] ==''){ ?>
 					<li class="navigation"><a href="connexion.php"><span class="glyphicon glyphicon-user"></span> Connexion</a></li>
+					<?php }else{ ?>
+					<li class="navigation"><a href="#"><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['email']; ?></a></li>
+					<?php } ?>
 				</ul>
 					
 				<div id="recherche">

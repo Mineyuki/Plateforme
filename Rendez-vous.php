@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php session_start(); 
+
+?>
 
 
 <!doctype html>
@@ -49,7 +51,7 @@ require('Fonctions.php');
 	$year = date('Y');
 	$events = $date->getEvents($year);
 	$dates = $date->getAll($year);
-	print_r($_SESSION);
+	
 ?>
 	<?php require('Navigation.php'); ?>
 	
@@ -61,7 +63,7 @@ require('Fonctions.php');
 			<p >
 				
 				Date <br> <input type="text" id="date" name="date" readonly ><br>
-				Heure <input type="time" name="time" style="margin-top: 8px;"></br>
+				
 				
 				<?php /* Les possibilités*/
 					if($_SESSION['categorie'] == 'professeur'){
@@ -89,7 +91,6 @@ require('Fonctions.php');
 	</div>
 	
 		<div class="col-md-9">
-			<!--		a rajouter: le fait de pouvoir changer de mois en appuyant sur une fleche -->
 			<div class="year">
 				<?php echo $year; ?>
 			</div>

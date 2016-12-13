@@ -68,7 +68,30 @@ function ajouterEvent($date, $title){
 	}
 }
 
+/*function genereListeEtudiant{
+	global $bd;
+	try{
+		$req = $bd->prepare('select mail from membres where categorie = etudiant');
+		$req->execute();
+		$i =0;
+			
+		echo '<select id="div1" name="selection" style="display: none; margin-left: 30px;">';
+		do{
+			$liste = $req->fetch(PDO::FETCH_ASSOC);
+			echo '<option value='.$i.'> '. $liste['mail'] .'</option>';
+			$i = $i+1;
 
+		}while( $liste != false);
+		echo '</select>';
+	}
+	catch(PDOException $e){
+		die('<p> La connexion a échoué. Erreur['.$e->getCode().'] : '.$e->getMessage().'</p>');
+	}
+
+
+}
+
+*/
 
 
 ?>

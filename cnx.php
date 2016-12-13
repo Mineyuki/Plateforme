@@ -1,7 +1,7 @@
 <?php
 
 try{
-	$bd = new PDO('pgsql:host=aquabdd;dbname=promotion16','11500147','2408019669J');
+	$bd = new PDO('mysql:host=localhost;dbname=marc','marc','marc');
 	$bd->query('SET NAMES utf8');
 	$bd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	
