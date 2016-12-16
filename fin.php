@@ -1,4 +1,5 @@
-<hr class="featurette-divider">
+	<div>
+		<hr class="featurette-divider">
 		
 		<footer class="main-footer">
 			
@@ -12,7 +13,7 @@
 			</div>
 
 		</footer>
+	</div>
 	
 	</body>
-	
 </html>

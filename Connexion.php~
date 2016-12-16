@@ -2,26 +2,21 @@
 		
 		<div class="container">
     
-			<div class="row ">
+			<div class="row">
 			
-				<div class="col-xs-4 col-md-offset-4 ">
+				<div class="col-xs-4 col-md-offset-4">
 
-					<form id="connexion" class="form" method="POST" action="connex.php">
-						<h2 class="form-signin-heading">Connectez-vous :</h2>
-						<label for="Email" class="sr-only">Adresse mail</label> 
-						<input type="text" id="Email" class="form-control" placeholder="Adresse mail" required="" autofocus=""> 
-						<label for="mdp" class="sr-only">Mot de passe</label> 
-						<input type="password" id="mdpconnex" class="form-control" placeholder="Mot de passe" required="" name="motdepasse">
-						<!-- <div class="checkbox"><label> <input type="checkbox" value="remember-me"> Remember me </label>
-						</div>-->
-						<input class="btn btn-lg btn-primary btn-block" type="submit"name="connexion" value="Se Connecter">
-					</br>
-					</br>
-					 <CENTER>
-					 	<p> Vous n'êtes pas encore inscrit cliquez <a href="formulaire.php">ici</a> !</p>
-					 </CENTER>
+					<form method="POST" action="connexion.php">
+						<h2>Connectez-vous :</h2>
+						<input type="text" class="form-control" placeholder="Adresse mail" name="emailconnex">
+						<input type="password" class="form-control" placeholder="Mot de passe" name="motdepasse">
+						<input class="btn btn-lg btn-primary btn-block" type="submit" value="Se Connecter">
 					</form>
-					
+				</div>
+				<div class="col-xs-4 col-md-offset-4">
+					 <CENTER>
+					 	<p> Vous n'êtes pas encore inscrit ? Cliquez <a href="formulaire.php">ici</a> !</p>
+					 </CENTER>
 				</div>
 				
 			</div>

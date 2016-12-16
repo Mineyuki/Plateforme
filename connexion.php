@@ -1,39 +1,37 @@
+<?php session_start(); ?>
+<!-- PAGE DE CONNEXION -->
 <?php
+	/* Connexion base de donnée */
+	require('co.php');
 
-require('co.php');
-{
-	if(isset($_POST["connexion"]))
+	/* Vérification entrée mail et mot de passe non vide */
+	if(isset($_POST['emailconnex']) and trim($_POST['emailconnex'])!=''
+		and isset($_POST['motdepasse']) and trim($_POST['motdepasse'])!='')
 	{
-	
-		$mailconx =htmlspecialchars($_POST['emailconnex']);
-		$mdpconx = htmlspecialchars($_POST['motdepasse']);
-
-		if(trim($_POST['emailconnex']) != "" and trim($_POST['motdepasse']) != "" )
-		{
-				$mdp = sha1($_POST['motdepasse']);
-				$req = $bd->prepare("SELECT * FROM membres where mail = :mail and motdepasse = :mdp ");
-				$req->bindValue(':mail',$_POST['emailconnex']);
-				$req->bindValue(':mdp',$mdp);
-				$req->execute();
-				$res = $req->fetch();
-				if( $res != false)
-				{					
-					session_start();
-					$_SESSION['email'] = $res['mail'];
-					echo'<p> Bonjour, vous êtes connecté avec l\'adresse mail :'.$_SESSION['email'].' ! </p>';
-					header("Location: Accueil.php");
-				}
-
-						
-					
-		else
-			{
-				echo "<p>Mauvais mail ou mot de passe ! </p>";
+		/* Codage en sha1 de motdepasse */
+		$mot = sha1($_POST['motdepasse']);
+		/* Préparation de la requête SQL */
+		$requete = "SELECT * FROM membres where mail = :mail and motdepasse = :mdp ";
+		$req = $bd->prepare($requete);
+		/* Vérification attaque injection SQL */
+		$req->bindValue(':mail',$_POST['emailconnex']);
+		$req->bindValue(':mdp',$_POST['motdepasse']);
+		/* Execution de la requête SQL */
+		$req->execute();
+		$res = $req->fetch(PDO::FETCH_ASSOC))
+		if($res){
+			if( htmlspecialchars($_POST['emailconnex'], ENT_QUOTES) == $res['mail']
+				and sha1(htmlspecialchars($_POST['motdepasse'], ENT_QUOTES)) == $ligne['motdepasse']){
+				$_SESSION['connecte'] = true;
+				header("Location: Accueil.php");
 			}
+		}					
+		else
+		{
+			echo "<p>Mauvais mail ou mot de passe ! </p>";
 		}
-	else
-			echo "<p>Tout les champs doivent être renseignés ! </p>";
 	}
+	else
+		echo "<p>Tout les champs doivent être renseignés ! </p>";
 
-}
 ?>

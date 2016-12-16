@@ -1,6 +1,7 @@
-<hr class="featurette-divider">
+	<div>
+		<hr class="featurette-divider">
 		
-		<footer class="main-footer">
+		<footer id="footer">
 			
 			<div class="red-text text-center">
 				<p><a href="#">Contacts</a> · <a href="#">Mentions légales</a></p>
@@ -12,7 +13,7 @@
 			</div>
 
 		</footer>
+	</div>
 	
 	</body>
-	
 </html>
