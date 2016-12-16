@@ -1,0 +1,40 @@
+<?php require('debut.php');?>
+		
+		<ol class="breadcrumb">
+			<li><a href="../Accueil.html">Accueil</a></li>
+			<li><a href="../Formation.html">Formations</a></li>
+			<li class="active">Formations en Gestion, Comptabilité, Ressources Humaines, Management</a></li>
+		</ol>
+
+		<div class="container">
+			<h1 class="text-center">Formations en Gestion, Comptabilité, Ressources Humaines, Management</h1>
+			<hr>
+		</div>
+
+		<div class="container">
+			<section class="row">
+				<article class="col-md-offset-1">
+					<h3>DUT Gestion des Entreprises et des Administrations (GEA)</h3>
+					<p>Pré-requis : niveau Bac et 3 ans d’expérience professionnelles</p>
+				</article>
+				<article class="col-md-offset-1">
+					<h4><strong><a href="GEA/spe_GRH.html">> Spécialité : Gestion Ressources Humaines</a></strong></h4>
+					<h4><strong><a href="GEA/spe_GCF.html">> Spécialité : Gestion Comptable et Financière</a></strong></h4>
+					<h4><strong><a href="GEA/spe_GMO.html">> Spécialité : Gestion et Management des Organisations</a></strong></h4>
+				</article>
+				<article class="col-md-offset-1">
+					<h3>Licence Professionnelle Gestion des Ressources Humaines (GRH)</h3>
+				</article>
+				<article class="col-md-offset-1">
+					<h4><strong><a href="GRH/spe_GRH.html">> Spécialité : Métiers de la GRH : Formation, compétences et emploi</a></strong></h4>
+				</article>
+				<article class="col-md-offset-1">
+					<h3>Licence Professionnelle Métiers de la Gestion et de la Comptabilité</h3>
+				</article>
+				<article class="col-md-offset-1">
+					<h4><strong><a href="MGC/spe_CP.html">> Spécialité : Comptabilité et paie</a></strong></h4>
+				</article>
+			</section>
+		</div>
+
+<?php require('fin.php');?>

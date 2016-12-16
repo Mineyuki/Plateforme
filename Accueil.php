@@ -143,7 +143,7 @@
 							<li>Être l’interlocuteur privilégié des organismes sociaux et fiscaux.</li>
 							<li>Maîtriser les principaux logiciels de paie et de gestion des ressources humaines.</li>
 						</ul>
-						<p><a href="Formation/GEA.html" class="btn btn-primary">En savoir plus...</a></p>
+						<p><a href="Formation/GEA.php" class="btn btn-primary">En savoir plus...</a></p>
 					</div>
       
 					<div class="well">
@@ -178,7 +178,7 @@
 								<li>Savoir gérer l’accueil clientèle</li>
 								<li>Savoir apporter des réponses aux questions administratives et juridiques</li>
 							</ul>
-						<p><a href="Formation/CJ.html" class="btn btn-primary">En savoir plus...</a></p>
+						<p><a href="Formation/CJ.php" class="btn btn-primary">En savoir plus...</a></p>
 					</div>
       
 					<div class="well">
@@ -200,7 +200,7 @@
 								<li>Assister et conseiller des utilisateurs</li>
 								<li>Intégrer une équipe de développement de projets sur les technologies nouvelles</li>
 							</ul>
-						<p><a href="Formation/INFO.html" class="btn btn-primary">En savoir plus...</a></p>
+						<p><a href="Formation/INFO.php" class="btn btn-primary">En savoir plus...</a></p>
 					</div>
 
 					<div class="well">
@@ -216,7 +216,7 @@
 							Objectifs de la formation :<br/>
 							Acquérir de solides connaissances en matières de réseaux, de services et supports de communication afin de bâtir des solutions réseaux en tenant compte de critères fonctionnels, techniques et économiques. L’accent sera mis sur les aspects de sécurité et de qualité. Concevoir, installer, administrer et faire évoluer les solutions réseaux retenues.
 						</p>
-						<p><a href="Formation/RT.html" class="btn btn-primary">En savoir plus...</a></p>
+						<p><a href="Formation/RT.php" class="btn btn-primary">En savoir plus...</a></p>
 					</div>
 					
 					<div class="well">
@@ -238,7 +238,7 @@
 							<ul>
 								<li>Acquérir et/ou consolider vos connaissances en :
 									<ul>
-										<li>Electronique</li>
+										<li>Electronique</li>s
 										<li>Optique</li>
 										<li>Techniques de miniaturisation des systèmes (micro - et nanotechnologies)</li>
 									</ul>
@@ -246,7 +246,7 @@
 								<li>Développer votre aptitude à la transdisciplinarité.</li>
 								<li>Acquérir un savoir-faire dans notre salle blanche</li>
 							</ul>
-						<p><a href="Formation/GEII.html" class="btn btn-primary">En savoir plus...</a></p>
+						<p><a href="Formation/GEII.php" class="btn btn-primary">En savoir plus...</a></p>
 					</div>
 					
 				</div>
