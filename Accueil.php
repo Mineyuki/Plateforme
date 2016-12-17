@@ -1,63 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-
-	<head>
-		<meta charset="utf-8">
-		<title>Diplôme	Interuniversitaire</title>
-		
-	<!-- Bootstrap -->
-	
-		<link href="css/provisoire.css" rel="stylesheet">
-		<link href="css/bootstrap.css" rel="stylesheet" >
-		<link rel="shortcut icon" href="image/Logo_IUT_Villetaneuse.png"/>
-
-		<script src="js/bootstrap-dropdown.js"></script>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/bootstrap.js"></script>
-	</head>
-		
-	<body id ="bg">
-
-		<nav id="navi" class="navbar navbar-default navbar-fixed-top"> 
-				
-			<div class="container-fluid"> 
-				
-				<ul class="nav navbar-nav">
-					<li><a href="Accueil.html"><img id="logo" src="image/Logo_IUT_Villetaneuse.png" alt="Accueil"></a></li>
-					<li class="dropdown navigation">
-						<a href="Formation.html" class="dropdown-toogle">Formation</a>
-						<ul class="dropdown-menu" role="menu">
-							<li><a href="Formation/GEA.html">Formations en Gestion, Comptabilité, Ressources Humaines, Management</a></li>
-							<li><a href="Formation/CJ.html">Formations en Juridique, Notariat, Finance</a></li>
-							<li><a href="Formation/INFO.html">Formations en Informatique, Systèmes, Logiciels</a></li>
-							<li><a href="Formation/RT.html">Formations en Réseaux, Télécommunications</a></li>
-							<li><a href="Formation/GEII.html">Formations en Électronique, Électricité, Informatique Industrielle, Nanotechnologies</a></li>
-						</ul>
-					</li>			
-					<li class="navigation"><a href="Ressource.html">Ressource</a></li>
-					<li class="navigation"><a href="Travail.html">Espace de travail</a></li>
-					<li class="navigation"><a href="Rendez-vous.html">Rendez-vous</a></li>
-					<li class="navigation"><a href="Actualite.html">Actualites</a></li>
-					<li class="navigation"><a href="Forum.html">Forum</a></li>   
-					<li class="navigation"><a href="connexion.html"><span class="glyphicon glyphicon-user"></span> Connexion</a></li>
-				</ul>
-					
-				<div id="recherche">
-					<form class="navbar-form navbar-left" role="search">
-							
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Rechercher">
-						</div>
-								
-						<button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span></button>
-					</form>
-				</div>
-					
-			</div>
-					
-		</nav>
-		
+<?php require('debut.php');?>
 		<!--start slider-->
 		
 		<div class="row">
@@ -202,7 +143,7 @@
 							<li>Être l’interlocuteur privilégié des organismes sociaux et fiscaux.</li>
 							<li>Maîtriser les principaux logiciels de paie et de gestion des ressources humaines.</li>
 						</ul>
-						<p><a href="#" class="btn btn-primary">En savoir plus...</a></p>
+						<p><a href="Formation/GEA.php" class="btn btn-primary">En savoir plus...</a></p>
 					</div>
       
 					<div class="well">
@@ -237,7 +178,7 @@
 								<li>Savoir gérer l’accueil clientèle</li>
 								<li>Savoir apporter des réponses aux questions administratives et juridiques</li>
 							</ul>
-						<p><a href="#" class="btn btn-primary">En savoir plus...</a></p>
+						<p><a href="Formation/CJ.php" class="btn btn-primary">En savoir plus...</a></p>
 					</div>
       
 					<div class="well">
@@ -259,7 +200,7 @@
 								<li>Assister et conseiller des utilisateurs</li>
 								<li>Intégrer une équipe de développement de projets sur les technologies nouvelles</li>
 							</ul>
-						<p><a href="#" class="btn btn-primary">En savoir plus...</a></p>
+						<p><a href="Formation/INFO.php" class="btn btn-primary">En savoir plus...</a></p>
 					</div>
 
 					<div class="well">
@@ -275,7 +216,7 @@
 							Objectifs de la formation :<br/>
 							Acquérir de solides connaissances en matières de réseaux, de services et supports de communication afin de bâtir des solutions réseaux en tenant compte de critères fonctionnels, techniques et économiques. L’accent sera mis sur les aspects de sécurité et de qualité. Concevoir, installer, administrer et faire évoluer les solutions réseaux retenues.
 						</p>
-						<p><a href="#" class="btn btn-primary">En savoir plus...</a></p>
+						<p><a href="Formation/RT.php" class="btn btn-primary">En savoir plus...</a></p>
 					</div>
 					
 					<div class="well">
@@ -297,7 +238,7 @@
 							<ul>
 								<li>Acquérir et/ou consolider vos connaissances en :
 									<ul>
-										<li>Electronique</li>
+										<li>Electronique</li>s
 										<li>Optique</li>
 										<li>Techniques de miniaturisation des systèmes (micro - et nanotechnologies)</li>
 									</ul>
@@ -305,7 +246,7 @@
 								<li>Développer votre aptitude à la transdisciplinarité.</li>
 								<li>Acquérir un savoir-faire dans notre salle blanche</li>
 							</ul>
-						<p><a href="#" class="btn btn-primary">En savoir plus...</a></p>
+						<p><a href="Formation/GEII.php" class="btn btn-primary">En savoir plus...</a></p>
 					</div>
 					
 				</div>
@@ -313,24 +254,4 @@
 			</div>
        
 		</div>
-		
-		<!--end of main-->
-		
-		<hr class="featurette-divider">
-
-		<footer class="main-footer">
-			
-			<div class="red-text text-center">
-				<p><a href="#">Contacts</a> · <a href="#">Mentions légales</a></p>
-				
-				<a rel="nofollow" target="_blank"  href="https://www.facebook.com"><img src= "image/facebook_circle.png" width="40" height= "40" alt="connexion facebook"/></a>
-				<a rel="nofollow" target="_blank"  href="https://twitter.com"><img src= "image/twitter_circle.png" width="40" height= "40" alt="connexion twitter"></a>
-				<a rel="nofollow" target="_blank" href="https://mail.google.com"><img src= "image/gmail_circle.png" width="40" height= "40" alt="connexion gmail"/></a>
-				<a rel="nofollow" target="_blank"  href="https://www.instagram.com/"><img src= "image/instagram_circle.png" width="40" height= "40" alt="connexion instrgram"/></a>
-			</div>
-
-		</footer>
-	
-	</body>
-	
-</html>
+<?php require('fin.php'); ?>
