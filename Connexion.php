@@ -1,4 +1,7 @@
-<?php require('debut.php');?>
+<?php require('head.php');?>
+	<!-- Nom des onglets -->
+		<title>Connexion</title>
+<?php require('body.php');?>
 		
 				<div class="container">
     
@@ -67,7 +70,7 @@
 			
 		</div>
 		
-<?php require('fin.php');?>
+<?php require('footer.php');?>
 
 <?php
 

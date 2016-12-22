@@ -1,4 +1,8 @@
-<?php require('debut.php');?>
+<?php require('head.php');?>
+	<!-- Nom des onglets -->
+		<title>Diplôme	Interuniversitaire</title>
+<?php require('body.php');?>
+
 		<!--start slider-->
 		
 		<div class="row">
@@ -254,4 +258,4 @@
 			</div>
        
 		</div>
-<?php require('fin.php'); ?>
+<?php require('footer.php'); ?>

@@ -1,4 +1,7 @@
-<?php require('debut.php');?>
+<?php require('head.php');?>
+	<!-- Nom des onglets -->
+		<title>Formations en Gestion, Comptabilité, Ressources Humaines, Management</title>
+<?php require('body.php');?>
 		
 		<ol class="breadcrumb">
 			<li><a href="../Accueil.php">Accueil</a></li>
@@ -37,4 +40,4 @@
 			</section>
 		</div>
 
-<?php require('fin.php');?>
+<?php require('footer.php');?>

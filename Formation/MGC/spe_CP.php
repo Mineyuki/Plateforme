@@ -1,4 +1,7 @@
-<?php require('debut.php');?>
+<?php require('head.php');?>
+	<!-- Nom des onglets -->
+		<title>LP MGC Spécialité : Comptabilité et paie</title>
+<?php require('body.php');?>
 
 		<ol class="breadcrumb">
 			<li><a href="../../Accueil.php">Accueil</a></li>
@@ -83,4 +86,4 @@ délivrance de la Licence Professionnelle «Métiers de la Gestion et de la Comp
 			</section>
 		</div>
 
-<?php require('fin.php');?>
+<?php require('footer.php');?>

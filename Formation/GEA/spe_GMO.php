@@ -1,4 +1,7 @@
-<?php require('debut.php');?>
+<?php require('head.php');?>
+	<!-- Nom des onglets -->
+		<title>DUT GEA Spécialité : Gestion et Management des Organisations</title>
+<?php require('body.php');?>
 		
 		<!--Indique l'emplacement actuel de la page au sein de la hiérarchie de navigation -->
 		<ol class="breadcrumb">
@@ -75,4 +78,4 @@ du D.U.T GEA option Gestion et Management des Organisations (Niveau III), soit 1
 			</section>
 		</div>
 
-<?php require('fin.php');?>
+<?php require('footer.php');?>
