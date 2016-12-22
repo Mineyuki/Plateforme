@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-
-	<head>
-		<meta charset="utf-8">
-		<title>Diplôme	Interuniversitaire</title>
-		
-	<!-- Bootstrap -->
+<!-- Bootstrap -->
 	
 		<link href="../css/provisoire.css" rel="stylesheet">
 		<link href="../css/bootstrap.css" rel="stylesheet" >

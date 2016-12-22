@@ -1,4 +1,7 @@
-<?php require('debut.php');?>
+<?php require('head.php');?>
+	<!-- Nom des onglets -->
+		<title>LP GRH Spécialité : Métiers de la GRH : Formation, compétences et emploi</title>
+<?php require('body.php');?>
 
 		<ol class="breadcrumb">
 			<li><a href="../../Accueil.php">Accueil</a></li>
@@ -69,4 +72,4 @@ de la Licence Professionnelle Métiers de la GRH formation, compétences et empl
 			</section>
 		</div>
 
-<?php require('fin.php');?>
+<?php require('footer.php');?>

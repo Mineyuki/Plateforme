@@ -1,4 +1,7 @@
-<?php require('debut.php');?>
+<?php require('head.php');?>
+	<!-- Nom des onglets -->
+		<title>DUT GEA Spécialité : Gestion Ressources Humaines</title>
+<?php require('body.php');?>
 
 		<ol class="breadcrumb">
 			<li><a href="../../Accueil.php">Accueil</a></li>
@@ -74,4 +77,4 @@ du D.U.T GEA option Gestion des Ressources Humaines (Niveau III), soit 120 Créd
 			</section>
 		</div>
 
-<?php require('fin.php');?>
+<?php require('footer.php');?>

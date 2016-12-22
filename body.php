@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-
-<!--
-*************************************************************************************************************************************************
-		HEAD
-*************************************************************************************************************************************************
--->
-	<head>
-	<!-- Utilisation UTF-8 -->
-		<meta charset="utf-8">
-	<!-- Nom des onglets -->
-		<title>Diplôme	Interuniversitaire</title>
-	<!-- Bootstrap -->
+<!-- Bootstrap -->
 		<!-- Utilisation CSS personnel -->
 		<link href="css/provisoire.css" rel="stylesheet">
 		<!-- Utilisation CSS Bootstrap -->

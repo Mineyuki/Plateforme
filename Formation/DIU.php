@@ -1,4 +1,7 @@
-<?php require('debut.php');?>
+<?php require('head.php');?>
+	<!-- Nom des onglets -->
+		<title>Diplôme InterUniversitaire</title>
+<?php require('body.php');?>
 		
 		<ol class="breadcrumb">
 			<li><a href="../Accueil.php">Accueil</a></li>
@@ -32,4 +35,4 @@
 			<hr>
 		</div>
 
-<?php require('fin.php');?>
+<?php require('footer.php');?>
