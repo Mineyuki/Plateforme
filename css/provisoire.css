@@ -25,6 +25,31 @@
 	padding-bottom : 5em;
 }
 
-#bg{
-	background-color: white;	
+/*
+ * Flexbox de la page accueil
+ */
+
+#conteneur{
+	display : flex; /* Pour utiliser flexbox */
+	flex-wrap : wrap; /* Boite retour à la ligne */
+	justify-content : space-around; /* Les éléments sont étirés sur tout l'axe, mais ils laissent aussi de l'espace sur les extrémités */
+}
+
+#conteneur > a:hover{ /* Lorsqu'on passe la souris sur les liens dans le bloc de flexbox */
+	text-decoration : none; /* Pas souligné lorsqu'on passe la souris */
+	color : white; /* Ecriture blanche */
+}
+
+.element{ /* Les élements du flexbox */
+	color : white; /* Ecriture blanche */
+	background-color : #df691a; /* Couleur de fond */
+	font-size : 1.5em; /* Taille du texte */
+	
+	border : 1px solid #df691a; /* Bordure autour du texte */
+	border-radius : 10px; /* Bordure arrondi */
+	width : 15em; /* Largeur */
+	height : 6em; /* Hauteur */
+	text-align : center; /* Alignement au centre */
+	margin-bottom : 1em; /* Marge extérieur */
+	padding : 1em 1em 1em 1em; /* Marge intérieur */
 }
