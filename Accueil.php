@@ -88,7 +88,7 @@
 					<!-- Utilisation méthode Flexbox -->
 					<div id="conteneur">
 						<a href="Formation/DIU.php" class="element">Modulaire et Diplômante Interuniversitaire</a>
-						<a href="Formation/GEA.php" class="element">Gestion, Comptabilité, Ressources Humaines et Management</a>
+						<a href="Formation/GCRHM/GCRHM.php" class="element">Gestion, Comptabilité, Ressources Humaines et Management</a>
 						<a href="Formation/CJ.php" class="element">Juridique, Notariat et Finance</a>
 						<a href="Formation/INFO.php" class="element">Informatique, Systèmes et Logiciels</a>
 						<a href="Formation/RT.php" class="element">Réseaux et Télécommunications</a>
