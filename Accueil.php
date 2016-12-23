@@ -78,28 +78,14 @@
 		<!--start main-->
 	
 		<div class="container-fluid">
-        
-			<!--<div class='row-fluid'>
-          
-				<div class="col-md-8 col-md-offset-1 ">
-					<h2 class='text-success'>Agenda</h2>
-					
-					<div class="well">
-						<p class="lead">
-							Aujourd'hui :<br/>
-							Faire la page d'accueil...
-						</p>
-					</div>
-					
-				</div>
-				
-			</div>-->
 			
 			<div class='row-fluid'>
 
 				<div>
 					<h1 class='text-success'>Les Formations</h1>
 					<hr>
+
+					<!-- Utilisation méthode Flexbox -->
 					<div id="conteneur">
 						<a href="Formation/DIU.php" class="element">Modulaire et Diplômante Interuniversitaire</a>
 						<a href="Formation/GEA.php" class="element">Gestion, Comptabilité, Ressources Humaines et Management</a>
