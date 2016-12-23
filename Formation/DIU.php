@@ -5,7 +5,7 @@
 		
 		<ol class="breadcrumb">
 			<li><a href="../Accueil.php">Accueil</a></li>
-			<li><a href="../Formation.php">Formations</a></li>
+			<li><a href="Formation.php">Formations</a></li>
 			<li class="active">Formation Modulaire et Diplômante Interuniversitaire</a></li>
 		</ol>
 
