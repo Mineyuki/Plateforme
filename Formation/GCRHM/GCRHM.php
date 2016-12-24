@@ -1,4 +1,4 @@
-<?php require('head.php');?>
+<?php require('../../head.php');?>
 	<!-- Nom des onglets -->
 		<title>Formations en Gestion, Comptabilité, Ressources Humaines, Management</title>
 <?php require('body.php');?>

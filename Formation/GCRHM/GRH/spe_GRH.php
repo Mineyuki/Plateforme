@@ -1,4 +1,4 @@
-<?php require('head.php');?>
+<?php require('../../../head.php');?>
 	<!-- Nom des onglets -->
 		<title>LP GRH Spécialité : Métiers de la GRH : Formation, compétences et emploi</title>
 <?php require('body.php');?>

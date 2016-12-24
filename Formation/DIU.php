@@ -1,4 +1,4 @@
-<?php require('head.php');?>
+<?php require('../head.php');?>
 	<!-- Nom des onglets -->
 		<title>Diplôme InterUniversitaire</title>
 <?php require('body.php');?>

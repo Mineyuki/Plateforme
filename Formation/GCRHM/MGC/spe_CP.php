@@ -1,4 +1,4 @@
-<?php require('head.php');?>
+<?php require('../../../head.php');?>
 	<!-- Nom des onglets -->
 		<title>LP MGC Spécialité : Comptabilité et paie</title>
 <?php require('body.php');?>

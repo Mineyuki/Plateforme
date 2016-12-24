@@ -1,4 +1,4 @@
-<?php require('head.php');?>
+<?php require('../../../head.php');?>
 	<!-- Nom des onglets -->
 		<title>DUT GEA Spécialité : Gestion et Management des Organisations</title>
 <?php require('body.php');?>
