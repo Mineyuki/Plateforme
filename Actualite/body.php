@@ -19,20 +19,20 @@
 				<ul class="nav navbar-nav">
 					<li><a href="../Accueil.php"><img id="logo" src="../image/Logo_IUT_Villetaneuse.png" alt="Accueil"></a></li>
 					<li class="dropdown navigation">
-						<a href="Formation.php" class="dropdown-toogle">Formation</a>
+						<a href="../Formation/Formation.php" class="dropdown-toogle">Formation</a>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="DIU.php">Formation Modulaire et Diplômante Interuniversitaire</a></li>
-							<li><a href="GCRHM/GCRHM.php">Formations en Gestion, Comptabilité, Ressources Humaines, Management</a></li>
-							<li><a href="CJ.php">Formations en Juridique, Notariat, Finance</a></li>
-							<li><a href="INFO.php">Formations en Informatique, Systèmes, Logiciels</a></li>
-							<li><a href="RT.php">Formations en Réseaux, Télécommunications</a></li>
-							<li><a href="GEII.php">Formations en Électronique, Électricité, Informatique Industrielle, Nanotechnologies</a></li>
+							<li><a href="../Formation/DIU.php">Formation Modulaire et Diplômante Interuniversitaire</a></li>
+							<li><a href="../Formation/GCRHM/GCRHM.php">Formations en Gestion, Comptabilité, Ressources Humaines, Management</a></li>
+							<li><a href="../Formation/CJ.php">Formations en Juridique, Notariat, Finance</a></li>
+							<li><a href="../Formation/INFO.php">Formations en Informatique, Systèmes, Logiciels</a></li>
+							<li><a href="../Formation/RT.php">Formations en Réseaux, Télécommunications</a></li>
+							<li><a href="../Formation/GEII.php">Formations en Électronique, Électricité, Informatique Industrielle, Nanotechnologies</a></li>
 						</ul>
 					</li>			
 					<li class="navigation"><a href="../Ressource.php">Ressource</a></li>
 					<li class="navigation"><a href="../Travail.php">Espace de travail</a></li>
 					<li class="navigation"><a href="../Rendez-vous.php">Rendez-vous</a></li>
-					<li class="navigation"><a href="../Actualite/Actualite.php">Actualites</a></li>
+					<li class="navigation"><a href="Actualite.php">Actualites</a></li>
 					<li class="navigation"><a href="../Forum.php">Forum</a></li>   
 					<li class="navigation"><a href="../Connexion.php"><span class="glyphicon glyphicon-user"></span> Connexion</a></li>
 				</ul>

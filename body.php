@@ -48,7 +48,7 @@
 					<!-- Onglet Rendez-vous -->
 					<li class="navigation"><a href="Rendez-vous.php">Rendez-vous</a></li>
 					<!-- Onglet Actualites -->
-					<li class="navigation"><a href="Actualite.php">Actualites</a></li>
+					<li class="navigation"><a href="Actualite/Actualite.php">Actualites</a></li>
 					<!-- Onglet Forum -->
 					<li class="navigation"><a href="Forum.php">Forum</a></li>
 					<!-- Onglet Connexion -->
