@@ -3,8 +3,6 @@
 		<title>Forum</title>
 <?php require('body.php');?>
 <?php
-	session_start();
-			
 	if(!isset($_SESSION['connexion']))
 	{
 		header("Location:Connexion.php");

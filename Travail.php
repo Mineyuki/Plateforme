@@ -2,9 +2,7 @@
 	<!-- Nom des onglets -->
 		<title>Espace de travail</title>
 <?php require('body.php');?>
-<?php
-	session_start();
-			
+<?php			
 	if(!isset($_SESSION['connexion']))
 	{
 		header("Location:Connexion.php");
