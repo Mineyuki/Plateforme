@@ -44,7 +44,7 @@
 													session_start();
 													$_SESSION['email'] = $res['mail'];
 												
-													header("Location: Accueil_2.php");
+													header("Location: Accueil.php");
 												}
 
 						
@@ -95,7 +95,7 @@ require('co.php');
 					//session_start();
 					$_SESSION['email'] = $res['mail'];
 					echo'<p> Bonjour, vous êtes connecté avec l\'adresse mail :'.$_SESSION['email'].' ! </p>';
-					header("Location: Accueil_2.php");
+					header("Location: Accueil.php");
 				}
 
 						
