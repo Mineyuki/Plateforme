@@ -6,7 +6,7 @@ CREATE TABLE Article(
 	titre		VARCHAR(255)	NOT NULL,
 	date		DATETIME	NOT NULL,
 	auteur		VARCHAR(255)	NOT NULL,
-	corps		VARCHAR(255)	NOT NULL,
+	corps		LONGTEXT	NOT NULL,
 	PRIMARY KEY (id_article)
 )
 
