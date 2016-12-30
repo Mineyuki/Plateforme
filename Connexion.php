@@ -1,9 +1,12 @@
-<?php require('head.php');?>
-	<!-- Nom des onglets -->
+<!DOCTYPE html>
+<html lang="fr">
+
+	<head>
+		<meta charset="utf-8">
 		<title>Connexion</title>
 <?php require('body.php');?>
 		
-				<div class="container">
+		<div class="container">
     
 			<div class="row ">
 			
@@ -22,92 +25,35 @@
 					</br>
 					 <CENTER>
 							<?php
-
 								require('co.php');
-								{
-									if(isset($_POST["connexion"]))
-									{
-	
-										$mailconx =htmlspecialchars($_POST['emailconnex']);
-										$mdpconx = htmlspecialchars($_POST['motdepasse']);
-
-										if(trim($_POST['emailconnex']) != "" and trim($_POST['motdepasse']) != "" )
-										{
-												$mdp = sha1($_POST['motdepasse']);
-												$req = $bd->prepare("SELECT * FROM membres where mail = :mail and motdepasse = :mdp ");
-												$req->bindValue(':mail',$_POST['emailconnex']);
-												$req->bindValue(':mdp',$mdp);
-												$req->execute();
-												$res = $req->fetch();
-												if( $res != false)
-												{					
-													session_start();
-													$_SESSION['email'] = $res['mail'];
-												
-													header("Location: Accueil.php");
-												}
-
-						
-					
-										else
-											{
-												echo "<p>Mauvais mail ou mot de passe ! </p>";
-											}
+								if(isset($_POST["connexion"])){
+									$mailconx =htmlspecialchars($_POST['emailconnex']);
+									$mdpconx = htmlspecialchars($_POST['motdepasse']);
+									if(trim($_POST['emailconnex']) != "" and trim($_POST['motdepasse']) != ""){
+										$mdp = sha1($_POST['motdepasse']);
+										$req = $bd->prepare("SELECT * FROM membres where mail = :mail and motdepasse = :mdp ");
+										$req->bindValue(':mail',$_POST['emailconnex']);
+										$req->bindValue(':mdp',$mdp);
+										$req->execute();
+										$res = $req->fetch();
+										if( $res != false){					
+											session_start();
+											$_SESSION['email'] = $res['mail'];
+											header("Location: Accueil.php");
 										}
-									else
-											echo "<p>Tout les champs doivent être renseignés ! </p>";
+										else{
+											echo "<p>Mauvais mail ou mot de passe ! </p>";
+										}
 									}
-
+								else
+									echo "<p>Tout les champs doivent être renseignés ! </p>";
 								}
-								?>
+							?>
 					 	<p> Vous n'êtes pas encore inscrit cliquez <a href="formulaire.php">ici</a> !</p>
 					 </CENTER>
 					</form>
-					
-				</div>
-				
-			</div>
-			
+				</div>				
+			</div>			
 		</div>
 		
 <?php require('footer.php');?>
-
-<?php
-
-require('co.php');
-{
-	if(isset($_POST["connexion"]))
-	{
-	
-		$mailconx = htmlspecialchars($_POST['emailconnex']);
-		$mdpconx = htmlspecialchars($_POST['motdepasse']);
-
-		if(trim($_POST['emailconnex']) != "" and trim($_POST['motdepasse']) != "" )
-		{
-				$mdp = sha1($_POST['motdepasse']);
-				$req = $bd->prepare("SELECT * FROM membres where mail = :mail and motdepasse = :mdp ");
-				$req->bindValue(':mail',$_POST['emailconnex']);
-				$req->bindValue(':mdp',$mdp);
-				$req->execute();
-				$res = $req->fetch();
-				if( $res != false)
-				{
-					$_SESSION['email'] = $res['mail'];
-					echo'<p> Bonjour, vous êtes connecté avec l\'adresse mail :'.$_SESSION['email'].' ! </p>';
-					header("Location: Accueil.php");
-					exit();
-				}
-
-						
-					
-		else
-			{
-				echo "<p>Mauvais mail ou mot de passe ! </p>";
-			}
-		}
-	else
-			echo "<p>Tout les champs doivent être renseignés ! </p>";
-	}
-
-}
-?>
