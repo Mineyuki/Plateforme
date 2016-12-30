@@ -9,7 +9,7 @@
 			
 				<div class="col-xs-4 col-md-offset-4 ">
 
-					<form id="connexion" class="form" method="POST" action="">
+					<form id="connexion" class="form" method="POST" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">
 						<h2 class="form-signin-heading">Connectez-vous :</h2>
 						<label for="Email" >Adresse mail</label> 
 						<input type="text" id="Email" class="form-control" placeholder="Adresse mail" name="emailconnex"> 
@@ -79,7 +79,7 @@ require('co.php');
 	if(isset($_POST["connexion"]))
 	{
 	
-		$mailconx =htmlspecialchars($_POST['emailconnex']);
+		$mailconx = htmlspecialchars($_POST['emailconnex']);
 		$mdpconx = htmlspecialchars($_POST['motdepasse']);
 
 		if(trim($_POST['emailconnex']) != "" and trim($_POST['motdepasse']) != "" )
@@ -91,11 +91,11 @@ require('co.php');
 				$req->execute();
 				$res = $req->fetch();
 				if( $res != false)
-				{					
-					//session_start();
+				{
 					$_SESSION['email'] = $res['mail'];
 					echo'<p> Bonjour, vous êtes connecté avec l\'adresse mail :'.$_SESSION['email'].' ! </p>';
 					header("Location: Accueil.php");
+					exit();
 				}
 
 						
