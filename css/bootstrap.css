@@ -6820,8 +6820,8 @@ table,
 }
 table a:not(.btn),
 .table a:not(.btn) {
-  color: #fff;
-  text-decoration: underline;
+  color: #3F77CA;
+  text-decoration: none;
 }
 table .dropdown-menu a,
 .table .dropdown-menu a {
