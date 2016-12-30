@@ -4,7 +4,7 @@
 <?php require('body.php');?>
 
 		<ol class="breadcrumb">
-			<li><a href="../../Accueil.php">Accueil</a></li>
+			<li><a href="../Accueil.php">Accueil</a></li>
 			<li class="active">Actualité</li>
 		</ol>
 
