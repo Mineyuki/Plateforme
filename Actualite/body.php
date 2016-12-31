@@ -2,7 +2,12 @@
 	
 		<link href="../css/provisoire.css" rel="stylesheet">
 		<link href="../css/bootstrap.css" rel="stylesheet" >
-		<link rel="shortcut icon" href="../image/Logo_IUT_Villetaneuse.png"/>
+		<?php
+			if(isset($_SESSION['connexion']))
+				echo "<link rel=\"shortcut icon\" href=\"../image/Logo_Formation_Continue.png\"/>";
+			else
+				echo "<link rel=\"shortcut icon\" href=\"../image/Logo_IUT_Villetaneuse.png\"/>";
+		?>
 	</head>
 		
 	<body>
@@ -12,7 +17,16 @@
 			<div class="container-fluid"> 
 				
 				<ul class="nav navbar-nav">
-					<li><a href="../Accueil.php"><img id="logo" src="../image/Logo_IUT_Villetaneuse.png" alt="Accueil"></a></li>
+					<li>
+						<a href="../Accueil.php">
+						<?php
+							if(isset($_SESSION['connexion']))						
+								echo "<img id=\"logo\" src=\"../image/Logo_Formation_Continue.png\" alt=\"Accueil\">";
+							else
+								echo "<img id=\"logo\" src=\"../image/Logo_IUT_Villetaneuse.png\" alt=\"Accueil\">";
+						?>
+						</a>
+					</li>
 					<li class="dropdown navigation">
 						<a href="../Formation/Formation.php" class="dropdown-toogle">Formation</a>
 						<ul class="dropdown-menu" role="menu">
@@ -29,7 +43,21 @@
 					<li class="navigation"><a href="../Rendez-vous.php">Rendez-vous</a></li>
 					<li class="navigation"><a href="Actualite.php">Actualites</a></li>
 					<li class="navigation"><a href="../Forum.php">Forum</a></li>   
-					<li class="navigation"><a href="../Connexion.php"><span class="glyphicon glyphicon-user"></span> Connexion</a></li>
+					<li class="navigation">
+						<?php
+							if(isset($_SESSION['connexion'])){						
+								echo "<a href=\"../Profil.php\">";
+								echo "<span class=\"glyphicon glyphicon-user\"></span>";
+								echo " Profil";
+							}
+							else{
+								echo "<a href=\"../Connexion.php\">";
+								echo "<span class=\"glyphicon glyphicon-user\"></span>";
+								echo " Connexion";
+							}
+						?>
+						</a>
+					</li>
 				</ul>
 					
 				<div id="recherche">

@@ -4,7 +4,12 @@
 		<!-- Utilisation CSS Bootstrap -->
 		<link href="css/bootstrap.css" rel="stylesheet" >
 		<!-- Utilisation logo sur l'onglet -->
-		<link rel="shortcut icon" href="image/Logo_IUT_Villetaneuse.png"/>
+		<?php
+			if(isset($_SESSION['connexion']))
+				echo "<link rel=\"shortcut icon\" href=\"image/Logo_Formation_Continue.png\"/>";
+			else
+				echo "<link rel=\"shortcut icon\" href=\"image/Logo_IUT_Villetaneuse.png\"/>";
+		?>
 	</head>
 
 <!--
@@ -23,7 +28,16 @@
 				<!-- Barre de navigation = Liste -->
 				<ul class="nav navbar-nav">
 					<!-- Logo -->
-					<li><a href="Accueil.php"><img id="logo" src="image/Logo_IUT_Villetaneuse.png" alt="Accueil"></a></li>
+					<li>
+						<a href="Accueil.php">
+						<?php
+							if(isset($_SESSION['connexion']))						
+								echo "<img id=\"logo\" src=\"image/Logo_Formation_Continue.png\" alt=\"Accueil\">";
+							else
+								echo "<img id=\"logo\" src=\"image/Logo_IUT_Villetaneuse.png\" alt=\"Accueil\">";
+						?>
+						</a>
+					</li>
 					<!-- Onglet formation -->
 					<li class="dropdown navigation">
 						<a href="Formation/Formation.php" class="dropdown-toogle">Formation</a>
@@ -47,7 +61,21 @@
 					<!-- Onglet Forum -->
 					<li class="navigation"><a href="Forum.php">Forum</a></li>
 					<!-- Onglet Connexion -->
-					<li class="navigation"><a href="Connexion.php"><span class="glyphicon glyphicon-user"></span> Connexion</a></li>
+					<li class="navigation">
+						<?php
+							if(isset($_SESSION['connexion'])){						
+								echo "<a href=\"Profil.php\">";
+								echo "<span class=\"glyphicon glyphicon-user\"></span>";
+								echo " Profil";
+							}
+							else{
+								echo "<a href=\"Connexion.php\">";
+								echo "<span class=\"glyphicon glyphicon-user\"></span>";
+								echo " Connexion";
+							}
+						?>
+						</a>
+					</li>
 				</ul>
 				
 				<!-- Barre de recherche -->
