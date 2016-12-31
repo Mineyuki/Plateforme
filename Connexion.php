@@ -39,6 +39,7 @@
 										if( $res != false){					
 											session_start();
 											$_SESSION['email'] = $res['mail'];
+											$_SESSION['connexion'] = 'connecte';
 											header("Location: Accueil.php");
 										}
 										else{
