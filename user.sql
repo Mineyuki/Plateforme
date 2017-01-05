@@ -1,8 +1,10 @@
-DROP TABLE membres Cascade;
+DROP TABLE IF EXISTS membres Cascade;
 
 CREATE TABLE membres (
-    mail VARCHAR(50),
-    motdepasse VARCHAR(50),
-    PRIMARY KEY (mail)
+	nom			VARCHAR(255)	NOT NULL,
+	prenom			VARCHAR(255)	NOT NULL,
+	mail			VARCHAR(255)	NOT NULL,
+	motdepasse		VARCHAR(255)	NOT NULL,
+	ecriture_article	TINYINT		DEFAULT 0,
+	PRIMARY KEY (mail)
 );
-

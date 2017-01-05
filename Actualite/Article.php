@@ -11,7 +11,7 @@
  */
 	if(!isset($_SESSION['connexion']))
 	{
-		header("Location:../Connexion.php");
+		header("Location:Actualite.php");
 		exit();
 	}
 ?>
@@ -53,6 +53,7 @@
  * $_SESSION['nom'] = nom de la personne connecté - Vérification obligatoire -
  * $_GET['editor'] = Contenu de l'article - Problème de sécurité par la suite. On considérera que la personne en charge d'écrire l'article n'est pas censé nuire au site.
  */
+	require('../co.php');
 
 	$today = date("Y-m-d H:i:s"); 
 

@@ -40,6 +40,7 @@
 											session_start();
 											$_SESSION['email'] = $res['mail'];
 											$_SESSION['connexion'] = 'connecte';
+											$_SESSION['ecriture_article'] = $res['ecriture_article'];
 											header("Location: Accueil.php");
 										}
 										else{
