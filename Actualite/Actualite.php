@@ -34,8 +34,13 @@
 						echo "<hr>";
 						echo "<h2>".$article['titre']."</h2>";
 						echo "<p>".$article['jour'].' - '.$article['auteur']."</p>";
-						$parser->parse($article['corps']);
-						echo "<p>".substr($parser->getAsHtml(),0,100)."...</p>";
+						/*$parser->parse($article['corps']);
+						echo "<p>".substr($parser->getAsHtml(),0,600)."...</p>";*/
+						echo "<p>".substr(preg_replace('#\[.*?\]|\[/.*?\]#',' ',$article['corps']),0,600);
+						if(strlen($article['corps'])>=600)
+							echo "...</p>";
+						else
+							echo "</p>";
 					}
 					?>
 			</section>
