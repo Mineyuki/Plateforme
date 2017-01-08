@@ -65,7 +65,7 @@
 					$requete->execute();
 					while($article = $requete->fetch(PDO::FETCH_ASSOC)){
 						echo "<hr>";
-						echo "<h2>".$article['titre']."</h2>";
+						echo "<h2><a href=\"Article.php?id=".$article['id_article']."\">".$article['titre']."</a></h2>";
 						echo "<p>".$article['jour'].' - '.$article['auteur']."</p>";
 						/*$parser->parse($article['corps']);
 						echo "<p>".substr($parser->getAsHtml(),0,600)."...</p>";*/
