@@ -73,7 +73,7 @@
 						<!-- Onglet Rendez-vous -->
 						<li><a href="Rendez-vous.php">Rendez-vous</a></li>
 						<!-- Onglet Actualites -->
-						<li><a href="../Actualite.php">Actualites</a></li>
+						<li><a href="../Actualite/Actualite.php">Actualites</a></li>
 						<!-- Onglet Forum -->
 						<li><a href="../Forum.php">Forum</a></li>
 						<!-- Onglet Connexion -->
@@ -83,7 +83,7 @@
 									echo "<a href=\"../Profil.php\">
 										<span class=\"glyphicon glyphicon-user\"></span>
 										Profil</a></li>";
-									echo "<a href=\"../Connexion.php\" title=\"Déconnexion\">
+									echo "<li><a href=\"../Connexion.php\" title=\"Déconnexion\">
 										<span class=\"glyphicon glyphicon-off\"></span>";
 								}
 								else{

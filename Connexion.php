@@ -1,3 +1,9 @@
+<?php
+	session_start();
+	foreach($_SESSION as $nom => $donnee)
+		unset($_SESSION[$nom]);
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -36,8 +42,7 @@
 										$req->bindValue(':mdp',$mdp);
 										$req->execute();
 										$res = $req->fetch();
-										if( $res != false){					
-											session_start();
+										if( $res != false){
 											$_SESSION['email'] = $res['mail'];
 											$_SESSION['connexion'] = 'connecte';
 											$_SESSION['nom'] = $res['nom'];

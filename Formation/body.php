@@ -83,7 +83,7 @@
 									echo "<a href=\"../Profil.php\">
 										<span class=\"glyphicon glyphicon-user\"></span>
 										Profil</a></li>";
-									echo "<a href=\"../Connexion.php\" title=\"Déconnexion\">
+									echo "<li><a href=\"../Connexion.php\" title=\"Déconnexion\">
 										<span class=\"glyphicon glyphicon-off\"></span>";
 								}
 								else{
