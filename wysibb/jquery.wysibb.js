@@ -796,15 +796,10 @@ wbbdebug=true;
 			if (this.options.onlyBBmode===false) {
 				var height = this.options.minheight || this.$txtArea.outerHeight();
 				var maxheight = this.options.resize_maxheight;
-				/*var mheight = (this.options.autoresize===true) ? this.options.resize_maxheight:height;*/
+				var mheight = (this.options.autoresize===true) ? this.options.resize_maxheight:height;
 				this.$body = $(this.strf('<div class="wysibb-text-editor" style="max-height:{maxheight}px;min-height:{height}px"></div>',{maxheight:mheight,height:height})).insertAfter(this.$txtArea);
 				this.body = this.$body[0];
 				this.$txtArea.hide();
-				
-				if (height>32) {
-					this.$toolbar.css("max-height",height);
-				}
-				
 				$.log("WysiBB loaded");
 				
 				this.$body.addClass("wysibb-body").addClass(this.options.bodyClass);
