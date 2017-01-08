@@ -86,10 +86,6 @@
  */
 					if($_SESSION['ecriture_article']==1)
 						echo "<a href=\"Ecriture_Article.php\">Ecrire un article</a>";
-		
-					/*$parser = new JBBCode\Parser();
-					$parser->addCodeDefinitionSet(new JBBCode\DefaultCodeDefinitionSet());*/
-
 /*
  * On veut seulement les articles dans l'ordre décroissant (du plus ancien au plus récent) dans la limite de 10 par page
  */
@@ -105,8 +101,6 @@
  */ 
 						echo "<h2><a href=\"Article.php?id=".$article['id_article']."\">".$article['titre']."</a></h2>";
 						echo "<p>".$article['jour'].' - '.$article['auteur']."</p>";
-						/*$parser->parse($article['corps']);
-						echo "<p>".substr($parser->getAsHtml(),0,600)."...</p>";*/
 /*
  * On affichera seulement un début d'article sans utiliser le format BBCode.
  * On supprime le format BBCode pour avoir seulement le corps de l'article.
