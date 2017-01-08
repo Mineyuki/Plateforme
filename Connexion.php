@@ -42,7 +42,9 @@
 											$_SESSION['connexion'] = 'connecte';
 											$_SESSION['nom'] = $res['nom'];
 											$_SESSION['ecriture_article'] = $res['ecriture_article'];
-											header("Location: Accueil.php");
+											echo"<script>
+											document.location.href=\"Accueil.php\"
+											</script>";
 										}
 										else{
 											echo "<p>Mauvais mail ou mot de passe ! </p>";
