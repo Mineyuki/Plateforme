@@ -48,8 +48,9 @@
 <?php			
 	if(!isset($_SESSION['connexion']))
 	{
-		header("Location:../Connexion.php");
-		exit();
+		echo"<script>
+			document.location.href=\"../Connexion.php\"
+		</script>";
 	}
 ?>
 
