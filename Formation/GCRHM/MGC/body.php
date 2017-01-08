@@ -80,14 +80,16 @@
 						<li>
 							<?php
 								if(isset($_SESSION['connexion'])){						
-									echo "<a href=\"../../../Profil.php\">";
-									echo "<span class=\"glyphicon glyphicon-user\"></span>";
-									echo " Profil";
+									echo "<a href=\"../../../Profil.php\">
+										<span class=\"glyphicon glyphicon-user\"></span>
+										Profil</a></li>";
+									echo "<a href=\"../Connexion.php\" title=\"Déconnexion\">
+										<span class=\"glyphicon glyphicon-off\"></span>";
 								}
 								else{
-									echo "<a href=\"../../../Connexion.php\">";
-									echo "<span class=\"glyphicon glyphicon-user\"></span>";
-									echo " Connexion";
+									echo "<a href=\"../../../Connexion.php\">
+										<span class=\"glyphicon glyphicon-user\"></span>
+										Connexion";
 								}
 							?>
 							</a>
