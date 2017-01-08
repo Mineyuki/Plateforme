@@ -71,7 +71,7 @@
 						<!-- Onglet Espace de travail -->
 						<li><a href="Travail.php">Espace de travail</a></li>
 						<!-- Onglet Rendez-vous -->
-						<li><a href="Rendez-vous.php">Rendez-vous</a></li>
+						<li><a href="Rendez-vous/Rendez-vous.php">Rendez-vous</a></li>
 						<!-- Onglet Actualites -->
 						<li><a href="Actualite/Actualite.php">Actualites</a></li>
 						<!-- Onglet Forum -->

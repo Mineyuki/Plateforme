@@ -1,6 +1,6 @@
 <?php
 
-require('co.php');
+require('../co.php');
 
 class Date{
 	
@@ -92,5 +92,6 @@ function ajouterEvent($date, $title){
 }
 
 */
+
 
 ?>

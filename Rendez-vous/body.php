@@ -56,14 +56,14 @@
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a href="Formation.php" class="dropdown-toggle">Formation</a>
+							<a href="../Formation/Formation.php" class="dropdown-toggle">Formation</a>
 							<ul class="dropdown-menu">
-								<li><a href="DIU.php">Formation Modulaire et Diplômante Interuniversitaire</a></li>
-								<li><a href="GCRHM/GCRHM.php">Formations en Gestion, Comptabilité, Ressources Humaines, Management</a></li>
-								<li><a href="CJ.php">Formations en Juridique, Notariat, Finance</a></li>
-								<li><a href="INFO.php">Formations en Informatique, Systèmes, Logiciels</a></li>
-								<li><a href="RT.php">Formations en Réseaux, Télécommunications</a></li>
-								<li><a href="GEII.php">Formations en Électronique, Électricité, Informatique Industrielle, Nanotechnologies</a></li>
+								<li><a href="../Formation/DIU.php">Formation Modulaire et Diplômante Interuniversitaire</a></li>
+								<li><a href="../Formation/GCRHM/GCRHM.php">Formations en Gestion, Comptabilité, Ressources Humaines, Management</a></li>
+								<li><a href="../Formation/CJ.php">Formations en Juridique, Notariat, Finance</a></li>
+								<li><a href="../Formation/INFO.php">Formations en Informatique, Systèmes, Logiciels</a></li>
+								<li><a href="../Formation/RT.php">Formations en Réseaux, Télécommunications</a></li>
+								<li><a href="../Formation/GEII.php">Formations en Électronique, Électricité, Informatique Industrielle, Nanotechnologies</a></li>
 							</ul>
 						</li>
 						<!-- Onglet Ressource -->			
@@ -71,9 +71,9 @@
 						<!-- Onglet Espace de travail -->
 						<li><a href="../Travail.php">Espace de travail</a></li>
 						<!-- Onglet Rendez-vous -->
-						<li><a href="../Rendez-vous/Rendez-vous.php">Rendez-vous</a></li>
+						<li><a href="Rendez-vous.php">Rendez-vous</a></li>
 						<!-- Onglet Actualites -->
-						<li><a href="../Actualite/Actualite.php">Actualites</a></li>
+						<li><a href="../Actualite.php">Actualites</a></li>
 						<!-- Onglet Forum -->
 						<li><a href="../Forum.php">Forum</a></li>
 						<!-- Onglet Connexion -->
