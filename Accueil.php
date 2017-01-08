@@ -77,9 +77,9 @@
 
 		<!--start main-->
 	
-		<div class="container-fluid">
+		<div class="container">
 			
-			<div class='row-fluid'>
+			<div class='row'>
 
 				<div>
 					<h1 class='text-success'>Les Formations</h1>
