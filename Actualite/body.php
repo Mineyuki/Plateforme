@@ -3,6 +3,8 @@
 		<link href="../css/provisoire.css" rel="stylesheet">
 		<!-- Utilisation CSS Bootstrap -->
 		<link href="../css/bootstrap.css" rel="stylesheet" >
+		<!-- Utilisation CSS WYSIBB -->
+		<link href="../wysibb/theme/default/wbbtheme.css" rel="stylesheet">
 		<!-- Utilisation logo sur l'onglet -->
 		<?php
 			if(isset($_SESSION['connexion']))

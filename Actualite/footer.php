@@ -17,6 +17,17 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		<script src="../js/bootstrap.min.js"></script>
 		<script src="../js/bootstrap.js"></script>
+		<!-- Script JS de WYSIBB -->
+		<script src="../wysibb/jquery.wysibb.js"></script>
+		<script src="../wysibb/lang/fr.js"></script>
+		<script>
+			$(document).ready(function() {
+				var wbbOpt = {
+					lang: "fr"
+				}
+				$(".wysibb").wysibb(wbbOpt);
+			});
+		</script>
 	
 	</body>
 	

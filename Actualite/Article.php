@@ -29,17 +29,14 @@
 
 		<div class="container">
 			<form method="GET" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">
-				<label>Titre de l'article</label>
-				<input type="text" name="titre" size="100" maxlength="255"><br/><br/>
-				<textarea class="ckeditor" name="editor"></textarea><br/>
-				<input type="submit" value="Envoyer">
+				<label>Titre de l'article</label><br/>
+				<div class="form-group">
+				<input class="form-control" type="text" name="titre" maxlength="255">
+				</div>
+				<textarea class="wysibb" name="editor"></textarea><br/>
+				<button type="submit" class="btn btn-default">Envoyer</button>
 			</form>
 		</div>
-
-		<script src="../ckeditor/ckeditor.js"></script>
-		<script>
-		    CKEDITOR.replace( 'editor' );
-		</script>
 
 <?php require('footer.php');?>
 
