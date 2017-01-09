@@ -1,10 +1,11 @@
+
 <nav id="navi" class="navbar navbar-default "> 
 				
 			<div class="container-fluid"> 
 				
 				<ul class="nav navbar-nav">
-					<?php if($_SESSION['categorie'] != ''){ ?>
-					<li><a href="Accueil.php"><img id="logo" src="image/LogoTransparent.png" alt="Accueil"></a></li>
+					<?php if($_SESSION['categorie']){ ?>
+					<li><a href="Accueil.php"><img id="logo" src="image/Logo_IUT_Villetaneuse.png" alt="Accueil"></a></li>
 					<?php } ?>
 					<li class="dropdown navigation">
 						<a href="Formation.html" class="dropdown-toogle">Formation</a>
@@ -20,15 +21,21 @@
 					<li class="navigation"><a href="Travail.php">Espace de travail</a></li>
 					<li class="navigation"><a href="Rendez-vous.php">Rendez-vous</a></li>
 					<li class="navigation"><a href="Actualite.php">Actualites</a></li>
-					<li class="navigation"><a href="Forum.php">Forum</a></li>
-					<?php if($_SESSION['categorie'] ==''){ ?>
-					<li class="navigation"><a href="connexion.php"><span class="glyphicon glyphicon-user"></span> Connexion</a></li>
+					<li class="navigation"><a href="<?php echo 'Forum.php?f=1'; ?>">Forum</a></li>
+					<?php if(!isset($_SESSION['categorie'])){ ?>
+					<li class="navigation"><a href="Connexion.php"><span class="glyphicon glyphicon-user"></span> Connexion</a></li>
 					<?php }else{ ?>
-					<li class="navigation"><a href="#"><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['email']; ?></a></li>
+					<li class="dropdown navigation">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?php echo $_SESSION['prenom']; ?> <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="Profil.php">profil</a></li>
+							<li><a href="Deconnexion.php">deconnexion</a></li>
+						</ul>
+					</li>
 					<?php } ?>
 				</ul>
 					
-				<div id="recherche">
+			<!--	<div id="recherche">
 					<form class="navbar-form navbar-left" role="search">
 							
 						<div class="form-group">
@@ -37,8 +44,9 @@
 								
 						<button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-search"></span></button>
 					</form>
-				</div>
+				</div> -->
 					
 			</div>
 					
 		</nav>
+		
