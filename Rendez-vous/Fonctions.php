@@ -7,10 +7,11 @@ class Date{
 	var $days = array('Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche');
 	var $months = array('Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novemebre', 'Décembre');
 	
-	function getEvents($year){
+	function getEventsDest($year, $mail){
 		global $bd;
-		$req = $bd->prepare('select id, title, dateh from events where year(dateh)= :year');
+		$req = $bd->prepare('select id, title, dateh, mailDest from events where year(dateh)= :year and mailDest = :mail');
 		$req->bindValue(':year', $year);
+		$req->bindValue(':mail', $mail);
 		$req->execute();
 		$r = array();
 		while($d = $req->fetch(PDO::FETCH_OBJ)){
@@ -19,7 +20,18 @@ class Date{
 		return $r;
 	}
 	
-	
+	function getEventsExpe($year, $mail){
+		global $bd;
+		$req = $bd->prepare('select id, title, dateh, mailExpe from events where year(dateh)= :year and mailExpe = :mail');
+		$req->bindValue(':year', $year);
+		$req->bindValue(':mail', $mail);
+		$req->execute();
+		$r = array();
+		while($d = $req->fetch(PDO::FETCH_OBJ)){
+			$r[strtotime($d->dateh)][$d->id] = $d->title;
+		}
+		return $r;
+	}
 	
 	function getAll($year){
 		$r = array();
@@ -49,7 +61,8 @@ class Date{
 	
 }
 
-function ajouterEvent($date, $title){
+/*fonction pour les événements d'étudiants */
+function ajouterEventPerso($date, $title, $mail){
 	global $bd;
 	try{
 		$reqID = $bd->prepare('select LAST_INSERT_ID() as id from events');
@@ -57,9 +70,10 @@ function ajouterEvent($date, $title){
 		$res = $reqID->fetch(PDO::FETCH_NUM);
 		echo $res[0];
 		$id = $res[0]+1;
-		$req = $bd->prepare('insert into events (dateh, title) values ( :dateh, :title)');
+		$req = $bd->prepare('insert into events (dateh, title, mailDest) values ( :dateh, :title, :mail)');
 		$req->bindValue(':dateh', $date);
 		$req->bindValue(':title', $title);
+		$req->bindValue(':mail', $mail);
 		$req->execute();
 		
 	}
@@ -68,30 +82,46 @@ function ajouterEvent($date, $title){
 	}
 }
 
-/*function genereListeEtudiant{
+
+function ajouterEventProfesseur($date, $title, $mailProf, $mailEtu){
 	global $bd;
 	try{
-		$req = $bd->prepare('select mail from membres where categorie = etudiant');
+		$reqID = $bd->prepare('select LAST_INSERT_ID() as id from events');
+		$reqID->execute();
+		$res = $reqID->fetch(PDO::FETCH_NUM);
+		$req = $bd->prepare('insert into events (dateh, title, mailDest, mailExpe) values ( :dateh, :title, :mailDest, :mailExpe)');
+		$req->bindValue(':dateh', $date);
+		$req->bindValue(':title', $title);
+		$req->bindValue(':mailDest', $mailEtu);
+		$req->bindValue(':mailExpe', $mailProf);
 		$req->execute();
-		$i =0;
-			
-		echo '<select id="div1" name="selection" style="display: none; margin-left: 30px;">';
-		do{
-			$liste = $req->fetch(PDO::FETCH_ASSOC);
-			echo '<option value='.$i.'> '. $liste['mail'] .'</option>';
-			$i = $i+1;
+		
+	}
+	catch(PDOException $e){
+		die('<p> La connexion a échoué. Erreur['.$e->getCode().'] : '.$e->getMessage().'</p>');
+	}
+}
 
-		}while( $liste != false);
+
+function genereListeEtudiant(){
+	global $bd;
+	try{
+		$req = $bd->prepare('select distinct mail from membres where categorie ="etudiant"');
+		$req->execute();
+		echo '<select name="selection">';
+		$i=0;
+		do{
+			$res = $req->fetch(PDO::FETCH_NUM);
+			
+			if($res[0] != '')
+				echo '<option value='. $res[0] .'> '. $res[0] . '</option>';
+			
+		}while($res != false);
 		echo '</select>';
 	}
 	catch(PDOException $e){
 		die('<p> La connexion a échoué. Erreur['.$e->getCode().'] : '.$e->getMessage().'</p>');
 	}
-
-
 }
-
-*/
-
 
 ?>
