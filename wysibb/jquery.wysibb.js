@@ -103,7 +103,7 @@ wbbdebug=true;
 			hotkeys:			true,
 			showHotkeys:		true,
 			autoresize:			true,
-			resize_maxheight:	800,
+			resize_maxheight:	300,
 			loadPageStyles:		true,
 			traceTextarea:		true,
 //			direction:			"ltr",

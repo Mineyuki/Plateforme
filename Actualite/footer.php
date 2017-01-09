@@ -23,7 +23,8 @@
 		<script>
 			$(document).ready(function() {
 				var wbbOpt = {
-					lang: "fr"
+					lang: "fr",
+					buttons : "bold,italic,underline,strike,sup,sub,img,link,bullist,quote,fontcolor,fontsize,fontfamily,justifyleft,justifyright,justifycenter,table,code"
 				}
 				$(".wysibb").wysibb(wbbOpt);
 			});
