@@ -15,7 +15,8 @@
 	
 	$parser = new JBBCode\Parser();
 	$parser->addCodeDefinitionSet(new JBBCode\DefaultCodeDefinitionSet());
-
+	require('../jBBCode-1.3.0/JBBCode/new_JBBCode.php');
+	
 	$req = 'SELECT * FROM Article where id_article = :id';
 	$requete = $bd->prepare($req);
 	$requete->bindValue(':id',$id);

@@ -62,6 +62,17 @@ class DefaultCodeDefinitionSet implements CodeDefinitionSet
         $builder = new CodeDefinitionBuilder('color', '<span style="color: {option}">{param}</span>');
         $builder->setUseOption(true)->setOptionValidator(new \JBBCode\validators\CssColorValidator());
         array_push($this->definitions, $builder->build());
+	
+	/* [size] size tag */
+        $builder = new CodeDefinitionBuilder('size', '<font size="{option}">{param}</font>');
+        $builder->setUseOption(true)->setOptionValidator(new \JBBCode\validators\CssColorValidator());
+        array_push($this->definitions, $builder->build());
+	
+	/* [font] font-family tag */
+        $builder = new CodeDefinitionBuilder('font', '<font face="{option}">{param}</font>');
+        $builder->setUseOption(true)->setOptionValidator(new \JBBCode\validators\CssColorValidator());
+        array_push($this->definitions, $builder->build());
+	
     }
 
     /**
