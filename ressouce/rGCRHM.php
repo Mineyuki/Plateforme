@@ -21,12 +21,13 @@
   <ul style="list-style-type:square">
       
 <?php
+$nom='rGCRHM.php';
 $dir = 'upload/rGCRHM/';
 if(is_dir($dir)) {
         if ($dh = opendir($dir)) {
         while (($file = readdir($dh)) !== false) {
                 if($file!="." && $file!="..") {
-                echo "<li><a href='".$dir.$file."'>".$file."</a><a href='supprimer.php?name={$file}&url={$dir}'><span class=\"glyphicon glyphicon-remove\"></span></a></li>";
+                echo "<li><a href='".$dir.$file."'>".$file."</a><a href='./supprimer.php?name={$file}&url={$dir}&formation={$nom}'><span class=\"glyphicon glyphicon-remove\"></span></a></li>";
             }
         }
         closedir($dh);
@@ -37,3 +38,4 @@ if(is_dir($dir)) {
  </div>
 <?php require('body.php');?>
 <?php require('footer.php');?>
+
