@@ -1506,7 +1506,7 @@ a {
 a:hover,
 a:focus {
 	color: #9a4912; /* Orange foncé */
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 a:focus {

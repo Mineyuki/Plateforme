@@ -65,7 +65,6 @@
 	echo '<p> '. print_r($eventsDest) .' </p>';
 	echo '<p> '. print_r($eventsExpe) .' </p>';
 	$dates = $date->getAll($year);
-	print_r($_SESSION);
 
 ?>
 	
@@ -74,26 +73,28 @@
 	
 	<h3>Ajouter un événement</h3>
 		<form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
-			<p >
-				
-				Date <br> <input type="text" id="date" name="date" readonly ><br>
-				Heure <input type="time" name="time" style="margin-top: 8px;"></br>
-				
+			<p>
+				<div class="form-group">
+				Date <br /> <input class="form-control" type="text" id="date" name="date" readonly ><br />
+				Heure <br /><input class="form-control" type="time" name="time" style="margin-top: 8px;">
+				</div>
 				<?php /* Les possibilités*/
 					if($_SESSION['categorie'] == 'professeur'){
 				?>
 				<p style="padding-top: 8px; padding-left: 8px;">
-				Evenement pour: <br>
-				vous <input type="radio" name="categ" value="vous" onclick="radioclick(this.value);" /><br>
-				etudiant <input type="radio" name="categ" value="gEtudiant" onclick="radioclick(this.value);" /><br>
+				Evenement pour<br />
+				<input type="radio" name="categ" value="vous" onclick="radioclick(this.value);" /> Vous<br />
+				<input type="radio" name="categ" value="gEtudiant" onclick="radioclick(this.value);" /> Etudiants<br />
 				</p>
 				<p  id="div1" style="display: none; margin-left: 30px;">
 					<?php genereListeEtudiant(); ?>
 				</p>
 				
 				<?php } ?>
-				nom de l'événement <br> <input type="text" name="event"><br>
-				<input type="submit" value="soumettre">
+				<div class="form-group">
+				Nom de l'événement<br /><input class="form-control" type="text" name="event">
+				</div>
+				<input type="submit" value="Soumettre" class="btn btn-default">
 				
 				
 			</p>
@@ -109,28 +110,31 @@
 					<div class="months">
 						<ul >
 						<?php 
-							foreach($date->months as $id =>$m){?>
-							<li ><a href="#" id="linkMonth<?php echo $id+1; ?>"><?php echo utf8_encode(substr(utf8_decode($m),0,3));?></a></li>
-						<?php } ?>
+							foreach($date->months as $id =>$m)
+								echo "<li><a href=\"#\" id=\"linkMonth".($id+1)."\">".utf8_encode(substr(utf8_decode($m),0,3))."</a></li>";
+						?>
 						</ul>
 					</div>
 			<div class="clear"></div>
-				<?php foreach($dates[$year] as $m => $days){ ?>
-					<div class="month" id="month<?php echo $m; ?>">
+				<?php foreach($dates[$year] as $m => $days){
+					echo "<div class=\"month\" id=\"month$m\">";
+				?>
 						<table class="calendrier">
 						<!-- affiche les 3 premieres lettres de chaque jour dans l'entete --> 
 							<tr>
-								<?php foreach($date->days as $d){ ?>
-									<th class="nomJour"><?php echo substr($d,0,3); ?></th>
-								<?php } ?>
+								<?php foreach($date->days as $d)
+									echo "<th class=\"nomJour\">".substr($d,0,3)."</th>";
+								?>
 							</tr>
 						<!-- permet de mettre le premier jour au bonne endroit sur le calendrier -->
 							<tr>
-								<?php $end = end($days); foreach($days as $d => $w){ ?>
-									<?php $time = strtotime("$year-$m-$d"); ?>
-									<?php if($d ==1){ ?>
-										<td class="padding case" colspan="<?php echo $w-1; ?>"></td>
-									<?php }?>
+								<?php 
+									$end = end($days); 
+									foreach($days as $d => $w){ 
+										$time = strtotime("$year-$m-$d"); 
+										if($d ==1)
+											echo "<td class=\"padding case\" colspan=".($w-1)."></td>";
+								?>
 									
 						<!-- affiche le jour et permet ensuite de sauter une ligne quand on arrive a dimanche -->
 									<td class="case">
@@ -141,44 +145,50 @@
 										</div>
 										</div>
 										<div class="daytitle">
-											<?php echo $date->days[$w-1]; ?> <?php echo $d; ?> <?php echo $date->months[$m-1]; ?>
+											<?php 
+												echo $date->days[$w-1];
+												echo $d; 
+												echo $date->months[$m-1]; 
+											?>
 										</div>
 											<ul class="events" style="color: brown;" >
-												<?php if(isset($eventsDest[$time])){
-													foreach($eventsDest[$time] as $e){ ?>
-														<li class="destination listeJour"><?php echo $e; ?></li>
-												<?php }
-												} ?>
+												<?php 
+													if(isset($eventsDest[$time])){
+														foreach($eventsDest[$time] as $e)
+															echo "<li class=\"destination listeJour\">$e</li>";
+													}
+												?>
 											</ul>
 											<ul class="events" style="color: green;">
-												<?php if(isset($eventsExpe[$time])){
-													foreach($eventsExpe[$time] as $e){ ?>
-														<li class="expedition listeJour"><?php echo $e; ?></li>
-												<?php }
-												} ?>
+												<?php 
+												if(isset($eventsExpe[$time])){
+													foreach($eventsExpe[$time] as $e)
+														echo "<li class=\"expedition listeJour\">$e</li>";
+												}
+												?>
 											</ul>
 										</a>
 										
 									</td>
 									
-								<?php if($w == 7) echo '</tr><tr>'; } ?>
-								
-								<?php 
-								if($end != 7){ ?>
-									<td class="padding" colspan="<?php echo 7-$end; ?>"></td>
-								<?php } ?>
+									<?php 
+										if($w == 7)
+											echo '</tr><tr>'; 
+									}
+									if($end != 7)
+										echo "<td class=\"padding\" colspan=".(7-$end)."\"></td>";
+									?>
 							</tr>
 						</table>
 					</div>
 				<?php } ?>
-		
-			
+
 		</div>
 	
 	</div>
 	
 <?php
-print_r($_POST);
+//print_r($_POST);
 	
 	if(isset($_POST['date']) && isset($_POST['event']) && isset($_POST['categ']) && isset($_POST['selection']) && $_POST['time']){
 		if(trim($_POST['date']) != '' && trim($_POST['event']) != ''){
@@ -194,10 +204,6 @@ print_r($_POST);
 			
 		}
 	}
-	
-	
-
-
 	
 	
 /*	echo '<p> '. print_r($events) .'</p>';

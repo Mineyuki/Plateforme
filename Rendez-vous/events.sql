@@ -1,16 +1,9 @@
 CREATE TABLE events (
-    id serial primary key,
-	mail varchar(50),
-    DateH datetime ,
-    title varchar(255),
-	Foreign key (mail) references membres (mail)
-);
-/*
-CREATE TABLE events (
-    id int not null AUTO_INCREMENT,
-	mail varchar(50),
-    DateH datetime ,
-    title varchar(255),
-Primary key(id),
-Foreign key (mail) references membres (mail)
-);*/
+	id		BIGINT(20)	UNSIGNED NOT NULL	AUTO_INCREMENT,
+	mailExpe	varchar(50)	DEFAULT NULL,
+	mailDest	varchar(50)	DEFAULT NULL,
+	DateH		datetime	DEFAULT NULL,
+	title		varchar(255)	DEFAULT NULL,
+	PRIMARY KEY ('id'),
+	UNIQUE KEY 'id' ('id')
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
