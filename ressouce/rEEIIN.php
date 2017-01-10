@@ -19,7 +19,9 @@
   <ul style="list-style-type:square">
       
 <?php
-$dir = 'upload/rEEIIN/';
+
+//afficher les fichiers
+$dir = '/upload/rEEIIN/';
 if(is_dir($dir)) {
         if ($dh = opendir($dir)) {
         while (($file = readdir($dh)) !== false) {
