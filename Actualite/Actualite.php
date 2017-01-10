@@ -49,7 +49,7 @@
 				<nav aria-label="pagination">
 					<ul class="pager">
 						<?php
-echo preg_replace('#(([img]).*([/img]))#','roticerie','[img]http://www.rue-aef.com/wp-content/uploads/Bandeau_News_Prix_AEF2017.jpg[/img]');
+
 /*
  * On affichera le bouton pour accéder à la précédente seulement si $_GET['page'] est supérieur à 0
  * On n'affichera pas si $_GET['page'] est négatif ou supérieur à la limite des articles disponibles.
