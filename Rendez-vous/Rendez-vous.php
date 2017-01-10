@@ -15,6 +15,9 @@
 		<title>Rendez-vous</title>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<script src="../js/bootstrap.js"></script>
 
 		<script type="text/javascript">
 			jQuery(function($){
@@ -57,9 +60,12 @@
 
 	$date = new Date();
 	$year = date('Y');
-	$eventsDest = $date->getEventsDest($year, $_SESSION['email']);
-	$eventsExpe = $date->getEventsExpe($year, $_SESSION['email']);
+	//$eventsDest = $date->getEventsDest($year, $_SESSION['mail']);
+	//$eventsExpe = $date->getEventsExpe($year, $_SESSION['mail']);
+	echo '<p> '. print_r($eventsDest) .' </p>';
+	echo '<p> '. print_r($eventsExpe) .' </p>';
 	$dates = $date->getAll($year);
+	print_r($_SESSION);
 
 ?>
 	
