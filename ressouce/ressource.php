@@ -24,7 +24,8 @@
 
        <div>
     <form  action="upload_file.php" method="post" enctype="multipart/form-data">
-      <input type="hidden" name="MAX_FILE_SIZE" value="100000" />
+      <input type="hidden" name="MAX_FILE_SIZE" value="100000000000" />
+
       	<p>  Les Formations : </p>
 			<select name="formations">
 				<option >Formation Modulaire et Diplômante Interuniversitaire </option>
