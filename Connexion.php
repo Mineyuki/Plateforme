@@ -42,7 +42,7 @@
 </html>
 
 <?php
-
+echo sha1("Mwahahaha");
 require('cnx.php');
 {
 	if(isset($_POST["emailconnex"]) && isset($_POST['motdepasse']))

@@ -147,7 +147,9 @@ function code($texte)
 	//souligné
 	$texte = preg_replace('`\[s\](.+)\[/s\]`isU', '<u>$1</u>', $texte);
 	//lien
-	$texte = preg_replace('#http://[a-z0-9._/-]+#i', '<a href="$0">$0</a>', $texte);
+	//$texte = preg_replace('#http://[a-z0-9._/-]+#i', '<a href="$0">$0</a>', $texte);
+	//$texte = preg_replace('\[url=(.*)\].*\[/url\]`isU', '<a href="$1">$1</a>', $texte);
+	$texte = preg_replace('#\[url=((https?|ftp|ssh|mailto):\/\/[a-z0-9\/:%_+.,\#?!@&=-]+\])(.*)\[/url\]#i', '<a href="$1">$3</a>', $texte);
 	//etc., etc.
 	$texte = preg_replace('`\[quote auteur=([a-z0-9A-Z._-]+) \](.+)\[/quote\]`isU', '<div id="quote">Auteur : $1 </ br> $2 </div>', $texte);
 
