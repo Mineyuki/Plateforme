@@ -13,7 +13,7 @@
         $nomOrigine = $_FILES['file']['name'];
         $elementsChemin = pathinfo($nomOrigine);
         $extensionFichier = $elementsChemin['extension'];
-        $extensionsAutorisees = array("pdf", "docx", "zip","doc");
+       $extensionsAutorisees = array("pdf", "docx","odt", "zip","doc");
 
 
         if (!(in_array($extensionFichier, $extensionsAutorisees))) {
