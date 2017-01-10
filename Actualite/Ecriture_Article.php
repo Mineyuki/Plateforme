@@ -3,6 +3,7 @@
 		<title>Ecrire un article</title>
 <?php 
 	require('body.php');
+
 /*
  * Seules les personnes autorisées peuvent accéder à cette page.
  * Dans la table membres, les personnes autorisées sont ceux dont la valeur d'écriture_article est égale à 1
@@ -11,6 +12,22 @@
 	{
 		header("Location:Actualite.php");
 		exit();
+	}
+
+/*
+ * On aura besoin de la base de donnée
+ */
+
+	require('../co.php');
+
+	if(isset($_GET['id']) and trim($_GET['id'])!=''){
+		$changement = 1;
+		$id = htmlspecialchars($_GET['id']);
+		$req = 'SELECT * FROM Article where id_article = :id';
+		$requete = $bd->prepare($req);
+		$requete->bindValue(':id',$id);
+		$requete->execute();
+		$article = $requete->fetch(PDO::FETCH_ASSOC);
 	}
 ?>
 		<ol class="breadcrumb">
@@ -28,10 +45,15 @@
 			<form method="POST" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">
 				<label>Titre de l'article</label><br/>
 				<div class="form-group">
-				<input class="form-control" type="text" name="titre" maxlength="255">
+				<input class="form-control" type="text" name="titre" maxlength="255" value="<?php echo $article['titre'];?>">
 				</div>
-				<textarea class="wysibb" name="contenu"></textarea><br/>
-				<button type="submit" class="btn btn-default">Envoyer</button>
+				<textarea class="wysibb" name="contenu"><?php echo $article['corps'];?></textarea><br/>
+				<?php
+					if(isset($article))
+						echo "<button type=\"submit\" class=\"btn btn-default\" name=\"modifier\" value=\"$id\">Modifier</button>";
+					else
+						echo "<button type=\"submit\" class=\"btn btn-default\" name=\"envoyer\" value=\"envoyer\">Envoyer</button>";
+				?>
 			</form>
 		</div>
 
@@ -48,12 +70,24 @@
  * $_POST['contenu'] = Contenu de l'article - Vérification obligatoire -
  * $_SESSION['ecriture_article'] == 1 - Vérification optionnelle -
  */
-	require('../co.php');
-
 	$today = date("Y-m-d H:i:s");
 	$titre = htmlspecialchars($_POST['titre']);
 	$contenu = htmlspecialchars($_POST['contenu']);
-	if(isset($titre) and trim($contenu)!="" and isset($_SESSION['nom']) and trim($_SESSION['nom'])!="" and $_SESSION['ecriture_article']==1 ){
+	$id = htmlspecialchars($_POST['modifier']);
+
+	if(isset($titre) and trim($contenu)!="" and isset($_SESSION['nom']) and trim($_SESSION['nom'])!="" and $_SESSION['ecriture_article']==1 and isset($_POST['modifier'])){echo 'Nop';
+		$req = 'UPDATE Article SET titre = :title, corps = :body WHERE id_article = :id';
+		$requete = $bd->prepare($req);
+		$requete->bindValue(':id', $id);
+		$requete->bindValue(':title', $titre);
+		$requete->bindValue(':body', $contenu);
+		$requete->execute();
+		echo"<script>
+			document.location.href=\"Actualite.php\"
+		</script>";
+	}
+
+	if(isset($titre) and trim($contenu)!="" and isset($_SESSION['nom']) and trim($_SESSION['nom'])!="" and $_SESSION['ecriture_article']==1 and isset($_POST['envoyer'])){
 		$req = "INSERT INTO Article (titre, jour, auteur, corps)
 			VALUES (:title, :day, :author, :body)";
 		$requete = $bd->prepare($req);
@@ -66,4 +100,5 @@
 			document.location.href=\"Actualite.php\"
 		</script>";
 	}
+
 ?>

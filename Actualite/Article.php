@@ -11,9 +11,6 @@
  * On aura besoin de ce document pour parser le BBCode (convertir en html)
  */
 	require('../jBBCode-1.3.0/JBBCode/Parser.php');
-?>
-
-<?php
 
 /*
  * L'id passé en paramètre doit être vérifié de toute faille XXS
@@ -61,8 +58,8 @@
  * Si l'id n'existe pas, on retourne sur la page d'Actualité.
  * L'utilisateur a surement touché à l'URL. Ligne de prévention d'attaque ou autre.
  */
-		if($article['id_article']!=$id)
-			echo "<script>document.location.href=\"Actualite.php\"</script>";
+	if($article['id_article']!=$id)
+		echo "<script>document.location.href=\"Actualite.php\"</script>";
 ?>
 	<ol class="breadcrumb">
 		<li><a href="../Accueil.php">Accueil</a></li>
@@ -83,9 +80,7 @@
  */
 			if($_SESSION['ecriture_article']==1 and $article['auteur']==$_SESSION['nom'])
 				echo "<p><a href=\"Ecriture_Article.php?id=".$article['id_article']."\">Modifier l'article</a></p>";
-		?>
-		<p><?php echo $article['jour'];?> - <?php echo $article['auteur'];?></p>
-		<?php
+			echo "<p>".$article['jour']." - ".$article['auteur']."</p>";
 
 /*
  * L'article s'affichera (contenu). En général, il ne devrait pas comporter d'erreur MAIS des erreurs peuvent se produire dû à la traduction
