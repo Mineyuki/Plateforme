@@ -1,6 +1,6 @@
 <?php require('head.php');?>
 	<!-- Nom des onglets -->
-		<title>Ressource</title>
+		<title>Ressources</title>
 <?php require('body.php');?>
 <?php			
 	if(!isset($_SESSION['connexion']))
