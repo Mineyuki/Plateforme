@@ -49,6 +49,7 @@
 				<nav aria-label="pagination">
 					<ul class="pager">
 						<?php
+echo preg_replace('#(([img]).*([/img]))#','roticerie','[img]http://www.rue-aef.com/wp-content/uploads/Bandeau_News_Prix_AEF2017.jpg[/img]');
 /*
  * On affichera le bouton pour accéder à la précédente seulement si $_GET['page'] est supérieur à 0
  * On n'affichera pas si $_GET['page'] est négatif ou supérieur à la limite des articles disponibles.
@@ -104,8 +105,11 @@
 /*
  * On affichera seulement un début d'article sans utiliser le format BBCode.
  * On supprime le format BBCode pour avoir seulement le corps de l'article.
+ * On supprime aussi le lien du contenu des images.
  */
-						echo "<p>".substr(preg_replace('#\[.*?\]|\[/.*?\]#',' ',$article['corps']),0,600);
+						$article['corps']=preg_replace('#((\[img]).*(\[/img]))#','',$article['corps']);
+						$article['corps']=preg_replace('#\[.*?\]|\[/.*?\]#','',$article['corps']);
+						echo "<p>".substr($article['corps'],0,600);
 /*
  * Pour une question de présentation, on mettra les points de suspentions pour indiquer que l'article continue.
  */
