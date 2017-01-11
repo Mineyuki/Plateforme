@@ -159,7 +159,9 @@
 				<p><strong>".$commentaire['pseudo']."</strong> - ".$commentaire['DATE_FORMAT(jour,\'%d %b %Y %T\')']."</p>
 				<p>";
 			$parser->parse($commentaire['commente']);
-			echo $parser->getAsHtml()."</p></div>";
+			echo $parser->getAsHtml()."</p>
+				<hr>
+				</div>";
 		}
 	?>
 
