@@ -113,6 +113,8 @@
 						<input class=\"form-control\" type=\"text\" name=\"titre\" maxlength=\"255\">
 						</div>
 						<textarea class=\"minime\" name=\"contenu\"></textarea><br/>
+						<input value=\"$id\" name=\"cache\" type=\"hidden\">
+						<input value=\"$page\" name=\"cache2\" type=\"hidden\">
 						<button type=\"submit\" class=\"btn btn-default\">Envoyer</button>
 					</form>
 			</div>";
@@ -121,18 +123,23 @@
 /*
  * Envoie du commentaire
  */
-
+		$titre = htmlspecialchars($_POST['titre']);
 		$contenu = htmlspecialchars($_POST['contenu']);
+		$today = date("Y-m-d H:i:s");
+		$cache = htmlspecialchars($_POST['cache']);
+		$cache2 = htmlspecialchars($_POST['cache2']);
 
-		if(isset($titre) and trim($contenu)!='' and isset($_SESSION['nom'] and trim($_SESSION['nom']!=''){
-			$req = 'INSERT INTO Commentaire (pseudo, commente) VALUES (:nom, :commentaire)';
+		if(isset($titre) and trim($contenu)!='' and isset($_SESSION['nom']) and trim($_SESSION['nom']!='')){
+			$req = 'INSERT INTO Commentaire (id_article, jour, pseudo, commente) VALUES (:id_article, :jour, :pseudo, :commentaire)';
 			$requete = $bd->prepare($req);
-			$requete->bindValue(':nom', $_SESSION['nom']);
+			$requete->bindValue(':id_article',$cache);
+			$requete->bindValue(':jour',$today);
+			$requete->bindValue(':pseudo', $_SESSION['nom']);
 			$requete->bindValue(':commentaire', $contenu);
 			$requete->execute();
-			echo "<div class=\"container\">
-					<p>Commentaire envoyé</p>
-				</div>";
+			echo "<script>";
+			echo "document.location.href=\"Article.php?id=".$cache."&page=".$cache2."\"";
+			echo "</script>";
 		}
 
 /*
@@ -143,12 +150,17 @@
 		$requete = $bd->prepare($req);
 		$requete->bindValue(':id_article', $id);
 		$requete->execute();
+		echo "<div class=\"container\">
+			<hr>
+			<h2>Commentaire</h2>
+			</div>";
 		while($commentaire = $requete->fetch(PDO::FETCH_ASSOC)){
-			echo "<p><strong>".$commentaire['pseudo']."</strong> - ".$commentaire['DATE_FORMAT(jour,\'%d %b %Y %T\')']."</p>
+			echo "<div class=\"container\">
+				<p><strong>".$commentaire['pseudo']."</strong> - ".$commentaire['DATE_FORMAT(jour,\'%d %b %Y %T\')']."</p>
 				<p>";
 			$parser->parse($commentaire['commente']);
-			echo $parser->getAsHtml()."</p>";
-		}			
+			echo $parser->getAsHtml()."</p></div>";
+		}
 	?>
 
 
