@@ -112,6 +112,7 @@
 						<div class=\"form-group\">
 						<input class=\"form-control\" type=\"text\" name=\"titre\" maxlength=\"255\">
 						</div>
+						<label>Votre commentaire</label>
 						<textarea class=\"minime\" name=\"contenu\"></textarea><br/>
 						<input value=\"$id\" name=\"cache\" type=\"hidden\">
 						<input value=\"$page\" name=\"cache2\" type=\"hidden\">
