@@ -105,7 +105,7 @@
 		$requete->bindValue(':title', $titre);
 		$requete->bindValue(':body', $contenu);
 		$requete->execute();
-		echo"<script>
+		echo "<script>
 			document.location.href=\"Actualite.php\"
 		</script>";
 	}
@@ -123,7 +123,7 @@
 		$requete->bindValue(':author', $_SESSION['nom']);
 		$requete->bindValue(':body', $contenu);
 		$requete->execute();
-		echo"<script>
+		echo "<script>
 			document.location.href=\"Actualite.php\"
 		</script>";
 	}
@@ -137,7 +137,7 @@
 		$requete = $bd->prepare($req);
 		$requete->bindValue(':id', $id);
 		$requete->execute();
-		echo"<script>
+		echo "<script>
 			document.location.href=\"Actualite.php\"
 		</script>";
 	}

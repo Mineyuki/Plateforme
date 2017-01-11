@@ -114,13 +114,41 @@
 						</div>
 						<textarea class=\"minime\" name=\"contenu\"></textarea><br/>
 						<button type=\"submit\" class=\"btn btn-default\">Envoyer</button>
-						</form>
+					</form>
 			</div>";
+		}
+
+/*
+ * Envoie du commentaire
+ */
+
+		$contenu = htmlspecialchars($_POST['contenu']);
+
+		if(isset($titre) and trim($contenu)!='' and isset($_SESSION['nom'] and trim($_SESSION['nom']!=''){
+			$req = 'INSERT INTO Commentaire (pseudo, commente) VALUES (:nom, :commentaire)';
+			$requete = $bd->prepare($req);
+			$requete->bindValue(':nom', $_SESSION['nom']);
+			$requete->bindValue(':commentaire', $contenu);
+			$requete->execute();
+			echo "<div class=\"container\">
+					<p>Commentaire envoyé</p>
+				</div>";
 		}
 
 /*
  * Recherche dans la base de donnée la liste de commentaire
  */
+
+		$req = "SELECT id_article, id_commentaire, DATE_FORMAT(jour,'%d %b %Y %T'), pseudo, commente FROM Commentaire WHERE id_article = :id_article ORDER BY id_commentaire";
+		$requete = $bd->prepare($req);
+		$requete->bindValue(':id_article', $id);
+		$requete->execute();
+		while($commentaire = $requete->fetch(PDO::FETCH_ASSOC)){
+			echo "<p><strong>".$commentaire['pseudo']."</strong> - ".$commentaire['DATE_FORMAT(jour,\'%d %b %Y %T\')']."</p>
+				<p>";
+			$parser->parse($commentaire['commente']);
+			echo $parser->getAsHtml()."</p>";
+		}			
 	?>
 
 
