@@ -38,6 +38,24 @@
 
 		<div class="container">
 			<h1 class="text-center">Ecrire un article</h1>
+			<div class="row">
+				<div class="col-md-2">
+					<a href="Actualite.php?page=<?php echo $page;?>">
+						<span class="glyphicon glyphicon-arrow-left"></span>
+						Précédent
+					</a>
+				</div>
+				<?php
+					if(isset($article)){
+						echo "<div class=\"col-md-2 col-md-offset-8\">
+							<a href=\"".htmlentities($_SERVER['PHP_SELF'])."?suppression=1\">
+								<span class=\"glyphicon glyphicon-remove\"></span>
+								Supprimer l'article
+							</a>
+						</div>";
+					}
+				?>
+			</div>
 			<hr>
 		</div>
 
@@ -74,6 +92,11 @@
 	$titre = htmlspecialchars($_POST['titre']);
 	$contenu = htmlspecialchars($_POST['contenu']);
 	$id = htmlspecialchars($_POST['modifier']);
+	$suppression = htmlspecialchars($_GET['suppression']);
+
+/*
+ * Modification de l'article
+ */
 
 	if(isset($titre) and trim($contenu)!="" and isset($_SESSION['nom']) and trim($_SESSION['nom'])!="" and $_SESSION['ecriture_article']==1 and isset($_POST['modifier'])){echo 'Nop';
 		$req = 'UPDATE Article SET titre = :title, corps = :body WHERE id_article = :id';
@@ -86,6 +109,10 @@
 			document.location.href=\"Actualite.php\"
 		</script>";
 	}
+
+/*
+ * Envoie de l'article
+ */
 
 	if(isset($titre) and trim($contenu)!="" and isset($_SESSION['nom']) and trim($_SESSION['nom'])!="" and $_SESSION['ecriture_article']==1 and isset($_POST['envoyer'])){
 		$req = "INSERT INTO Article (titre, jour, auteur, corps)
@@ -101,4 +128,17 @@
 		</script>";
 	}
 
+/*
+ * Suppression de l'article avec ses commentaires
+ */
+
+	if(isset($_SESSION['nom']) and trim($_SESSION['nom'])!="" and $_SESSION['ecriture_article']==1 and $suppression==1){
+		$req = 'DELETE FROM Commentaire, Article WHERE id_article = :id';
+		$requete = $bd->prepare($req);
+		$requete->bindValue(':id', $id);
+		$requete->execute();
+		echo"<script>
+			document.location.href=\"Actualite.php\"
+		</script>";
+	}
 ?>

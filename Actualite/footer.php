@@ -21,12 +21,29 @@
 		<script src="../wysibb/jquery.wysibb.js"></script>
 		<script src="../wysibb/lang/fr.js"></script>
 		<script>
+
+/*
+ * Ces instructions suivantes permettent d'avoir un éditeur de texte complet
+ */
+
 			$(document).ready(function() {
 				var wbbOpt = {
 					lang: "fr",
-					buttons : "bold,italic,underline,strike,sup,sub,img,link,bullist,quote,fontcolor,fontsize,fontfamily,justifyleft,justifycenter,justifyright,code"
+					buttons : "bold,italic,underline,strike,sup,sub,img,link,bullist,quote,fontcolor,fontsize,fontfamily,justifyleft,justifycenter,justifyright"
 				}
 				$(".wysibb").wysibb(wbbOpt);
+			});
+
+/*
+ * Ces instructions suivantes permettent d'avoir un éditeur de texte avec des fonctions minimes
+ */
+
+			$(document).ready(function() {
+				var minimale = {
+					lang: "fr",
+					buttons : "bold,italic,underline,strike,sup,sub,link,bullist,quote"
+				}
+				$(".minime").wysibb(minimale);
 			});
 		</script>
 	

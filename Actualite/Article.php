@@ -13,9 +13,11 @@
 	require('../jBBCode-1.3.0/JBBCode/Parser.php');
 
 /*
- * L'id passé en paramètre doit être vérifié de toute faille XXS
+ * L'id et le numéro de page passé en paramètre doit être vérifié de toute faille XXS
  */
+
 	$id = htmlspecialchars($_GET['id']);
+	$page = htmlspecialchars($_GET['page']);
 
 /*
  * Ces lignes permettront de parser le BBCode.
@@ -30,7 +32,7 @@
  * Attention : vérification des attaques d'injections SQL !
  */
 
-	$req = 'SELECT * FROM Article where id_article = :id';
+	$req = 'SELECT id_article, titre, DATE_FORMAT(jour,\'%d %b %Y %T\'), auteur, corps FROM Article where id_article = :id';
 
 /*
  * Préparation de la requête
@@ -69,6 +71,10 @@
 
 	<div class="container">
 		<h1 class="text-center"><?php echo $article['titre'];?></h1>
+		<a href="Actualite.php?page=<?php echo $page;?>">
+			<span class="glyphicon glyphicon-arrow-left"></span>
+			Précédent
+		</a>
 		<hr>
 	</div>
 	
@@ -80,7 +86,7 @@
  */
 			if($_SESSION['ecriture_article']==1 and $article['auteur']==$_SESSION['nom'])
 				echo "<p><a href=\"Ecriture_Article.php?id=".$article['id_article']."\">Modifier l'article</a></p>";
-			echo "<p>".$article['jour']." - ".$article['auteur']."</p>";
+			echo "<p>".$article['DATE_FORMAT(jour,\'%d %b %Y %T\')']." - ".$article['auteur']."</p>";
 
 /*
  * L'article s'affichera (contenu). En général, il ne devrait pas comporter d'erreur MAIS des erreurs peuvent se produire dû à la traduction
@@ -91,5 +97,32 @@
 			echo $parser->getAsHtml();
 		?>
 	</div>
+	
+	<?php
+
+/*
+ * Il est obligatoire de se connecter pour pouvoir poster un commentaire
+ */
+
+		if(isset($_SESSION['connexion'])){
+			echo "<div class=\"container\">
+				<hr>
+					<form method=\"POST\" action=\"".htmlentities($_SERVER['PHP_SELF'])."\">
+						<label>Titre du commentaire</label><br/>
+						<div class=\"form-group\">
+						<input class=\"form-control\" type=\"text\" name=\"titre\" maxlength=\"255\">
+						</div>
+						<textarea class=\"minime\" name=\"contenu\"></textarea><br/>
+						<button type=\"submit\" class=\"btn btn-default\">Envoyer</button>
+						</form>
+			</div>";
+		}
+
+/*
+ * Recherche dans la base de donnée la liste de commentaire
+ */
+	?>
+
+
 
 <?php require('footer.php');?>
