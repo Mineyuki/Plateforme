@@ -132,9 +132,7 @@
 		<section class=\row">
 		<?php
 			if($article['validation']==0 and $_SESSION['categorie']=='moderateur')
-				echo "<button type=\"submit\" class=\"btn btn-default\">
-					<a href=\"".htmlentities($_SERVER['PHP_SELF'])."?valider=1&id_article=".$article['id_article']."\" style=\"color : white;\">Valider l'article</a>
-					</button>
+				echo "<a class=\"btn btn-default\" href=\"".htmlentities($_SERVER['PHP_SELF'])."?valider=1&id_article=".$article['id_article']."\">Valider l'article</a>
 		</section>";
 
 /*
@@ -206,23 +204,26 @@
 		$valider = htmlspecialchars($_GET['valider']);
 		$id = htmlspecialchars($_GET['id_article']);
 
-		if(isset($id_article)
-			and trim($id_article)!='' 
+		if(isset($id)
+			and trim($id)!='' 
 			and $valider==1 
-			and $_SESSION['categorie']=='moderateur'){echo 'ici';
+			and $_SESSION['categorie']=='moderateur'){
 			$request = 'UPDATE Article SET validation = 1 WHERE id_article = :id';
-			$requete = $bd->prepare($request);
-			$requeste->bindValue(':id', $id);
-			$requete->execute();
-		}
-		elseif(isset($id_article)
-			and trim($id_article)!=''
-			and $valider==0
-			and $_SESSION['categorie']=='moderateur'){echo 'ici2';
-			$request = 'DELETE FROM Commentaire, Article WHERE id_article = :id';
 			$requete = $bd->prepare($request);
 			$requete->bindValue(':id', $id);
 			$requete->execute();
+			echo "<script>
+				document.location.href=\"Validation_Article.php\"
+			</script>";
+		}
+		elseif(isset($id)
+			and trim($id)!=''
+			and $valider==0
+			and $_SESSION['categorie']=='moderateur'){ echo 'ici1';
+			$request = 'DELETE FROM Commentaire, Article WHERE id_article = :id';
+			$requete = $bd->prepare($request);echo 'ici2';
+			$requete->bindValue(':id', $id);echo 'ici3';
+			$requete->execute();echo 'ici4';
 			echo "<script>
 				document.location.href=\"Actualite.php\"
 			</script>";

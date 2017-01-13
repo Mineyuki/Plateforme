@@ -236,7 +236,7 @@
 
 	if(($article['auteur']==$_SESSION['nom'] or $_SESSION['categorie']=='moderateur')
 		and $suppression==1){
-		$req = 'DELETE FROM Commentaire, Article WHERE id_article = :id';
+		$req = 'DELETE FROM Commentaire. WHERE id_article = :id';
 		$requete = $bd->prepare($req);
 		$requete->bindValue(':id', $id);
 		$requete->execute();
