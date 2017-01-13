@@ -3,6 +3,12 @@
 		<title>Actualité</title>
 <?php 
 	require('body.php');
+
+	if($_SESSION['categorie']!='moderateur')
+		echo "<script>
+			document.location.href=\"Actualite.php\"
+		</script>";
+
 	require('../co.php');
 
 /*
@@ -45,7 +51,8 @@
 
 		<ol class="breadcrumb">
 			<li><a href="../Accueil.php">Accueil</a></li>
-			<li class="active">Actualités</li>
+			<li><a href="Actualite.php">Actualités</a></li>
+			<li class="active">Validation Articles</li>
 		</ol>
 
 		<div class="container">
@@ -94,19 +101,13 @@
 			</section>
 
 			<section class="row">
-				<div class="col-md-3">
+				<div class="col-md-2">
 				<?php
 /*
  * Seuls les stagiaires et les professeurs peuvent écrire des articles.
  */
 					if(!empty($_SESSION['connexion']))
 						echo "<a href=\"Ecriture_Article.php?page=$page\">Ecrire un article</a>
-				</div>";
-
-					if($_SESSION['categorie']=='moderateur')
-						echo 
-				"<div class=\"col-md-3 col-md-offset-6\">
-					<a href=\"Validation_Article.php\"><strong>Validation des articles</strong></a>
 				</div>";
 					echo "</section>
 			<section class=\"row\">";
@@ -115,7 +116,7 @@
  * On veut seulement les articles dans l'ordre décroissant (du plus ancien au plus récent) dans la limite de 10 par page
  * Les articles ont été préalablement approuvé par l'enseignant.
  */
-					$req = "SELECT id_article, titre, DATE_FORMAT(jour,'%d %b %Y %T'), auteur, corps FROM Article WHERE validation = 1 ORDER BY id_article DESC LIMIT $limiter, 10";
+					$req = "SELECT id_article, titre, DATE_FORMAT(jour,'%d %b %Y %T'), auteur, corps FROM Article WHERE validation = 0 ORDER BY id_article DESC LIMIT $limiter, 10";
 					$requete = $bd->prepare($req);
 					$requete->execute();
 					while($article = $requete->fetch(PDO::FETCH_ASSOC)){
@@ -125,7 +126,7 @@
  * Le paramètre sera vérifié ! Si le paramètre existe et que l'utilisateur veut jouer, à son aise !
  * Exemple : Si existe l'id_article 100, il se rendra à l'article 100.
  */ 
-						echo "<h2><a href=\"Article.php?id=".$article['id_article']."&page=".$page."\">".$article['titre']."</a></h2>";
+						echo "<h2><a href=\"Article.php?id=".$article['id_article']."&page=".$page."&validation=1\">".$article['titre']."</a></h2>";
 						echo "<p>".$article['DATE_FORMAT(jour,\'%d %b %Y %T\')'].' - '.$article['auteur']."</p>";
 /*
  * On affichera seulement un début d'article sans utiliser le format BBCode.

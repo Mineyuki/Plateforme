@@ -13,16 +13,18 @@
 	require('../jBBCode-1.3.0/JBBCode/Parser.php');
 
 /*
- * L'id et le numéro de page passé en paramètre doit être vérifié de toute faille XXS
+ * L'id, le numéro de page, la validation passés en paramètre doit être vérifiés de toute faille XSS
  */
 
 	$id = htmlspecialchars($_GET['id']);
 	$page = htmlspecialchars($_GET['page']);
+	$validation = htmlspecialchars($_GET['validation']);
 
 /*
  * Ces lignes permettront de parser le BBCode.
  * C'est de la programmation orienté objet.
- */	
+ */
+
 	$parser = new JBBCode\Parser();
 	$parser->addCodeDefinitionSet(new JBBCode\DefaultCodeDefinitionSet());
 	require('../jBBCode-1.3.0/JBBCode/new_JBBCode.php');
@@ -65,27 +67,57 @@
 ?>
 	<ol class="breadcrumb">
 		<li><a href="../Accueil.php">Accueil</a></li>
-		<li><a href="Actualite.php">Actualité</a></li>
-		<li class="active"><?php echo $article['titre'];?></li>
+		<li><a href="Actualite.php">Actualités</a></li>
+	<?php
+		if(isset($validation) and trim($validation)!='')
+			echo "<li><a href=\"Validation_Article\">Validation Articles</a></li>
+			<li class=\"active\">".$article['titre']."</li>";
+	?>
 	</ol>
 
 	<div class="container">
-		<h1 class="text-center"><?php echo $article['titre'];?></h1>
-		<a href="Actualite.php?page=<?php echo $page;?>">
-			<span class="glyphicon glyphicon-arrow-left"></span>
-			Précédent
-		</a>
-		<hr>
+		<section class="row">
+			<?php
+				echo "<h1 class=\"text-center\">".$article['titre']."</h1>";
+		
+				if(isset($validation) and trim($validation)!=''){
+
+	/*
+	 * Vérifier attaque XSS pour la variable $_GET['validation']
+	 */
+
+					echo "<a href=\"Validation_Article.php?page=$page\">";
+				}
+				else
+					echo "<a href=\"Actualite.php?page=$page\">";
+			?>
+				<span class="glyphicon glyphicon-arrow-left"></span>
+				Précédent
+				</a>
+				<hr>
+		</section>
 	</div>
 	
 	<div class="container">
+		<section class="row">
+			<div class="col-md-3">
 		<?php
 /*
  * Seul l'auteur de l'article peut modifier l'article.
  * Il serait malheureux si il ne le pouvait pas !
  */
-			if($_SESSION['ecriture_article']==1 and $article['auteur']==$_SESSION['nom'])
-				echo "<p><a href=\"Ecriture_Article.php?id=".$article['id_article']."\">Modifier l'article</a></p>";
+			if($article['auteur']==$_SESSION['nom'] or $_SESSION['categorie']=='moderateur')
+				echo "<a href=\"Ecriture_Article.php?id=".$article['id_article']."\">Modifier l'article</a>
+			</div>";
+
+			if($_SESSION['categorie']=='moderateur')
+				echo "<div class=\"col-md-3 col-md-offset-6\">
+				<a href=\"".htmlentities($_SERVER['PHP_SELF'])."?valider=0&id_article=".$article['id_article']."\"><strong>Supprimer l'article</strong></a>
+				</div>";
+
+			echo "</section>
+		<section class=\"row\">";
+
 			echo "<p>".$article['DATE_FORMAT(jour,\'%d %b %Y %T\')']." - ".$article['auteur']."</p>";
 
 /*
@@ -95,10 +127,15 @@
 
 			$parser->parse($article['corps']);
 			echo $parser->getAsHtml();
-		?>
-	</div>
-	
-	<?php
+?>
+		</section>
+		<section class=\row">
+		<?php
+			if($article['validation']==0 and $_SESSION['categorie']=='moderateur')
+				echo "<button type=\"submit\" class=\"btn btn-default\">
+					<a href=\"".htmlentities($_SERVER['PHP_SELF'])."?valider=1&id_article=".$article['id_article']."\" style=\"color : white;\">Valider l'article</a>
+					</button>
+		</section>";
 
 /*
  * Il est obligatoire de se connecter pour pouvoir poster un commentaire
@@ -120,6 +157,11 @@
 					</form>
 			</div>";
 		}
+
+		echo "<div class=\"container\">
+			<hr>
+			<h2>Commentaires</h2>
+			</div>";
 
 /*
  * Envoie du commentaire
@@ -151,10 +193,6 @@
 		$requete = $bd->prepare($req);
 		$requete->bindValue(':id_article', $id);
 		$requete->execute();
-		echo "<div class=\"container\">
-			<hr>
-			<h2>Commentaire</h2>
-			</div>";
 		while($commentaire = $requete->fetch(PDO::FETCH_ASSOC)){
 			echo "<div class=\"container\">
 				<p><strong>".$commentaire['pseudo']."</strong> - ".$commentaire['DATE_FORMAT(jour,\'%d %b %Y %T\')']."</p>
@@ -164,8 +202,30 @@
 				<hr>
 				</div>";
 		}
-	?>
 
+		$valider = htmlspecialchars($_GET['valider']);
+		$id = htmlspecialchars($_GET['id_article']);
 
+		if(isset($id_article)
+			and trim($id_article)!='' 
+			and $valider==1 
+			and $_SESSION['categorie']=='moderateur'){echo 'ici';
+			$request = 'UPDATE Article SET validation = 1 WHERE id_article = :id';
+			$requete = $bd->prepare($request);
+			$requeste->bindValue(':id', $id);
+			$requete->execute();
+		}
+		elseif(isset($id_article)
+			and trim($id_article)!=''
+			and $valider==0
+			and $_SESSION['categorie']=='moderateur'){echo 'ici2';
+			$request = 'DELETE FROM Commentaire, Article WHERE id_article = :id';
+			$requete = $bd->prepare($request);
+			$requete->bindValue(':id', $id);
+			$requete->execute();
+			echo "<script>
+				document.location.href=\"Actualite.php\"
+			</script>";
+		}
 
-<?php require('footer.php');?>
+require('footer.php');?>

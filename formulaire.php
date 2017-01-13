@@ -12,11 +12,18 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-4 col-md-offset-4 ">
+
+<!--
+  -- Formulaire d'inscription
+  -->
 					<form id="inscription" class="form" method="POST" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">
 						<h2 class="form-signin-heading">Inscrivez-vous :</h2>
 						<br/>
 						<label>Nom *</label>
 						<?php
+/*
+ * Si le champ n'est pas complété, un message s'affiche
+ */
 							if(isset($_POST['inscription']) and trim($_POST['nom'])==''){
 								echo "<p>Champ obligatoire !</p>";
 								$check=false;
@@ -46,7 +53,7 @@
 								$check=false;
 							}
 						?>
-						<input class="form-control" type="text" placeholder="Confirmer votre mail" name ="email2" maxlength="255"/>
+						<input class="form-control" type="text" placeholder="Confirmer votre email" name ="email2" maxlength="255"/>
 						<label>Mot de passe *</label>
 						<p>Il doit être supérieur à 6 caractères</p>
 						<?php
@@ -63,7 +70,7 @@
 								$check=false;
 							}
 						?>
-						<input class="form-control" type="password" placeholder=" Confirmer votre mdp" name ="mdp2" maxlength="255"/>
+						<input class="form-control" type="password" placeholder=" Confirmer votre mot de passe" name ="mdp2" maxlength="255"/>
 						<input class="btn btn-lg btn-primary btn-block" type ="submit" value="S'inscrire" name="inscription">
 						</br></br>
 					</form>

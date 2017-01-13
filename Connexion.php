@@ -1,5 +1,9 @@
 <?php
 	session_start();
+
+/*
+ * Se déconnecter de la plateforme
+ */
 	foreach($_SESSION as $nom => $donnee)
 		unset($_SESSION[$nom]);
 ?>
@@ -10,6 +14,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Connexion</title>
+
 <?php require('body.php');?>
 		
 		<div class="container">
@@ -17,6 +22,10 @@
 			<div class="row ">
 			
 				<div class="col-xs-4 col-md-offset-4 ">
+
+<!-- 
+  -- Formulaire de connexion 
+  -->
 
 					<form id="connexion" class="form" method="POST" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">
 						<h2 class="form-signin-heading">Connectez-vous :</h2>
@@ -30,36 +39,76 @@
 					</br>
 					</br>
 					 <CENTER>
-							<?php
-								require('co.php');
-								if(isset($_POST["connexion"])){
-									$mailconx =htmlspecialchars($_POST['emailconnex']);
-									$mdpconx = htmlspecialchars($_POST['motdepasse']);
-									if(trim($_POST['emailconnex']) != "" and trim($_POST['motdepasse']) != ""){
-										$mdp = sha1($_POST['motdepasse']);
-										$req = $bd->prepare("SELECT * FROM membres where mail = :mail and motdepasse = :mdp ");
-										$req->bindValue(':mail',$_POST['emailconnex']);
-										$req->bindValue(':mdp',$mdp);
-										$req->execute();
-										$res = $req->fetch();
-										if( $res != false){
-											$_SESSION['email'] = $res['mail'];
-											$_SESSION['categorie'] = $res['categorie'];
-											$_SESSION['connexion'] = 'connecte';
-											$_SESSION['nom'] = $res['nom'];
-											$_SESSION['ecriture_article'] = $res['ecriture_article'];
-											echo"<script>
-											document.location.href=\"Accueil.php\"
-											</script>";
-										}
-										else{
-											echo "<p>Mauvais mail ou mot de passe ! </p>";
-										}
-									}
-								else
-									echo "<p>Tout les champs doivent être renseignés ! </p>";
+					<?php
+
+/*
+ * Requiert la connexion dans la base de donnée pour retrouver les données
+ */
+						require('co.php');
+
+/*
+ * Si $_POST['connexion'] contient des données lors de l'envoie du formulaire
+ */
+						if(isset($_POST["connexion"])){
+
+/*
+ * Vérification faille XXS des différents champs d'entrée
+ */
+ 
+							$mailconx = htmlspecialchars($_POST['emailconnex']);
+							$mdpconx = htmlspecialchars($_POST['motdepasse']);
+
+/*
+ * Si l'un des champs d'entrée n'est pas vide
+ */
+							if(trim($_POST['emailconnex']) != "" and trim($_POST['motdepasse']) != ""){
+
+/*
+ * Codage en sha1 du mot de passe
+ */
+								$mdp = sha1($_POST['motdepasse']);
+
+/*
+ * Preparer la requête SQL pour obtenir la ligne où apparait le mail et le mot de passe correspondant 
+ */
+
+								$req = $bd->prepare("SELECT * FROM membres where mail = :mail and motdepasse = :mdp ");
+
+/*
+ * Prévention d'attaque par injection
+ */
+
+								$req->bindValue(':mail',$_POST['emailconnex']);
+								$req->bindValue(':mdp',$mdp);
+
+								$req->execute();
+
+/*
+ * Recherche de la première ligne renvoyé par la requête SQL
+ */
+
+								$res = $req->fetch();
+
+/*
+ * Si il y a un résultat, on stocke des des données utile dans $_SESSION pour les prochaines pages dont on a besoin
+ */
+								if( $res != false){
+									$_SESSION['email'] = $res['mail'];
+									$_SESSION['categorie'] = $res['categorie'];
+									$_SESSION['connexion'] = 'connecte';
+									$_SESSION['nom'] = $res['nom'] . ' ' . $res['prenom'];
+									echo"<script>
+										document.location.href=\"Accueil.php\"
+									</script>";
 								}
-							?>
+								else{
+									echo "<p>Mauvais mail ou mot de passe ! </p>";
+								}
+							}
+							else
+								echo "<p>Tout les champs doivent être renseignés ! </p>";
+						}
+					?>
 					 	<p> Vous n'êtes pas encore inscrit cliquez <a href="formulaire.php">ici</a> !</p>
 					 </CENTER>
 					</form>

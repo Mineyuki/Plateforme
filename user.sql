@@ -6,6 +6,5 @@ CREATE TABLE membres (
 	mail			VARCHAR(255)	NOT NULL,
 	motdepasse		VARCHAR(255)	NOT NULL,
 	categorie		VARCHAR(50)	DEFAULT NULL,
-	ecriture_article	TINYINT		DEFAULT 0,
 	PRIMARY KEY (mail)
 );

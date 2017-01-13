@@ -7,6 +7,7 @@ CREATE TABLE Article(
 	jour		DATETIME	NOT NULL,
 	auteur		VARCHAR(255)	NOT NULL,
 	corps		LONGTEXT	NOT NULL,
+	validation	TINYINT		DEFAULT 0,
 	PRIMARY KEY (id_article)
 );
 
