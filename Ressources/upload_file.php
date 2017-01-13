@@ -1,6 +1,6 @@
 <?php require('head.php');?>
 <?php
-
+try{
   if ($_FILES["file"]["error"] > 0)//verifier l'utilisateur avait choisi un fichier
   {
      echo "<script> {window.alert('Aucun fichier choisi');location.href='Ressource.php'} </script>"; 
@@ -122,7 +122,12 @@
             echo "<center> <a href=Ressource.php>continue</a></center>";*/
   	}         
   }
-  
+  }
+			catch(PDOException $e)
+			{
+				die('<div> Erreur : ' . $e->getMessage() . '</div></body></html>');
+			}
+
  
 ?>
 <?php require('body.php');?>
