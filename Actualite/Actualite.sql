@@ -11,6 +11,13 @@ CREATE TABLE Article(
 	PRIMARY KEY (id_article)
 );
 
+/*
+CREATE TABLE Article_Valide(
+	id_article_valide	INTEGER	NOT NULL	AUTO_INCREMENT,
+	id_article		INTEGER NOT NULL,
+	FOREIGN KEY (id_article) REFERENCES Article(id_article)
+);*/
+
 CREATE TABLE Commentaire(
 	id_article	INTEGER		NOT NULL,
 	id_commentaire	INTEGER		NOT NULL	AUTO_INCREMENT,

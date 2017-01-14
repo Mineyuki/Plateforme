@@ -12,7 +12,7 @@
 	{
 		header("Location:Connexion.php");
 		exit();
-	
+	}
 
 	require('co.php');
 
@@ -30,7 +30,7 @@
 	</ol>
 	
 	<div class="container">
-		<h1></h1>
+		<h1 class="text-center"><?php echo $_SESSION['nom']?></h1>
 		<hr>
 	</div>
 
