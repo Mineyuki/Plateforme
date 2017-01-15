@@ -80,13 +80,16 @@
 		<section class="row">
 		<?php
 			echo '<h1 class="text-center">'.$article['titre'].'</h1>';
+
+			if($_GET['validation_commentaire']==1)
+				echo '<a href="Validation_Commentaire.php?page='.$page.'">';
 /*
  * Si on arrive sur la page en passant par la page Validation Article, en appuyant sur précédent,
  * on doit retourner à la page de Validation Article.
  */
 
-			if($article['validation']==0)
-				echo '<a href="Validation_Article.php?id='.$id.'">';
+			elseif($article['validation']==0)
+				echo '<a href="Validation_Article.php?page='.$page.'">';
 
 
 /*

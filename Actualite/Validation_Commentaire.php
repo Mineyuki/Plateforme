@@ -113,7 +113,7 @@
 			while($commentaire = $requete->fetch(PDO::FETCH_ASSOC)){
 				echo '<hr>
 				<h2>
-					<a href="Article.php?id='.$commentaire['id_article'].'&page='.$page.'">'.
+					<a href="Article.php?id='.$commentaire['id_article'].'&page='.$page.'&validation_commentaire=1">'.
 						$commentaire['titre'].
 					'</a>
 				</h2>
