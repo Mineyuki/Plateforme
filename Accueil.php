@@ -42,7 +42,7 @@
 									echo '[...]</p>';
 								else
 									echo '</p>';
-								echo '<a class="btn btn-default" href="Actualite/Article.php?id='.$article['id_article'].'">
+								echo '<a class="btn btn-default" href="Actualite/Article.php?id='.$article['id_article'].'&accueil=1">
 								Lire la suite...
 								</a>
 							</div>
@@ -64,7 +64,7 @@
 										echo '[...]</p>';
 									else
 										echo '</p>';
-									echo '<a class="btn btn-default" href="Actualite/Article.php?id='.$article['id_article'].'">
+									echo '<a class="btn btn-default" href="Actualite/Article.php?id='.$article['id_article'].'&accueil=1">
 									Lire la suite...
 									</a>
 								</div>

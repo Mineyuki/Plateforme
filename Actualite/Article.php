@@ -83,6 +83,9 @@
 
 			if($_GET['validation_commentaire']==1)
 				echo '<a href="Validation_Commentaire.php?page='.$page.'">';
+
+			elseif($_GET['accueil']==1)
+				echo '<a href="../Accueil.php">';
 /*
  * Si on arrive sur la page en passant par la page Validation Article, en appuyant sur précédent,
  * on doit retourner à la page de Validation Article.
