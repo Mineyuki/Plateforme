@@ -24,6 +24,7 @@ CREATE TABLE Commentaire(
 	jour		DATETIME	NOT NULL,	
 	pseudo		VARCHAR(255)	NOT NULL,
 	commente	TEXT		NOT NULL,
+	validation	TINYINT		DEFAULT 0,
 	PRIMARY KEY (id_commentaire),
 	FOREIGN KEY (id_article) REFERENCES Article(id_article)
 );

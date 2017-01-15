@@ -1,6 +1,6 @@
 <?php require('../head.php');?>
 	<!-- Nom des onglets -->
-		<title>Actualité</title>
+		<title>Validation des articles</title>
 <?php 
 	require('body.php');
 
@@ -56,11 +56,11 @@
 		<ol class="breadcrumb">
 			<li><a href="../Accueil.php">Accueil</a></li>
 			<li><a href="Actualite.php">Actualités</a></li>
-			<li class="active">Validation Articles</li>
+			<li class="active">Validation des articles</li>
 		</ol>
 
 		<div class="container">
-			<h1 class="text-center">Actualités</h1>
+			<h1 class="text-center">Validation des articles</h1>
 			<hr>
 		</div>
 
@@ -107,19 +107,21 @@
 			</section>
 
 			<section class="row">
-				<div class="col-md-2">
-				<?php
-/*
- * Seuls les stagiaires et les professeurs peuvent écrire des articles.
- */
-					if(!empty($_SESSION['connexion']))
-						echo '<a href="Ecriture_Article.php?page='.$page.'">
-							<span class ="glyphicon glyphicon-pencil"></span>
-							Ecrire un article
-						</a>
-				</div>';
-					echo '</section>
-			<section class="row">';
+				<div class="col-md-3">
+					<a href="Ecriture_Article.php?page=<?php echo $page;?>">
+						<span class ="glyphicon glyphicon-pencil"></span>
+						Ecrire un article
+					</a>
+				</div>
+				<div class="col-md-3 col-md-offset-6">
+					<a href="Validation_Commentaire.php">
+						<span class="glyphicon glyphicon-ok"></span>
+						<strong>Validation des commentaires</strong>
+					</a>
+				</div>
+			</section>
+			<section class="row">
+			<?php
 
 /*
  * On veut seulement les articles dans l'ordre décroissant (du plus ancien au plus récent) dans la limite de 10 par page

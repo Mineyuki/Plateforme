@@ -192,8 +192,8 @@
  */
 
 	if(trim($titre)!='' and trim($contenu)!='' and $auteur==$_SESSION['nom'] and isset($_POST['modifier'])){
-		$req = 'UPDATE Article SET titre = :title, corps = :body, validation = 0 WHERE id_article = :id';echo 'ici2';
-		$requete = $bd->prepare($req);echo 'ici1';
+		$req = 'UPDATE Article SET titre = :title, corps = :body, validation = 0 WHERE id_article = :id';
+		$requete = $bd->prepare($req);
 		$requete->bindValue(':id', $id); // Vérification attaque par injection
 		$requete->bindValue(':title', $titre); // Vérification attaque par injection
 		$requete->bindValue(':body', $contenu); // Vérification attaque par injection

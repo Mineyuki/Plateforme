@@ -1,6 +1,6 @@
 <?php require('../head.php');?>
 	<!-- Nom des onglets -->
-		<title>Actualité</title>
+		<title>Article</title>
 <?php 
 	require('body.php');
 	
@@ -13,10 +13,9 @@
  * Dans le cas où l'utilisateur n'a pas rempli le champs titre et/ou contenu du commentaire
  */	
 
-	if(isset($_POST['titre']) and isset($_POST['contenu']) and (trim($_POST['titre'])=='' or trim($_POST['contenu'])=='')){
+	if(isset($_POST['contenu']) and trim($_POST['contenu'])==''){
 		$article = ["id_article" => $_POST['id'],];
 		$id = intval($_POST['id']);
-		$titre = $_POST['titre'];
 		$contenu = $_POST['contenu'];
 	}
 
@@ -157,12 +156,12 @@
 		
 	<div class="container">
 		<hr>
+		<?php
+			$envoye = intval($_GET['envoye']);
+			if($envoye==1)
+				echo '<p><strong>Votre commentaire est envoyé ! Il est en cours de validation.</strong></p>';
+		?>
 		<form method="POST" action="<?php htmlentities($_SERVER['PHP_SELF']);?>">
-			<label>Titre du commentaire</label><br/>
-			<div class="form-group">
-				<?php if(isset($_POST['titre']) and trim($_POST['titre'])=='') echo '<p>Veuillez donner un titre à votre commentaire</p>';?>
-				<input class="form-control" type="text" name="titre" maxlength="255" value="<?php echo $titre;?>">
-			</div>
 			<label>Votre commentaire</label>
 			<?php if(isset($_POST['contenu']) and trim($_POST['contenu'])=='') echo '<p>Veuillez donner votre commentaire</p>';?>
 			<textarea class="minime" name="contenu" maxlength="60 000"><?php echo $contenu;?></textarea><br/>
@@ -183,7 +182,7 @@
  ***************************************************************************************************
  */
 
-		$req = "SELECT id_article, id_commentaire, DATE_FORMAT(jour,'%d %b %Y %T'), pseudo, commente FROM Commentaire WHERE id_article = :id_article ORDER BY id_commentaire";
+		$req = "SELECT id_article, id_commentaire, DATE_FORMAT(jour,'%d %b %Y %T'), pseudo, commente, validation FROM Commentaire WHERE id_article = :id_article and validation=1 ORDER BY id_commentaire";
 		$requete = $bd->prepare($req);
 		$requete->bindValue(':id_article', $id); // Vérification attaque par injection
 		$requete->execute();
@@ -221,20 +220,18 @@
  ***************************************************************************************************
  *
  * Variable nécessaires :
- * $_POST['titre'] : Titre du commentaire - Vérification obligatoire -
  * $_POST['contenu'] : Contenu du commentaire - Vérification obligaoire -
  * $today : Date de l'écriture du commentaire
  * $_POST['id'] : ID article - Vérification obligatoire -
  * $_POST['page'] : Page de l'actualité où on s'était arrêté - Vérification obligatoire -
  */
 
-		$titre = htmlspecialchars($_POST['titre']); // Vérification faille XXS
 		$contenu = htmlspecialchars($_POST['contenu']); // Vérification faille XXS
 		$today = date("Y-m-d H:i:s"); // Vérification faille XXS
 		$id = intval($_POST['id']);
 		$page = intval($_POST['page']);
 
-		if(trim($titre)!='' and trim($contenu)!='' and !empty($_SESSION['nom']) and $id>0){
+		if(trim($contenu)!='' and !empty($_SESSION['nom']) and $id>0){
 			$req = 'INSERT INTO Commentaire (id_article, jour, pseudo, commente) VALUES (:id_article, :jour, :nom, :commentaire)';
 			$requete = $bd->prepare($req);
 			$requete->bindValue(':id_article',$id); // Vérification attaque par injection
@@ -243,7 +240,7 @@
 			$requete->bindValue(':commentaire', $contenu); // Vérification attaque par injection
 			$requete->execute();
 			echo '<script>
-				document.location.href="Article.php?id='.$id.'&page='.$page.'"
+				document.location.href="Article.php?id='.$id.'&page='.$page.'&envoye=1"
 			</script>
 			<h1 class="text-center">Commentaire envoyé !</h1>
 			<h2 class="text-center">Veuillez activer le JavaScript</h2>';

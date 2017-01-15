@@ -1,9 +1,6 @@
 <?php require('../head.php');?>
 	<!-- Nom des onglets -->
 		<title>Actualité</title>
-<?php require('../head.php');?>
-	<!-- Nom des onglets -->
-		<title>Actualité</title>
 <?php 
 	require('body.php');
 	require('../co.php');
@@ -95,7 +92,7 @@
 			</section>
 
 			<section class="row">
-				<div class="col-md-3">
+				<div class="col-md-2">
 				<?php
 /*
  * Seuls les stagiaires et les professeurs peuvent écrire des articles.
@@ -109,7 +106,13 @@
 
 					if($_SESSION['categorie']=='moderateur')
 						echo 
-				'<div class="col-md-3 col-md-offset-6">
+				'<div class="col-md-3 col-md-offset-2">
+					<a href="Validation_Commentaire.php">
+						<span class="glyphicon glyphicon-ok"></span>
+						<strong>Validation des commentaires</strong>
+					</a>
+				</div>
+				<div class="col-md-3 col-md-offset-2">
 					<a href="Validation_Article.php">
 						<span class="glyphicon glyphicon-ok"></span>
 						<strong>Validation des articles</strong>
