@@ -88,12 +88,16 @@
 			<div class="col-md-2">
 			<?php
 
+				if(isset($_GET['commentaire']) and $_GET['commentaire']==1)
+					echo '<a href="Validation_Commentaire.php?page'.$page.'">';
+				elseif(isset($_GET['article']) and $_GET['article']==1)
+					echo '<a href="Validation_Article.php?page'.$page.'">';
 /*
  * Si on arrive sur la page en passant par la page d'Article, en appuyant sur précédent,
  * on doit retourner à la page de l'article.
  */
 
-				if(isset($_GET['id']) and $id>0)
+				elseif(isset($_GET['id']) and $id>0)
 					echo '<a href="Article.php?id='.$id.'">';
 
 /*
@@ -102,7 +106,7 @@
  */
 
 				else
-					echo '<a href="Actualite.php?id='.$page.'">';
+					echo '<a href="Actualite.php?page='.$page.'">';
 			?>
 					
 				<span class="glyphicon glyphicon-arrow-left"></span>

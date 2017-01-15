@@ -148,7 +148,7 @@
 		<section class="row">
 		<?php
 			if($article['validation']==0 and $_SESSION['categorie']=='moderateur') // Bouton valider l'article
-				echo '<a class="btn btn-default" href="'.htmlentities($_SERVER['PHP_SELF']).'?valider=2&id_article='.$article['id_article'].'">Valider l\'article</a>';
+				echo '<center><a class="btn btn-default" href="'.htmlentities($_SERVER['PHP_SELF']).'?valider=2&id_article='.$article['id_article'].'">Valider l\'article</a></center>';
 		?>
 		</section>
 	</div>

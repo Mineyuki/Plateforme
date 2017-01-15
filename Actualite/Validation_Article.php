@@ -32,9 +32,6 @@
 		$limite_page = $nombre[0]; /* On récupère dans la variable $limite_page le nombre d'article */
 	$limite_page = (int) (($limite_page/10)-0.1);
 
-	if(empty($page))
-		$page=0;
-
 /*
  * On va mettre que 10 articles par page donc on divise par 10.
  * Astuce : Vu comment la page est codée, faire -0.1 permet de ne pas afficher le bouton pour la page suivante !
@@ -47,7 +44,7 @@
  * On vérifie au moins que ce qui est en paramètre est un integer aussi !
  */
 	
-	if(isset($page) and trim($page)!='' and intval($page+1)>1)
+	if(($page+1)>1)
 		$limiter = (int) $page*10;
 	else
 		$limiter = 0;
@@ -108,7 +105,7 @@
 
 			<section class="row">
 				<div class="col-md-3">
-					<a href="Ecriture_Article.php?page=<?php echo $page;?>">
+					<a href="Ecriture_Article.php?page=<?php echo $page;?>&article=1">
 						<span class ="glyphicon glyphicon-pencil"></span>
 						Ecrire un article
 					</a>

@@ -88,7 +88,7 @@
 		</section>
 		<section class="row">
 			<div class="col-md-3">
-				<a href="Ecriture_Article.php?page=<?php echo $page;?>">
+				<a href="Ecriture_Article.php?page=<?php echo $page;?>&commentaire=1">
 					<span class ="glyphicon glyphicon-pencil"></span>
 					Ecrire un article
 				</a>
@@ -161,14 +161,15 @@
  ***************************************************************************************************
  */
 
-	$valider = htmlspecialchars($_POST['valider']);
+	$valider = htmlspecialchars($_POST['valider']); // Vérification faille XXS
+
 	if(isset($valider) and $valider==="Valider les commentaires"){
 		foreach($_POST['choix'] as $id_commentaire){
 			$id_commentaire = htmlspecialchars($id_commentaire);
 
 			$request = 'UPDATE Commentaire SET validation =1 WHERE id_commentaire = :id';
 			$requete = $bd->prepare($request);
-			$requete->bindValue(':id', $id_commentaire);
+			$requete->bindValue(':id', $id_commentaire); // Vérification attaque injection
 			$requete->execute();
 			echo '<script>
 				document.location.href="Validation_Commentaire.php"
@@ -185,15 +186,15 @@
  ***************************************************************************************************
  */
 	
-	$supprimer = htmlspecialchars($_POST['supprimer']);
+	$supprimer = htmlspecialchars($_POST['supprimer']); // Vérification faille XXS
 	
 	if(isset($supprimer) and $supprimer==="Supprimer les commentaires"){
 		foreach($_POST['choix'] as $id_commentaire){
-			$id_commentaire = htmlspecialchars($id_commentaire);
+			$id_commentaire = htmlspecialchars($id_commentaire); // Vérification faille XXS
 
 			$request = 'DELETE FROM Commentaire WHERE id_commentaire = :id';
 			$requete = $bd->prepare($request);
-			$requete->bindValue(':id', $id_commentaire);
+			$requete->bindValue(':id', $id_commentaire); // Vérification attaque injection
 			$requete->execute();
 			echo '<script>
 				document.location.href="Validation_Commentaire.php"
