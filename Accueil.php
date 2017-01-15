@@ -29,10 +29,7 @@
 						$requete->execute();
 						$article = $requete->fetch(PDO::FETCH_ASSOC);
 						$article['image']= preg_replace('#((\[img])|(\[/img]))#','',$article['image']);
-						$test = $article['image'];
-						$verification = getimagesize($article['image']);
-						$test = $verification;
-						if(($test['mime']!='image/jpeg') and ($test['mime']!='image/jpg') and ($test['mime']!='image/png'))
+						if($article['image']==NULL)
 							$article['image']="image/formation-continue-financement.jpg";
 						echo '<div class="item active">
 							<center><img class="img-responsive" src="'.$article['image'].'" style="min-height : 400px; max-height: 550px;"/></center>
@@ -54,10 +51,7 @@
 						
 						while($article = $requete->fetch(PDO::FETCH_ASSOC)){
 							$article['image']= preg_replace('#((\[img])|(\[/img]))#','',$article['image']);
-							$test = $article['image'];
-							$verification = getimagesize($article['image']);
-							$test = $verification;
-							if(($test['mime']!='image/jpeg') and ($test['mime']!='image/jpg') and ($test['mime']!='image/png'))
+							if($article['image']==NULL)
 								$article['image']="image/formation-continue-financement.jpg";
 							echo '<div class="item">
 								<center><img class="img-responsive" src="'.$article['image'].'" style="min-height : 400px; max-height: 550px;"/></center>

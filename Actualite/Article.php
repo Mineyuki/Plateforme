@@ -45,7 +45,7 @@
  ***************************************************************************************************
  */
 
-	$req = 'SELECT id_article, titre, DATE_FORMAT(jour,\'%d %b %Y %T\'), auteur, corps, validation FROM Article where id_article = :id';
+	$req = 'SELECT id_article, titre, DATE_FORMAT(jour,\'%d %b %Y %T\'), auteur, image, corps, validation FROM Article where id_article = :id';
 	$requete = $bd->prepare($req); // Préparation de la requête
 	$requete->bindValue(':id',$id);  // Vérification attaque par injection
 	$requete->execute(); // Exécution de la requête
@@ -134,13 +134,26 @@
 
 		<section class="row">
 		<?php
+			if($_SESSION['categorie']=='moderateur' and $article['validation']==0){
+				echo '<h3 class="text-center">Image pour la page d\'accueil</h3>';
+				$article['image']= preg_replace('#((\[img])|(\[/img]))#','',$article['image']);
+				if($article['image']!=NULL)
+				echo '<center><img class="img-responsive" src="'.$article['image'].'" style="min-height : 400px; max-height: 550px;"/></center>';
+				else
+				echo '<p>Aucune image pour la page d\'accueil</p><hr>';
+			}
+		?>
+		</section>
+		<section class="row">
+		<?php
 
 /*
  * L'article s'affichera (contenu). En général, il ne devrait pas comporter d'erreur MAIS des erreurs peuvent se produire dû à la traduction
  * BBCode en html. Il faudra modifier le fichier s'occupant du parsage.
  */
-
 			$parser->parse($article['corps']);
+			if($_SESSION['categorie']=='moderateur' and $article['validation']==0)
+				echo '<h3 class="text-center">Contenu de l\'article</h3>';
 			echo $parser->getAsHtml();
 		?>
 		</section>

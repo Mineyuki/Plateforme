@@ -180,6 +180,10 @@
 	$titre = htmlspecialchars($_POST['titre']);
 	$contenu = htmlspecialchars($_POST['contenu']);
 	$image = trim(htmlspecialchars($_POST['image']));
+	$image_temporaire = preg_replace('#((\[img])|(\[/img]))#','',$image);
+	$verification = getimagesize($image_temporaire);
+	if(($verification['mime']!='image/jpeg') and ($verification['mime']!='image/jpg') and ($verification['mime']!='image/png'))
+		$image=NULL;
 
 /*
  * Pour toute action sur l'article déjà existant
