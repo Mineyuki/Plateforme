@@ -15,48 +15,59 @@
 					<ol class="carousel-indicators">
 						<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 						<li data-target="#myCarousel" data-slide-to="1"></li>
-						<li data-target="#myCarousel" data-slide-to="2"></li>
+						<li data-target="#myCarousel" data-slide-to="3"></li>
+						<li data-target="#myCarousel" data-slide-to="4"></li>
+						<li data-target="#myCarousel" data-slide-to="5"></li>
 					</ol>
 						
 					<!--wrapper for slides -->
 					<div class="carousel-inner">
+					<?php
+						require('co.php');
+						$request = 'SELECT id_article, titre, corps FROM Article WHERE validation=1 ORDER BY id_article DESC LIMIT 5 OFFSET 0';
+						$requete = $bd->prepare($request);
+						$requete->execute();
+						$article = $requete->fetch(PDO::FETCH_ASSOC);
 						
-						<div class="item active">
-							<img class="img-responsive" src="image/formation-continue-financement.jpg" alt="Financement" />
-								
+						echo '<div class="item active">
+							<img class="img-responsive" src="image/formation-continue-financement.jpg" alt="Image article" />
 							<div class="carousel-caption">
-								<h1>Actualité</h1>
-								<a class="btn btn-large btn-primary" href="#">
+								<h1 style="text-shadow: 2px 2px 4px black;">'.$article['titre'].'</h1>';
+								$article['corps']= preg_replace('#((\[img]).*(\[/img]))#','',$article['corps']);
+								$article['corps']= preg_replace('#\[.*?\]|\[/.*?\]#','',$article['corps']);
+								echo '<p style="text-shadow: 2px 2px 4px black; font-weight: bold;">'.substr($article['corps'],0,300);
+								if(strlen($article['corps'])>302)
+									echo '[...]</p>';
+								else
+									echo '</p>';
+								echo '<a class="btn btn-default" href="Actualite/Article.php?id='.$article['id_article'].'">
 								Lire la suite...
 								</a>
 							</div>
 						
-						</div>
+						</div>';
 						
-						<div class="item">
-							<img class="img-responsive" src="image/statut-stagiaire-fc.jpg" alt="Stagiaire" />
+						while($article = $requete->fetch(PDO::FETCH_ASSOC)){
+							echo '<div class="item">
+								<img class="img-responsive" src="image/formation-continue-financement.jpg" alt="Image article" />
 							
-							<div class="carousel-caption">
-								<h1>Actualité</h1>
-								<a class="btn btn-large btn-primary" href="#">
+								<div class="carousel-caption">
+									<h1 style="text-shadow: 2px 2px 4px black;">'.$article['titre'].'</h1>';
+									$article['corps']= preg_replace('#((\[img]).*(\[/img]))#','',$article['corps']);
+								$article['corps']= preg_replace('#\[.*?\]|\[/.*?\]#','',$article['corps']);
+								echo '<p style="text-shadow: 2px 2px 4px black; font-weight: bold;">'.substr($article['corps'],0,300);
+								if(strlen($article['corps'])>302)
+									echo '[...]</p>';
+								else
+									echo '</p>';
+								echo '<a class="btn btn-default" href="Actualite/Article.php?id='.$article['id_article'].'">
 								Lire la suite...
 								</a>
-							</div>
+								</div>
 						
-						</div>
-						
-						<div class="item">
-							<img class="img-responsive" src="image/entreprise-page.jpg" alt="Entreprise" />
-							
-							<div class="carousel-caption">
-								<h1>Actualité</h1>
-								<a class="btn btn-large btn-primary" href="#">
-								Lire la suite...
-								</a>
-							</div>
-						
-						</div>
-				
+							</div>';
+						}
+					?>
 					</div>
 					
 					<!--Controls-->
