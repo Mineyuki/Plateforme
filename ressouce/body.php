@@ -29,12 +29,12 @@
 							<li><a href="../GEII.php">Formations en Électronique, Électricité, Informatique Industrielle, Nanotechnologies</a></li>
 						</ul>
 					</li>			
-					<li class="navigation"><a href="../../../Ressource.php">Ressource</a></li>
-					<li class="navigation"><a href="../../../Travail.php">Espace de travail</a></li>
-					<li class="navigation"><a href="../../../Rendez-vous.php">Rendez-vous</a></li>
-					<li class="navigation"><a href="../../../Actualite.php">Actualites</a></li>
-					<li class="navigation"><a href="../../../Forum.php">Forum</a></li>   
-					<li class="navigation"><a href="../../../Connexion.php"><span class="glyphicon glyphicon-user"></span> Connexion</a></li>
+					<li class="navigation"><a href="Ressource.php">Ressource</a></li>
+					<li class="navigation"><a href="../Travail.php">Espace de travail</a></li>
+					<li class="navigation"><a href="../Rendez-vous.php">Rendez-vous</a></li>
+					<li class="navigation"><a href="../Actualite.php">Actualites</a></li>
+					<li class="navigation"><a href="../Forum.php">Forum</a></li>   
+					<li class="navigation"><a href="../Connexion.php"><span class="glyphicon glyphicon-user"></span> Connexion</a></li>
 				</ul>
 					
 				<div id="recherche">

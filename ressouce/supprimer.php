@@ -12,8 +12,8 @@
 	$fileName = $_GET['url'].$_GET['name'];
 
 	unlink($fileName);
-
-	header('Location:'.$_GET['formation'].'');
+                      
+	header('Location:'.$_GET['formation'].''); //revenir à la page
 			}
 			catch(PDOException $e)
 			{
