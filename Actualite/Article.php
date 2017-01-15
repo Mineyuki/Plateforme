@@ -151,7 +151,7 @@
 		</section>
 	</div>
 
-	<?php 
+	<?php
 		if(isset($_SESSION['connexion'])){ // Poster commentaire, connexion oblige 
 	?>
 		
@@ -189,15 +189,25 @@
 		$requete->execute();
 		$nombre = 0;
 		while($commentaire = $requete->fetch(PDO::FETCH_ASSOC)){
-			if($nombre==0)
+			if($temporaire==0)
 				echo '<div class="container">
 					<hr>
 					<h2>Commentaires</h2>
 				</div>';
-			$nombre++;
+			$temporaire++;
 			echo '<div class="container">
-				<p><strong>'.$commentaire['pseudo'].'</strong> - '.$commentaire['DATE_FORMAT(jour,\'%d %b %Y %T\')'].'</p>
-				<p>';
+				<section class="row">
+				<div class="col-md-9">
+				<p><strong>'.$commentaire['pseudo'].'</strong> - '.$commentaire['DATE_FORMAT(jour,\'%d %b %Y %T\')'].
+				'</div>';
+			if($_SESSION['categorie']=='moderateur' or $_SESSION['nom']==$commentaire['pseudo'])
+				echo '<div class="col-md-3">
+					<a href="'.htmlentities($_SERVER['PHP_SELF']).'?valider=3&id_commentaire='.$commentaire['id_commentaire'].'&auteur='.$_commentaire['pseudo'].'&id_article='.$commentaire['id_article'].'&page='.$page.'">
+						<span class="glyphicon glyphicon-remove"></span> Supprimer le commentaire</span>
+					</a>
+				</div>
+				</section>';
+			echo '</p><p>';
 			$parser->parse($commentaire['commente']);
 			echo $parser->getAsHtml().'</p>
 				<hr>
@@ -215,7 +225,7 @@
  * $_POST['contenu'] : Contenu du commentaire - Vérification obligaoire -
  * $today : Date de l'écriture du commentaire
  * $_POST['id'] : ID article - Vérification obligatoire -
- * $_POST['page'] : Page de l'article - Vérification obligatoire -
+ * $_POST['page'] : Page de l'actualité où on s'était arrêté - Vérification obligatoire -
  */
 
 		$titre = htmlspecialchars($_POST['titre']); // Vérification faille XXS
@@ -239,13 +249,28 @@
 			<h2 class="text-center">Veuillez activer le JavaScript</h2>';
 		}
 
-		$valider = intval($_GET['valider']);
-		$id = intval($_GET['id_article']);
+/*
+ * $_GET['valider'] : Possède 3 options qui doivent passer une vérification:
+ * 	- 1 : Valider l'article
+ *	- 2 : Supprimer un article
+ *	- 3 : Supprimer un commentaire
+ *
+ ***************************************************************************************************
+ *		VALIDATION ARTICLE
+ ***************************************************************************************************
+ *
+ * Variable nécessaires :
+ * $_GET['valider']
+ * $_GET['id_article'] : id de l'article - Vérification obligaoire -
+ */
 
-		if($id>0 and $valider==2 and $_SESSION['categorie']=='moderateur'){
+		$valider = intval($_GET['valider']);
+		$id_article = intval($_GET['id_article']);
+
+		if($id_article>0 and $valider==2 and $_SESSION['categorie']=='moderateur'){
 			$request = 'UPDATE Article SET validation = 1 WHERE id_article = :id';
 			$requete = $bd->prepare($request);
-			$requete->bindValue(':id', $id);
+			$requete->bindValue(':id', $id_article);
 			$requete->execute();
 			echo '<script>
 				document.location.href="Validation_Article.php"
@@ -253,20 +278,59 @@
 			<h1 class="text-center">Article Validé !</h1>
 			<h2 class="text-center">Veuillez activer le JavaScript</h2>';
 		}
-		if($id>0 and $valider==1 and $_SESSION['categorie']=='moderateur'){
+
+/*
+ ***************************************************************************************************
+ *		SUPPRESSION ARTICLE
+ ***************************************************************************************************
+ *
+ * Si on souhaite supprimer un article, il faudra d'abord supprimer TOUS ses commentaire pour enfin
+ * supprimer l'article
+ */
+ 
+		if($id_article>0 and $valider==1 and $_SESSION['categorie']=='moderateur'){
 			$request = 'DELETE FROM Commentaire WHERE id_article = :id';
 			$requete = $bd->prepare($request);
-			$requete->bindValue(':id', $id); // Vérification attaque par injection
+			$requete->bindValue(':id', $id_article); // Vérification attaque par injection
 			$requete->execute();
 			$request = 'DELETE FROM Article WHERE id_article = :id';
 			$requete = $bd->prepare($request);
-			$requete->bindValue(':id', $id); // Vérification attaque par injection
+			$requete->bindValue(':id', $id_article); // Vérification attaque par injection
 			$requete->execute();
 			echo '<script>
 				document.location.href="Validation_Article.php"
 			</script>
 			<h1 class="text-center">Article Supprimé !</h1>
 			<h2 class="text-center">Veuillez activer le JavaScript</h2>';
+		}
+
+/*
+ ***************************************************************************************************
+ *		SUPPRESION COMMENTAIRE
+ ***************************************************************************************************
+ *
+ * Variable nécessaire :
+ * $_GET['valider']
+ * $_GET['id_article'] : id de l'article - Vérification obligaoire -
+ * $_GET['id_commentaire'] : id du commentaire - Vérification obligatoire -
+ * $_GET['auteur'] : auteur du commentaire - Vérification obligatoire -
+ * $_GET['page'] : page de l'actualité où on s'était arrêté - Vérification obligatoire -
+ */
+
+		$id_commentaire = intval($_GET['id_commentaire']);
+		$auteur = htmlspecialchars($_GET['auteur']);
+		$page = intval($_GET['page']);
+
+		if($id_commentaire>0 and $valider==3 and ($_SESSION['categorie']=='moderateur' or $_SESSION['nom']==$auteur)){
+				$request = 'DELETE FROM Commentaire WHERE id_commentaire = :id';
+				$requete = $bd->prepare($request);
+				$requete->bindValue(':id', $id_commentaire); // Vérification attaque par injection
+				$requete->execute();
+				echo '<script>
+					document.location.href="Article.php?id='.$id_article.'&page='.$page.'"
+				</script>
+				<h1 class="text-center">Commentaire Supprimé !</h1>
+				<h2 class="text-center">Veuillez activer le JavaScript</h2>';
 		}
 
 /*
