@@ -32,19 +32,22 @@
 					buttons : "bold,italic,underline,strike,sup,sub,img,link,bullist,quote,fontcolor,fontsize,fontfamily,justifyleft,justifycenter,justifyright"
 				}
 				$(".wysibb").wysibb(wbbOpt);
+				var minimale = {
+					lang: "fr",
+					buttons : "bold,italic,underline,strike,sup,sub,link,bullist,quote"
+				}
+				$(".minime").wysibb(minimale);
+				var image = {
+					lang: "fr",
+					buttons : "img"
+				}
+				$(".image").wysibb(image);
 			});
 
 /*
  * Ces instructions suivantes permettent d'avoir un éditeur de texte avec des fonctions minimes
  */
 
-			$(document).ready(function() {
-				var minimale = {
-					lang: "fr",
-					buttons : "bold,italic,underline,strike,sup,sub,link,bullist,quote"
-				}
-				$(".minime").wysibb(minimale);
-			});
 		</script>
 	
 	</body>

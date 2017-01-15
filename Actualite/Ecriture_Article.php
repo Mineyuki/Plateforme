@@ -15,8 +15,10 @@
 			"titre" => $_POST['titre'],
 			"auteur" => $_POST['auteur'],
 			"corps" => $_POST['contenu'],
+			"image" => $_POST['image'],
 			];
 		$id = intval($_POST['id']);
+		
 	}
 /*
  ***************************************************************************************************
@@ -140,6 +142,8 @@
 			<?php if(isset($_POST['titre']) and trim($_POST['titre'])=='') echo '<p>Veuillez mettre un titre à votre article</p>';?>
 			<input class="form-control" type="text" name="titre" maxlength="255" value="<?php echo $article['titre'];?>">
 			</div>
+			<label>Image pour la page d'accueil (facultatif)</label>
+			<input class="image" name="image" maxlength="2083" value="<?php echo $article['image'];?>"><br/>
 			<input type="hidden" name="id" value="<?php echo $id;?>">
 			<input type="hidden" name="auteur" value="<?php echo $article['auteur'];?>">
 			<label>Votre contenu d'article</label>
@@ -169,11 +173,13 @@
  * $today = date("Y-m-d H:i:s"); pour la date d'écriture - Format MySQL DATETIME -
  * $_SESSION['nom'] = nom de la personne connecté - Vérification obligatoire -
  * $_POST['contenu'] = Contenu de l'article - Vérification obligatoire -
+ * $_POST['image'] = Image pour la page d'accueil - Vérification obligatoire -
  */
 
 	$today = date("Y-m-d H:i:s");
 	$titre = htmlspecialchars($_POST['titre']);
 	$contenu = htmlspecialchars($_POST['contenu']);
+	$image = trim(htmlspecialchars($_POST['image']));
 
 /*
  * Pour toute action sur l'article déjà existant
@@ -196,10 +202,11 @@
  */
 
 	if(trim($titre)!='' and trim($contenu)!='' and $auteur==$_SESSION['nom'] and isset($_POST['modifier'])){
-		$req = 'UPDATE Article SET titre = :title, corps = :body, validation = 0 WHERE id_article = :id';
+		$req = 'UPDATE Article SET titre = :title, image = :image, corps = :body, validation = 0 WHERE id_article = :id';
 		$requete = $bd->prepare($req);
 		$requete->bindValue(':id', $id); // Vérification attaque par injection
 		$requete->bindValue(':title', $titre); // Vérification attaque par injection
+		$requete->bindValue(':image', $image); // Vérification attaque par injection
 		$requete->bindValue(':body', $contenu); // Vérification attaque par injection
 		$requete->execute();
 		echo '<script>
@@ -217,12 +224,13 @@
  */
 
 	elseif(trim($titre)!='' and trim($contenu)!='' and !empty($_SESSION['nom']) and isset($_POST['envoyer'])){
-		$req = "INSERT INTO Article (titre, jour, auteur, corps)
-			VALUES (:title, :day, :author, :body)";
+		$req = "INSERT INTO Article (titre, jour, auteur, image, corps)
+			VALUES (:title, :day, :author,:image, :body)";
 		$requete = $bd->prepare($req);
 		$requete->bindValue(':title', $titre); // Vérification attaque par injection
 		$requete->bindValue(':day', $today); // Vérification attaque par injection
 		$requete->bindValue(':author', $_SESSION['nom']); // Vérification attaque par injection
+		$requete->bindValue(':image', $image); // Vérification attaque par injection
 		$requete->bindValue(':body', $contenu); // Vérification attaque par injection
 		$requete->execute();
 		echo '<script>

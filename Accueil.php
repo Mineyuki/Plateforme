@@ -7,7 +7,7 @@
 		
 		<div class="row">
 			
-			<div class="col-sm-12">
+			<div class="col-md-12">
 				
 				<div id="myCarousel" class="carousel slide" data-ride="carousel">
 					
@@ -24,18 +24,23 @@
 					<div class="carousel-inner">
 					<?php
 						require('co.php');
-						$request = 'SELECT id_article, titre, corps FROM Article WHERE validation=1 ORDER BY id_article DESC LIMIT 5 OFFSET 0';
+						$request = 'SELECT id_article, titre, image, corps FROM Article WHERE validation=1 ORDER BY id_article DESC LIMIT 5 OFFSET 0';
 						$requete = $bd->prepare($request);
 						$requete->execute();
 						$article = $requete->fetch(PDO::FETCH_ASSOC);
-						
+						$article['image']= preg_replace('#((\[img])|(\[/img]))#','',$article['image']);
+						$test = $article['image'];
+						$verification = getimagesize($article['image']);
+						$test = $verification;
+						if(($test['mime']!='image/jpeg') and ($test['mime']!='image/jpg') and ($test['mime']!='image/png'))
+							$article['image']="image/formation-continue-financement.jpg";
 						echo '<div class="item active">
-							<img class="img-responsive" src="image/formation-continue-financement.jpg" alt="Image article" />
+							<center><img class="img-responsive" src="'.$article['image'].'" style="min-height : 400px; max-height: 550px;"/></center>
 							<div class="carousel-caption">
 								<h1 style="text-shadow: 2px 2px 4px black;">'.$article['titre'].'</h1>';
 								$article['corps']= preg_replace('#((\[img]).*(\[/img]))#','',$article['corps']);
 								$article['corps']= preg_replace('#\[.*?\]|\[/.*?\]#','',$article['corps']);
-								echo '<p style="text-shadow: 2px 2px 4px black; font-weight: bold;">'.substr($article['corps'],0,300);
+								echo '<p class="text-justify" style="text-shadow: 2px 2px 4px black; font-weight: bold;">'.substr($article['corps'],0,300);
 								if(strlen($article['corps'])>302)
 									echo '[...]</p>';
 								else
@@ -48,21 +53,26 @@
 						</div>';
 						
 						while($article = $requete->fetch(PDO::FETCH_ASSOC)){
+							$article['image']= preg_replace('#((\[img])|(\[/img]))#','',$article['image']);
+							$test = $article['image'];
+							$verification = getimagesize($article['image']);
+							$test = $verification;
+							if(($test['mime']!='image/jpeg') and ($test['mime']!='image/jpg') and ($test['mime']!='image/png'))
+								$article['image']="image/formation-continue-financement.jpg";
 							echo '<div class="item">
-								<img class="img-responsive" src="image/formation-continue-financement.jpg" alt="Image article" />
-							
+								<center><img class="img-responsive" src="'.$article['image'].'" style="min-height : 400px; max-height: 550px;"/></center>
 								<div class="carousel-caption">
 									<h1 style="text-shadow: 2px 2px 4px black;">'.$article['titre'].'</h1>';
 									$article['corps']= preg_replace('#((\[img]).*(\[/img]))#','',$article['corps']);
-								$article['corps']= preg_replace('#\[.*?\]|\[/.*?\]#','',$article['corps']);
-								echo '<p style="text-shadow: 2px 2px 4px black; font-weight: bold;">'.substr($article['corps'],0,300);
-								if(strlen($article['corps'])>302)
-									echo '[...]</p>';
-								else
-									echo '</p>';
-								echo '<a class="btn btn-default" href="Actualite/Article.php?id='.$article['id_article'].'">
-								Lire la suite...
-								</a>
+									$article['corps']= preg_replace('#\[.*?\]|\[/.*?\]#','',$article['corps']);
+									echo '<p class="text-justify" style="text-shadow: 2px 2px 4px black; font-weight: bold;">'.substr($article['corps'],0,300);
+									if(strlen($article['corps'])>302)
+										echo '[...]</p>';
+									else
+										echo '</p>';
+									echo '<a class="btn btn-default" href="Actualite/Article.php?id='.$article['id_article'].'">
+									Lire la suite...
+									</a>
 								</div>
 						
 							</div>';
@@ -110,4 +120,5 @@
 			</div>
        
 		</div>
+
 <?php require('footer.php'); ?>
