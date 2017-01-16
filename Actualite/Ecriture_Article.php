@@ -143,7 +143,7 @@
 			<input class="form-control" type="text" name="titre" maxlength="255" value="<?php echo $article['titre'];?>">
 			</div>
 			<label>Image pour la page d'accueil (facultatif)</label>
-			<input class="image" name="image" maxlength="2083" value="<?php echo $article['image'];?>"><br/>
+			<input type="text" class="image" name="img" maxlength="2083" value="<?php echo $article['image'];?>"><br/>
 			<input type="hidden" name="id" value="<?php echo $id;?>">
 			<input type="hidden" name="auteur" value="<?php echo $article['auteur'];?>">
 			<label>Votre contenu d'article</label>
@@ -179,12 +179,12 @@
 	$today = date("Y-m-d H:i:s");
 	$titre = htmlspecialchars($_POST['titre']);
 	$contenu = htmlspecialchars($_POST['contenu']);
-	$image = trim(htmlspecialchars($_POST['image']));
+	$image = trim(htmlspecialchars($_POST['img']));
 	$image_temporaire = preg_replace('#((\[img])|(\[/img]))#','',$image);
 	$verification = getimagesize($image_temporaire);
 	if(($verification['mime']!='image/jpeg') and ($verification['mime']!='image/jpg') and ($verification['mime']!='image/png'))
 		$image=NULL;
-
+	echo $image;
 /*
  * Pour toute action sur l'article déjà existant
  * Attribut nécessaire :
@@ -227,22 +227,21 @@
  ***************************************************************************************************
  */
 
-	if(trim($titre)!='' and trim($contenu)!='' and !empty($_SESSION['nom']) and isset($_POST['envoyer'])){echo 'ici3';
-		$req = "INSERT INTO Article (titre, jour, auteur, image, corps)
-			VALUES (:title, :day, :author,:image, :body)";
-		$requete = $bd->prepare($req); echo 'ici1';
+	if(trim($titre)!='' and trim($contenu)!='' and !empty($_SESSION['nom']) and isset($_POST['envoyer'])){
+		$req = 'INSERT INTO Article (titre, jour, auteur, image, corps) VALUES (:title, :day, :author, :img, :body)';
+		$requete = $bd->prepare($req);
 		$requete->bindValue(':title', $titre); // Vérification attaque par injection
 		$requete->bindValue(':day', $today); // Vérification attaque par injection
 		$requete->bindValue(':author', $_SESSION['nom']); // Vérification attaque par injection
-		$requete->bindValue(':image', $image); // Vérification attaque par injection
+		$requete->bindValue(':img', $image); // Vérification attaque par injection
 		$requete->bindValue(':body', $contenu); // Vérification attaque par injection
-		$requete->execute(); echo 'ici2';
-	/*	echo '<script>
+		$requete->execute();
+		echo '<script>
 			document.location.href="Actualite.php"
 		</script>
 		<br />
 		<h1 class="text-center">Article envoyé !</h1>
-		<h2 class="text-center">Veuillez activer le JavaScript</h2>';*/
+		<h2 class="text-center">Veuillez activer le JavaScript</h2>';
 	}
 
 /*

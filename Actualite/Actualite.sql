@@ -6,7 +6,7 @@ CREATE TABLE Article(
 	titre		VARCHAR(255)	NOT NULL,
 	jour		DATETIME	NOT NULL,
 	auteur		VARCHAR(255)	NOT NULL,
-	image		TEXT		NOT NULL,
+	image		TEXT		NULL,
 	corps		LONGTEXT	NOT NULL,
 	validation	TINYINT		DEFAULT 0,
 	PRIMARY KEY (id_article)
