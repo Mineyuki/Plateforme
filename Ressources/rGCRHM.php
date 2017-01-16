@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 <?php require('head.php');?>
 	<!-- Nom des onglets -->
@@ -7,30 +6,12 @@
 <div class="container" style="margin : 100px">
 
           <div class="col-md-2 sidebar ">
-=======
-<?php require('head.php');?>
-	<!-- Nom des onglets -->
-		
-
-<div class="container" style="margin : 100px">
-    <h1>Formations en Gestion, Comptabilité, Ressources Humaines, Management</h1>
-    <?php			
-	if(!isset($_SESSION['connexion']))
-	{
-		header("Location:./../Connexion.php");
-		exit();
-	}
-	// Il y a que les enseignant peuvent d'acceder aux tous les ressources de touts les formations
-	elseif ($_SESSION['categorie']=='enseignant' ) { 
-	    echo '<div class="col-md-4 sidebar ">
->>>>>>> 690204060a69f9e3f1b07d1fe592be9cf953978f
             <ul class="nav nav-default nav-stacked">
                <li><a href="rMDI.php">MDI</a></li>
                <li><a href="rGCRHM.php">GCRHM</a></li>
                <li><a href="rJHF.php">JNF</a></li>
                <li><a href="rRT.php">RT</a></li>
                <li><a href="rEEIIN.php">EEIIN</a></li>
-<<<<<<< HEAD
                 <li><a href="ressource.php">Ajouter</a></li>
                 
                 </ul>	
@@ -40,22 +21,6 @@
   <ul style="list-style-type:square">
       
 <?php
-=======
-              
-                 </ul>	
-          </div><br>';
-        echo '</a><a href="Ressource.php">AJOUTER <span class="glyphicon glyphicon-plus"></span><br>'; 
-
-	}
-?>
-
-          
-
-  <ul style="list-style-type:none">
-      
-<?php
-//la liste des fichiers
->>>>>>> 690204060a69f9e3f1b07d1fe592be9cf953978f
 $nom='rGCRHM.php';
 $dir = 'upload/rGCRHM/';
 if(is_dir($dir)) {
