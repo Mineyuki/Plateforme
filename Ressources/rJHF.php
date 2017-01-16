@@ -1,28 +1,17 @@
 <?php require('head.php');?>
 	<!-- Nom des onglets -->
-		<title>Ressource</title>
+		
 
 <div class="container" style="margin : 100px">
+    <h1>Formations en Juridique, Notariat, Finance</h1>
+	<?php require('enseignant.php');?>      
 
-          <div class="col-md-2 sidebar ">
-            <ul class="nav nav-default nav-stacked">
-               <li><a href="rMDI.php">MDI</a></li>
-               <li><a href="rGCRHM.php">GCRHM</a></li>
-               <li><a href="rJHF.php">JNF</a></li>
-               <li><a href="rRT.php">RT</a></li>
-               <li><a href="rEEIIN.php">EEIIN</a></li>
-                <li><a href="ressource.php">Ajouter</a></li> 
-                </ul>	
-          </div>
-
-
-  <ul style="list-style-type:square">
+  <ul style="list-style-type:none">
       
 <?php
-
-//afficher les fichiers
-$nom='rEEIIN.php';
-$dir = '/upload/rEEIIN/';
+//la liste des fichiers
+$nom='rJHF.php';
+$dir = 'upload/rJHF/';
 if(is_dir($dir)) {
         if ($dh = opendir($dir)) {
         while (($file = readdir($dh)) !== false) {

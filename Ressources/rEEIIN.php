@@ -1,27 +1,20 @@
 <?php require('head.php');?>
 	<!-- Nom des onglets -->
-		<title>Ressource</title>
+		
 
 <div class="container" style="margin : 100px">
+    <h1>Formations en Électronique, Électricité, Informatique Industrielle, Nanotechnologies</h1>
+     <?php require('enseignant.php');?>			      
 
-          <div class="col-md-2 sidebar ">
-            <ul class="nav nav-default nav-stacked">
-               <li><a href="rMDI.php">MDI</a></li>
-               <li><a href="rGCRHM.php">GCRHM</a></li>
-               <li><a href="rJHF.php">JNF</a></li>
-               <li><a href="rRT.php">RT</a></li>
-               <li><a href="rEEIIN.php">EEIIN</a></li>
-                <li><a href="ressource.php">Ajouter</a></li>
-                </form>
-                </ul>	
-          </div>
+  <ul style="list-style-type:none">
+      
 
-
-  <ul style="list-style-type:square">
       
 <?php
-$nom="rISL.php";
-$dir = 'upload/rISL/';
+
+//afficher les fichiers 
+$nom='rEEIIN.php';
+$dir = '/upload/rEEIIN/';
 if(is_dir($dir)) {
         if ($dh = opendir($dir)) {
         while (($file = readdir($dh)) !== false) {
