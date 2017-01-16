@@ -227,29 +227,29 @@
  ***************************************************************************************************
  */
 
-	elseif(trim($titre)!='' and trim($contenu)!='' and !empty($_SESSION['nom']) and isset($_POST['envoyer'])){
+	if(trim($titre)!='' and trim($contenu)!='' and !empty($_SESSION['nom']) and isset($_POST['envoyer'])){echo 'ici3';
 		$req = "INSERT INTO Article (titre, jour, auteur, image, corps)
 			VALUES (:title, :day, :author,:image, :body)";
-		$requete = $bd->prepare($req);
+		$requete = $bd->prepare($req); echo 'ici1';
 		$requete->bindValue(':title', $titre); // Vérification attaque par injection
 		$requete->bindValue(':day', $today); // Vérification attaque par injection
 		$requete->bindValue(':author', $_SESSION['nom']); // Vérification attaque par injection
 		$requete->bindValue(':image', $image); // Vérification attaque par injection
 		$requete->bindValue(':body', $contenu); // Vérification attaque par injection
-		$requete->execute();
-		echo '<script>
+		$requete->execute(); echo 'ici2';
+	/*	echo '<script>
 			document.location.href="Actualite.php"
 		</script>
 		<br />
 		<h1 class="text-center">Article envoyé !</h1>
-		<h2 class="text-center">Veuillez activer le JavaScript</h2>';
+		<h2 class="text-center">Veuillez activer le JavaScript</h2>';*/
 	}
 
 /*
  * Suppression de l'article avec ses commentaires
  */
 
-	elseif(($article['auteur']==$_SESSION['nom'] or $_SESSION['categorie']=='moderateur') and $suppression==1){
+	if(($article['auteur']==$_SESSION['nom'] or $_SESSION['categorie']=='moderateur') and $suppression==1){
 		$req = 'DELETE FROM Commentaire WHERE id_article = :id';
 		$requete = $bd->prepare($req);
 		$requete->bindValue(':id', $id_suppresion); // Vérification attaque par injection

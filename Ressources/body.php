@@ -56,7 +56,7 @@
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a href="../Formation/Formation.php" class="dropdown-toggle">Formations</a>
+							<a href="Formation.php" class="dropdown-toggle">Formations</a>
 							<ul class="dropdown-menu">
 								<li><a href="DIU.php">Formation Modulaire et Diplômante Interuniversitaire</a></li>
 								<li><a href="GCRHM/GCRHM.php">Formations en Gestion, Comptabilité, Ressources Humaines, Management</a></li>
@@ -67,7 +67,7 @@
 							</ul>
 						</li>
 						<!-- Onglet Ressource -->			
-						<li><a href="Ressource.php">Ressources</a></li>
+						<li><a href="../Ressources/Ressource.php">Ressources</a></li>
 						<!-- Onglet Espace de travail -->
 						<li><a href="../Travail.php">Espace de travail</a></li>
 						<!-- Onglet Rendez-vous -->

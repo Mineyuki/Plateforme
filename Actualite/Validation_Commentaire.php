@@ -57,11 +57,11 @@
 
 	<div class="container">
 		<h1 class="text-center">Validation des commentaires</h1>
-		<hr>
 	</div>
 
 	<div class="container">
 		<section class="row">
+			<hr>
 			<nav aria-label="pagination">
 				<ul class="pager">
 				<?php
