@@ -34,15 +34,12 @@
 					</td>
 				</tr>
 			</table>
-				<br/>
 			<input type ="submit" value="Se connecter" name="connexion">
-			</form>
 		</form>
-	</body>
-</html>
+	
 
 <?php
-echo sha1("Mwahahaha");
+
 require('cnx.php');
 {
 	if(isset($_POST["emailconnex"]) && isset($_POST['motdepasse']))
@@ -65,13 +62,14 @@ require('cnx.php');
 					$_SESSION['email'] = $res['mail'];
 					$_SESSION['categorie'] = $res['categorie'];
 					$_SESSION['prenom'] = $res['prenom'];
-					$req = $bd-> prepare('select membre_id, membre_pseudo, membre_rang from membres where mail = :mail');
+					$req = $bd-> prepare('select membre_id, membre_pseudo, membre_rang, formation from membres where mail = :mail');
 					$req->bindValue(':mail', $_SESSION['email']);
 					$req->execute();
 					$res = $req->fetch(PDO::FETCH_NUM);
 					$_SESSION['id'] = $res[0];
 					$_SESSION['pseudo'] = $res[1];
 					$_SESSION['level'] = $res[2];
+					$_SESSION['formation'] = $res[3];
 					header('Location: Accueil.php');
 						/*Prendre les informations necessaire
 							rediriger vers la page (a définir)*/
@@ -90,3 +88,6 @@ require('cnx.php');
 
 }
 ?>
+
+</body>
+</html>
