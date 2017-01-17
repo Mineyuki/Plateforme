@@ -1,3 +1,13 @@
+<?php session_start();
+
+/* Fonction permettant d'envoyer un mail de notification 3 jours avant qu'un Rendez-vous ait lieu */
+require('cnx.php');
+require('Fonctions.php');
+
+/* notificationMeeting(); */
+
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -7,7 +17,7 @@
 		
 	<!-- Bootstrap -->
 	
-		<link href="provisoire.css" rel="stylesheet">
+		<link href="css/provisoire.css" rel="stylesheet">
 		<link href="bootstrap/css/bootstrap.css" rel="stylesheet" >
 		<link rel="shortcut icon" href="image/Logo_IUT_Villetaneuse.png"/>
 
