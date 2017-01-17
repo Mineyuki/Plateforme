@@ -97,6 +97,13 @@
 									$_SESSION['categorie'] = $res['categorie'];
 									$_SESSION['connexion'] = 'connecte';
 									$_SESSION['nom'] = $res['nom'] . ' ' . $res['prenom'];
+									$req = $bd-> prepare('select membre_id, membre_pseudo, membre_rang from membres where mail = :mail');
+									$req->bindValue(':mail', $_SESSION['email']);
+									$req->execute();
+									$res = $req->fetch(PDO::FETCH_NUM);
+									$_SESSION['id'] = $res[0];
+									$_SESSION['pseudo'] = $res[1];
+									$_SESSION['level'] = $res[2];
 									echo"<script>
 										document.location.href=\"Accueil.php\"
 									</script>";

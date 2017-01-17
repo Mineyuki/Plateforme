@@ -61,6 +61,7 @@ class Date{
 	
 }
 
+
 /*fonction pour les événements d'étudiants */
 function ajouterEventPerso($date, $title, $mail){
 	global $bd;
@@ -124,4 +125,75 @@ function genereListeEtudiant(){
 	}
 }
 
+
+function code($texte)
+{
+	//Smileys
+	$texte = str_replace(':D ', '<img src="./image/smileys/heureux.gif" title="heureux" alt="heureux" />', $texte);
+	$texte = str_replace(':lol: ', '<img src="./image/smileys/lol.gif" title="lol" alt="lol" />', $texte);
+	$texte = str_replace(':triste:', '<img src="./image/smileys/triste.gif" title="triste" alt="triste" />', $texte);
+	$texte = str_replace(':frime:', '<img src="./image/smileys/cool.gif" title="cool" alt="cool" />', $texte);
+	$texte = str_replace(':rire:', '<img src="./image/smileys/rire.gif" title="rire" alt="rire" />', $texte);
+	$texte = str_replace(':s', '<img src="./image/smileys/confus.gif" title="confus" alt="confus" />', $texte);
+	$texte = str_replace(':O', '<img src="./image/smileys/choc.gif" title="choc" alt="choc" />', $texte);
+	$texte = str_replace(':question:', '<img src="./image/smileys/question.gif" title="?" alt="?" />', $texte);
+	$texte = str_replace(':exclamation:', '<img src="./image/smileys/exclamation.gif" title="!" alt="!" />', $texte);
+
+	//Mise en forme du texte
+	//gras
+	$texte = preg_replace('`\[g\](.+)\[/g\]`isU', '<strong>$1</strong>', $texte); 
+	//italique
+	$texte = preg_replace('`\[i\](.+)\[/i\]`isU', '<em>$1</em>', $texte);
+	//souligné
+	$texte = preg_replace('`\[s\](.+)\[/s\]`isU', '<u>$1</u>', $texte);
+	//lien
+	//$texte = preg_replace('#http://[a-z0-9._/-]+#i', '<a href="$0">$0</a>', $texte);
+	//$texte = preg_replace('\[url=(.*)\].*\[/url\]`isU', '<a href="$1">$1</a>', $texte);
+	$texte = preg_replace('#\[url=((https?|ftp|ssh|mailto):\/\/[a-z0-9\/:%_+.,\#?!@&=-]+\])(.*)\[/url\]#i', '<a href="$1">$3</a>', $texte);
+	//etc., etc.
+	$texte = preg_replace('`\[quote auteur=([a-z0-9A-Z._-]+) \](.+)\[/quote\]`isU', '<div id="quote">Auteur : $1 </ br> $2 </div>', $texte);
+
+	
+
+	//On retourne la variable texte
+	return $texte;
+}
+
+
+function verif_auth($auth_necessaire)
+{
+	$level=(isset($_SESSION['level']))?$_SESSION['level']:1;
+	return ($auth_necessaire <= intval($level));
+}
+
+
+function erreur($err='')
+{
+   $mess=($err!='')? $err:'Une erreur inconnue s\'est produite';
+   exit('<p>'.$mess.'</p>
+   <p>Cliquez <a href="./Accueil.php">ici</a> pour revenir à la page d\'accueil</p></body></html>');
+}
+
+//Fonction listant les pages
+function get_list_page($page, $nb_page, $link, $nb = 2){
+	$list_page = array();
+	for ($i=1; $i <= $nb_page; $i++){
+		if (($i < $nb) OR ($i > $nb_page - $nb) OR (($i < $page + $nb) AND ($i > $page -$nb)))
+			$list_page[] = ($i==$page)?'<strong>'.$i.'</strong>':'<a href="'.$link.'&amp;page='.$i.'">'.$i.'</a>'; 
+		else{
+			if ($i >= $nb AND $i <= $page - $nb)
+				$i = $page - $nb;
+			elseif ($i >= $page + $nb AND $i <= $nb_page - $nb)
+				$i = $nb_page - $nb;
+		$list_page[] = '...';
+		}
+	}
+	$print= implode('-', $list_page);
+	return $print;
+}
 ?>
+
+
+
+
+

@@ -58,7 +58,7 @@
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a href="../Formation/Formation.php" class="dropdown-toggle">Formations</a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Formations</a>
 							<ul class="dropdown-menu">
 								<li><a href="../Formation/DIU.php">Formation Modulaire et Diplômante Interuniversitaire</a></li>
 								<li><a href="../Formation/GCRHM/GCRHM.php">Formations en Gestion, Comptabilité, Ressources Humaines, Management</a></li>
@@ -77,16 +77,16 @@
 						<!-- Onglet Actualites -->
 						<li><a href="Actualite.php">Actualités</a></li>
 						<!-- Onglet Forum -->
-						<li><a href="../Forum.php">Forum</a></li>
+						<li><a href="../Forum/Forum.php?f=1">Forum</a></li>
 						<!-- Onglet Connexion -->
 						<li>
 							<?php
 								if(isset($_SESSION['connexion'])){						
-									echo "<a href=\"../Profil.php\">
-										<span class=\"glyphicon glyphicon-user\"></span>
-										Profil</a></li>";
-									echo "<li><a href=\"../Connexion.php\" title=\"Déconnexion\">
-										<span class=\"glyphicon glyphicon-off\"></span>";
+									echo '<a href="../Profil.php">
+										<span class="glyphicon glyphicon-user"></span>
+										Profil</a></li>';
+									echo '<li><a href="../Connexion.php" title="Déconnexion">
+										<span class="glyphicon glyphicon-off"></span>';
 								}
 								else{
 									echo "<a href=\"../Connexion.php\">

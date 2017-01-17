@@ -56,14 +56,14 @@
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a href="Formation.php" class="dropdown-toggle">Formations</a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Formations</a>
 							<ul class="dropdown-menu">
-								<li><a href="DIU.php">Formation Modulaire et Diplômante Interuniversitaire</a></li>
-								<li><a href="GCRHM/GCRHM.php">Formations en Gestion, Comptabilité, Ressources Humaines, Management</a></li>
-								<li><a href="CJ.php">Formations en Juridique, Notariat, Finance</a></li>
-								<li><a href="INFO.php">Formations en Informatique, Systèmes, Logiciels</a></li>
-								<li><a href="RT.php">Formations en Réseaux, Télécommunications</a></li>
-								<li><a href="GEII.php">Formations en Électronique, Électricité, Informatique Industrielle, Nanotechnologies</a></li>
+								<li><a href="../Formation/DIU.php">Formation Modulaire et Diplômante Interuniversitaire</a></li>
+								<li><a href="../Formation/GCRHM/GCRHM.php">Formations en Gestion, Comptabilité, Ressources Humaines, Management</a></li>
+								<li><a href="../Formation/CJ.php">Formations en Juridique, Notariat, Finance</a></li>
+								<li><a href="../Formation/INFO.php">Formations en Informatique, Systèmes, Logiciels</a></li>
+								<li><a href="../Formation/RT.php">Formations en Réseaux, Télécommunications</a></li>
+								<li><a href="../Formation/GEII.php">Formations en Électronique, Électricité, Informatique Industrielle, Nanotechnologies</a></li>
 							</ul>
 						</li>
 						<!-- Onglet Ressource -->			
@@ -75,7 +75,7 @@
 						<!-- Onglet Actualites -->
 						<li><a href="../Actualite/Actualite.php">Actualités</a></li>
 						<!-- Onglet Forum -->
-						<li><a href="../Forum.php">Forum</a></li>
+						<li><a href="../Forum/Forum.php?f=1">Forum</a></li>
 						<!-- Onglet Connexion -->
 						<li>
 							<?php
