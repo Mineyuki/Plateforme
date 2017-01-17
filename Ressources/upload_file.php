@@ -28,20 +28,19 @@ try{
           //verifier que le dossier existe, sinon on cree un
 		if (!file_exists('upload/rMDI/')
                 {
-                mkdir("upload/rMDI/");   
-   }
+               		mkdir("upload/rMDI/");   
+  		 }
                //verifier que l'existence du fichier
-             		if (file_exists("upload/rMDI/" . $_FILES["file"]["name"]))
+             	if (file_exists("upload/rMDI/" . $_FILES["file"]["name"]))
                 {
-                 echo "<script> {window.alert('Un fichier du même nom existe déjà');location.href='Ressource.php'} </script>";    
+                 	echo "<script> {window.alert('Un fichier du même nom existe déjà');location.href='Ressource.php'} </script>";    
   
                 }
-            else
+           	 else
                  {
                   //on enregistre
-                 move_uploaded_file($_FILES["file"]["tmp_name"],
-                        "upload/rMDI/" . $_FILES["file"]["name"]);
-                    echo "Stored in: " . "upload/rMDI/" . $_FILES["file"]["name"];
+                 	move_uploaded_file($_FILES["file"]["tmp_name"],"upload/rMDI/" . $_FILES["file"]["name"]);
+                   	 echo "Stored in: " . "upload/rMDI/" . $_FILES["file"]["name"];
  
                  }
             }
@@ -50,10 +49,10 @@ try{
  //verifier que le dossier existe, sinon on cree un
 		if (!file_exists('upload/rGCRHM/')
                 {
-                mkdir("upload/rGCRHM/");   
-  }
+              		mkdir("upload/rGCRHM/");   
+ 		 }
   //verifier que l'existence du fichier
-		          if (file_exists("upload/rGCRHM/" . $_FILES["file"]["name"])){
+		 if (file_exists("upload/rGCRHM/" . $_FILES["file"]["name"])){
   			echo "<script> {window.alert('Un fichier du même nom existe déjà ');location.href='Ressource.php'} </script>";
  		 }
 
@@ -71,7 +70,7 @@ try{
 		if (!file_exists('upload/rJHF/')
                 {
                 mkdir("upload/rJHF/");   
- }
+		 }
 //verifier que l'existence du fichier
 		if (file_exists("upload/rJHF/" . $_FILES["file"]["name"])){
  
@@ -89,9 +88,9 @@ try{
 
  	elseif($_SESSION["formation"]=="ISL"){
  //verifier que le dossier existe, sinon on cree un
-	if (!file_exists('upload/rISL/')
+		if (!file_exists('upload/rISL/')
                 {
-                mkdir("upload/rISL/");   
+               		 mkdir("upload/rISL/");   
   		 }
 //verifier que l'existence du fichier
 		if (file_exists("upload/rISL/" . $_FILES["file"]["name"])){
@@ -157,8 +156,8 @@ try{
             echo "Size: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
             echo "<center> <a href=Ressource.php>continue</a></center>";*/
   	}         
-  }
-  }
+   }
+ }
 			catch(PDOException $e)
 			{
 				die('<div> Erreur : ' . $e->getMessage() . '</div></body></html>');
