@@ -45,6 +45,7 @@
 										if( $res != false){
 											$_SESSION['email'] = $res['mail'];
 											$_SESSION['categorie'] = $res['categorie'];
+											$_SESSION['formation']=$res['formation'];
 											$_SESSION['connexion'] = 'connecte';
 											$_SESSION['nom'] = $res['nom'];
 											$_SESSION['ecriture_article'] = $res['ecriture_article'];
