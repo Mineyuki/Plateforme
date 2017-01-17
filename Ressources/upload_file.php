@@ -13,7 +13,7 @@ try{
   $nomOrigine = $_FILES['file']['name'];
   $elementsChemin = pathinfo($nomOrigine);
   $extensionFichier = $elementsChemin['extension'];
-  $extensionsAutorisees = array("pdf", "docx","odt", "zip","doc");
+  $extensionsAutorisees = array("pdf", "docx","odt", "zip","doc","avi",'mp4');//possibilite de rajouter des autres extensions 
 
 
      //interdit les extensions non accordes
