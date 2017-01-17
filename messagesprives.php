@@ -28,16 +28,16 @@ require('constants.php');
 	{
 		case "consulter": //Si on veut lire un message
  
-			echo'<p><i>Vous êtes ici</i> : <a href="./index.php">Index du forum</a> --> <a href="./messagesprives.php">Messagerie privée</a> --> Consulter un message</p>';
+			echo'<p><i>Vous êtes ici</i> : <a href="./Forum.php?f=1">Forum</a> --> <a href="./messagesprives.php">Messagerie privée</a> --> Consulter un message</p>';
 			$id_mess = (int) $_GET['id']; //On récupère la valeur de l'id
 			echo '<h1>Consulter un message</h1><br /><br />';
 
 			//La requête nous permet d'obtenir les infos sur ce message :
 			$query = $bd->prepare('SELECT  mp_expediteur, mp_receveur, mp_titre,               
 			mp_time, mp_text, mp_lu, membre_id, membre_pseudo, membre_avatar,
-			membre_localisation, membre_inscrit, membre_post, membre_signature
+			membre_post
 			FROM forum_mp
-			LEFT JOIN forum_membres ON membre_id = mp_expediteur
+			LEFT JOIN membres ON membre_id = mp_expediteur
 			WHERE mp_id = :id');
 			$query->bindValue(':id',$id_mess,PDO::PARAM_INT);
 			$query->execute();
@@ -69,14 +69,13 @@ require('constants.php');
 						<?php
 							
 						//Ici des infos sur le membre qui a envoyé le mp
-						echo'<p><img src="./image/avatars/'.$data['membre_avatar'].'" alt="" />
-						<br />Membre inscrit le '.date('d/m/Y',$data['membre_inscrit']).'
+						echo'<p><img src="./image/avatars/'.$data['membre_avatar'].'" alt=""  height="45px" width="45px" style="text-align:center;/>
+						
 						<br />Messages : '.$data['membre_post'].'
-						<br />Localisation : '.stripslashes(htmlspecialchars($data['membre_localisation'])).'</p>
+						</p>
 						</td><td>';
 							
 						echo code(nl2br(stripslashes(htmlspecialchars($data['mp_text'])))).'
-						<hr />'.code(nl2br(stripslashes(htmlspecialchars($data['membre_signature'])))).'
 						</td></tr></table>';
 			?>
 			<?php
@@ -97,7 +96,7 @@ require('constants.php');
 		<?php
 		case "nouveau": //Nouveau mp
 			   
-			echo'<p><i>Vous êtes ici</i> : <a href="./index.php">Index du forum</a> --> <a href="./messagesprives.php">Messagerie privée</a> --> Ecrire un message</p>';
+			echo'<p><i>Vous êtes ici</i> : <a href="./Forum.php?f=1">Forum</a> --> <a href="./messagesprives.php">Messagerie privée</a> --> Ecrire un message</p>';
 			echo '<h1>Nouveau message privé</h1><br /><br />';
 			?>
 			<form method="post" action="postok.php?action=nouveaump" name="formulaire">
@@ -113,15 +112,6 @@ require('constants.php');
 					<input type="button" id="souligné" name="souligné" value="Souligné" onClick="javascript:bbcode('[s]', '[/s]');return(false)" />
 					<input type="button" id="lien" name="lien" value="Lien" onClick="javascript:bbcode('[url]', '[/url]');return(false)" />
 					<br /><br />
-					<img src="./image/smileys/heureux.gif" title="heureux" alt="heureux" onClick="javascript:smilies(':D');return(false)" />
-					<img src="./image/smileys/lol.gif" title="lol" alt="lol" onClick="javascript:smilies(':lol:');return(false)" />
-					<img src="./image/smileys/triste.gif" title="triste" alt="triste" onClick="javascript:smilies(':triste:');return(false)" />
-					<img src="./image/smileys/cool.gif" title="cool" alt="cool" onClick="javascript:smilies(':frime:');return(false)" />
-					<img src="./image/smileys/rire.gif" title="rire" alt="rire" onClick="javascript:smilies('XD');return(false)" />
-					<img src="./image/smileys/confus.gif" title="confus" alt="confus" onClick="javascript:smilies(':s');return(false)" />
-					<img src="./image/smileys/choc.gif" title="choc" alt="choc" onClick="javascript:smilies(':O');return(false)" />
-					<img src="./image/smileys/question.gif" title="?" alt="?" onClick="javascript:smilies(':interrogation:');return(false)" />
-					<img src="./image/smileys/exclamation.gif" title="!" alt="!" onClick="javascript:smilies(':exclamation:');return(false)" />
 
 					<textarea cols="80" rows="8" id="message" name="message"></textarea>
 					<br />
@@ -135,7 +125,7 @@ require('constants.php');
 		?>
 		<?php
 		case "repondre": //On veut répondre
-			echo'<p><i>Vous êtes ici</i> : <a href="./index.php">Index du forum</a> --> <a href="./messagesprives.php">Messagerie privée</a> --> Ecrire un message</p>';
+			echo'<p><i>Vous êtes ici</i> : <a href="./Forum.php?f=1">Forum</a> --> <a href="./messagesprives.php">Messagerie privée</a> --> Ecrire un message</p>';
 			echo '<h1>Répondre à un message privé</h1><br /><br />';
 
 			$dest = (int) $_GET['dest'];
@@ -148,17 +138,6 @@ require('constants.php');
 					<input type="button" id="italic" name="italic" value="Italic" onClick="javascript:bbcode('[i]', '[/i]');return(false)" />
 					<input type="button" id="souligné" name="souligné" value="Souligné" onClick="javascript:bbcode('[s]', '[/s]');return(false)" />
 					<input type="button" id="lien" name="lien" value="Lien" onClick="javascript:bbcode('[url]', '[/url]');return(false)" />
-					<br /><br />
-					<img src="./image/smileys/heureux.gif" title="heureux" alt="heureux" onClick="javascript:smilies(':D');return(false)" />
-					<img src="./image/smileys/lol.gif" title="lol" alt="lol" onClick="javascript:smilies(':lol:');return(false)" />
-					<img src="./image/smileys/triste.gif" title="triste" alt="triste" onClick="javascript:smilies(':triste:');return(false)" />
-					<img src="./image/smileys/cool.gif" title="cool" alt="cool" onClick="javascript:smilies(':frime:');return(false)" />
-					<img src="./image/smileys/rire.gif" title="rire" alt="rire" onClick="javascript:smilies('XD');return(false)" />
-					<img src="./image/smileys/confus.gif" title="confus" alt="confus" onClick="javascript:smilies(':s');return(false)" />
-					<img src="./image/smileys/choc.gif" title="choc" alt="choc" onClick="javascript:smilies(':O');return(false)" />
-					<img src="./image/smileys/question.gif" title="?" alt="?" onClick="javascript:smilies(':interrogation:');return(false)" />
-					<img src="./image/smileys/exclamation.gif" title="!" alt="!" onClick="javascript:smilies(':exclamation:');return(false)" />
-
 					<br /><br />
 					<textarea cols="80" rows="8" id="message" name="message"></textarea>
 					<br />
@@ -212,17 +191,17 @@ require('constants.php');
 		//On affiche la boite de mp.
 		default;
 			
-			echo'<p><i>Vous êtes ici</i> : <a href="./index.php">Index du forum</a> --> <a href="./messagesprives.php">Messagerie privée</a>';
+			echo'<p><i>Vous êtes ici</i> : <a href="./Forum.php?f=1">Forum</a> --> <a href="./messagesprives.php">Messagerie privée</a>';
 			echo '<h1>Messagerie Privée</h1><br /><br />';
 
 			$query=$bd->prepare('SELECT mp_lu, mp_id, mp_expediteur, mp_titre, mp_time, membre_id, membre_pseudo
 			FROM forum_mp
-			LEFT JOIN forum_membres ON forum_mp.mp_expediteur = forum_membres.membre_id
+			LEFT JOIN membres ON forum_mp.mp_expediteur = membres.membre_id
 			WHERE mp_receveur = :id ORDER BY mp_id DESC');
 			$query->bindValue(':id',$id,PDO::PARAM_INT);
 			$query->execute();
 			echo'<p><a href="./messagesprives.php?action=nouveau">
-			<img src="./image/nouveau.gif" alt="Nouveau" title="Nouveau message" />
+			<button type="button" class="btn btn-class-secondary">Nouveau</button>
 			</a></p>';
 			if ($query->rowCount()>0)
 			{
@@ -248,7 +227,7 @@ require('constants.php');
 					}
 					else //sinon une autre icone
 					{
-					echo'<td><img src="./image/message.gif" alt="Déja lu" /></td>';
+					echo'<td><img src="./image/message_lu.gif" alt="Déja lu" /></td>';
 					}
 					echo'<td id="mp_titre">
 					<a href="./messagesprives.php?action=consulter&amp;id='.$data['mp_id'].'">
@@ -267,7 +246,7 @@ require('constants.php');
 			else
 			{
 				echo'<p>Vous n avez aucun message privé pour l instant, cliquez
-				<a href="./index.php">ici</a> pour revenir à la page d index</p>';
+				<a href="./Forum.php?f=1">ici</a> pour revenir à la page d index</p>';
 			}
 		} //Fin du switch
 		?>
