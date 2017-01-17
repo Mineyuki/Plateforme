@@ -28,7 +28,8 @@
 	</ol>
 	
 	<div class="container">
-		<h1 class="text-center"><?php echo $_SESSION['nom']?></h1>
+		<h1 class="text-center"><?php echo $_SESSION['nom'];?></h1>
+		<h2 class="text-center"><?php echo $information['categorie'];?></h2>
 		<hr>
 		<div class="col-md-6 col-md-offset-3">
 			<form class="form" method="POST" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">
