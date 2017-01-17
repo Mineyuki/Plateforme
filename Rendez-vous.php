@@ -13,16 +13,30 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 		<script type="text/javascript">
+		/* Fonction permettant de faire défiler les mois du calendrier*/
 			jQuery(function($){
+				/* permet de cacher tout les tableaux */
 				$('.month').hide();
+				
+				/*	affiche le tableau correspondant au premier mois et de demarquer sa couleur des autres */
 				$('.month:first').show();
 				$('.months a:first').addClass('active');
+				
+				/* stocke le mois courrant */
 				var current =1;
+				
+				/*	Fonction qui va permettre en cliquant sur un mois de l'afficher */
 				$('.months a').click(function(){
+					/* On recupère le mois sur lequel on a cliqué  */
 					var month = $(this).attr('id').replace('linkMonth','');
+					/* si on a cliqué... */
 					if(month != current){
+						/* masque le mois actuellement visible */
 						$('#month'+current).slideUp();
+						
+						/* affiche le mois sur lequel on a cliqué */
 						$('#month'+month).slideDown();
+						
 						$('.months a').removeClass('active');
 						$('.months a#linkMonth'+month).addClass('active');
 						current = month;
@@ -49,10 +63,7 @@ require('Fonctions.php');
 	$year = date('Y');
 	$eventsDest = $date->getEventsDest($year, $_SESSION['email']);
 	$eventsExpe = $date->getEventsExpe($year, $_SESSION['email']);
-	echo '<p> '. print_r($eventsDest) .' </p>';
-	echo '<p> '. print_r($eventsExpe) .' </p>';
 	$dates = $date->getAll($year);
-	print_r($_SESSION);
 	
 ?>
 	<?php require('Navigation.php'); ?>
@@ -65,21 +76,30 @@ require('Fonctions.php');
 			<p >
 				
 				Date <br> <input type="text" id="date" name="date" readonly ><br>
-				Heure <input type="time" name="time" style="margin-top: 8px;"></br>
+				Heure <input type="time" id="heure" name="heure" style="margin-top: 8px;"></br>
 				
-				<?php /* Les possibilités*/
-					if($_SESSION['categorie'] == 'professeur'){
-				?>
+				
 				<p style="padding-top: 8px; padding-left: 8px;">
 				Evenement pour: <br>
 				vous <input type="radio" name="categ" value="vous" onclick="radioclick(this.value);" /><br>
-				etudiant <input type="radio" name="categ" value="gEtudiant" onclick="radioclick(this.value);" /><br>
+				<?php /* Les possibilités*/
+					if($_SESSION['categorie'] == 'professeur'){
+				?>
+				Etudiant <input type="radio" name="categ" value="gEtudiant" onclick="radioclick(this.value);" /><br>
 				</p>
 				<p  id="div1" style="display: none; margin-left: 30px;">
-					<?php genereListeEtudiant(); ?>
+					<?php genereListeEtudiant($_SESSION['formation']); ?>
 				</p>
 				
-				<?php } ?>
+				<?php } 
+					else if($_SESSION['categorie'] == "etudiant"){
+						?>
+				Professeur<input type="radio" name="categ" value="gEtudiant" onclick="radioclick(this.value);" /><br>
+				</p>
+				<p  id="div1" style="display: none; margin-left: 30px;">
+					<?php genereListeProfesseur($_SESSION['formation']); ?>
+				</p>
+					<?php } ?>
 				nom de l'événement <br> <input type="text" name="event"><br>
 				<input type="submit" value="soumettre">
 				
@@ -116,36 +136,40 @@ require('Fonctions.php');
 							<tr>
 								<?php $end = end($days); foreach($days as $d => $w){ ?>
 									<?php $time = strtotime("$year-$m-$d"); ?>
-									<?php if($d ==1){ ?>
+									
+									<?php if($d ==1 && $w-1 != 0){ ?>
 										<td class="padding case" colspan="<?php echo $w-1; ?>"></td>
-									<?php }?>
+									<?php }
+										  elseif($d==1){?>
+										<td class="padding case" ></td>
+										  <?php } ?>
 									
 						<!-- affiche le jour et permet ensuite de sauter une ligne quand on arrive a dimanche -->
 									<td class="case">
 										<div class="relative">
-										<div class="day">
-										<a onclick="document.getElementById('date').value='<?php echo $year ."-" .$m. "-".$d; ?>';" >
-										<?php echo $d; ?>
-										</div>
+											<div class="day">
+												<a onclick="document.getElementById('date').value='<?php echo $year ."-" .$m. "-".$d; ?>';" >
+												<?php echo $d; ?>
+											</div>
 										</div>
 										<div class="daytitle">
 											<?php echo $date->days[$w-1]; ?> <?php echo $d; ?> <?php echo $date->months[$m-1]; ?>
 										</div>
-											<ul class="events" style="color: brown;" >
+											<ul class="events" >
 												<?php if(isset($eventsDest[$time])){
 													foreach($eventsDest[$time] as $e){ ?>
 														<li class="destination listeJour"><?php echo $e; ?></li>
 												<?php }
 												} ?>
 											</ul>
-											<ul class="events" style="color: green;">
+											<ul class="events" >
 												<?php if(isset($eventsExpe[$time])){
 													foreach($eventsExpe[$time] as $e){ ?>
 														<li class="expedition listeJour"><?php echo $e; ?></li>
 												<?php }
 												} ?>
 											</ul>
-										</a>
+												</a>
 										
 									</td>
 									
@@ -166,35 +190,46 @@ require('Fonctions.php');
 	</div>
 	
 <?php
-print_r($_POST);
-	
-	if(isset($_POST['date']) && isset($_POST['event']) && isset($_POST['categ']) && isset($_POST['selection']) && $_POST['time']){
+	if(isset($_POST['date']) && isset($_POST['event']) && isset($_POST['categ']) && isset($_POST['heure'])){
 		if(trim($_POST['date']) != '' && trim($_POST['event']) != ''){
+			if(trim($_POST['heure']) != '')
+				$heure = $_POST['heure'] . ':0';
+			else
+				$heure = null;
+			
 			$title = htmlspecialchars($_POST['event'], ENT_NOQUOTES);
 			$mailUtilisateur = htmlspecialchars($_SESSION['email'], ENT_NOQUOTES);
 			
-			if($_SESSION['categorie'] =="etudiant" || $_POST['categ'] =="vous"){
-				ajouterEventPerso($_POST['date'], $title, $mailUtilisateur);
+			if($_POST['categ'] =="vous"){
+				if(time() <= strtotime($_POST['date']))
+					ajouterEventPerso($_POST['date'], $title, $mailUtilisateur, $heure);
+				else{
+					echo "Veuillez ajouter un événement a une date ultérieur a celle d'aujourd'hui";
+				}
 			}
 			else if(trim($_POST['categ']) != '' && trim($_POST['selection']) != ''){
-				ajouterEventProfesseur($_POST['date'], $title, $mailUtilisateur, $_POST['selection']);
+				
+				$query = $bd->prepare('select COUNT(*) as nbr, heure, date from events where mailDest = :mDest, date = :date ');
+				$query->bindValue(':mDest', $_POST['selection']);
+				$query->bindValue(':mDest', $_POST['date']);
+				$query->execute();
+				$evenement = $query->fetch(PDO::FETCH_ASSOC);
+				if($evenement['nbr'] > 0 ){
+					echo '<p> Veuillez choisir un jour plus tôt ou plus tard car cette personne est déjà prise </p>'; 
+				}
+				else{
+					if(time() < strtotime($_POST['date'])){
+						ajouterEventAutre($_POST['date'], $title, $heure, $mailUtilisateur, $_POST['selection']);
+						/*notifRendez_vous($_POST['date'], $heure, $title, $mailUtilisateur, $_POST['selection']);*/
+					}
+					else
+						echo "Veuillez ajouter un événement a une date ultérieur a celle d'aujourd'hui";
+				}
+				
 			}
 			
 		}
 	}
-	
-	
-
-
-	
-	
-/*	echo '<p> '. print_r($events) .'</p>';
-	echo '<p> '. print_r($dates) .'</p>';
-	*/
-	/*
-		39:47
-	*/
-
 
 ?>
 
