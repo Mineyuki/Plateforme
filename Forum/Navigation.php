@@ -1,8 +1,8 @@
 <!-- Bootstrap -->
 		<!-- Utilisation CSS personnel -->
-		<link href="css/provisoire.css" rel="stylesheet">
+		<link href="../css/provisoire.css" rel="stylesheet">
 		<!-- Utilisation CSS Bootstrap -->
-		<link href="css/bootstrap.css" rel="stylesheet" >
+		<link href="../css/bootstrap.css" rel="stylesheet" >
 		<!-- Utilisation logo sur l'onglet -->
 		<?php
 			if(isset($_SESSION['connexion']))
@@ -80,16 +80,16 @@
 						<li>
 							<?php
 								if(isset($_SESSION['connexion'])){						
-									echo '<a href="../Profil.php">
-										<span class="glyphicon glyphicon-user"></span>
-										Profil</a></li>';
-									echo '<li><a href="Connexion.php" title="Déconnexion">
-										<span class="glyphicon glyphicon-off"></span>';
+									echo "<a href=\"../Profil.php\">
+										<span class=\"glyphicon glyphicon-user\"></span>
+										Profil</a></li>";
+									echo "<li><a href=\"../Connexion.php\" title=\"Déconnexion\">
+										<span class=\"glyphicon glyphicon-off\"></span>";
 								}
 								else{
-									echo '<a href="../Connexion.php">
-										<span class="glyphicon glyphicon-user"></span>
-										Connexion';
+									echo "<a href=\"../Connexion.php\">
+										<span class=\"glyphicon glyphicon-user\"></span>
+										Connexion";
 								}
 							?>
 							</a>
@@ -98,8 +98,8 @@
 
 				</div><!-- /.navbar-collapse -->
 
-			</div><!-- /.container -->
+			</div><!-- /.container-->
 
-		</nav>	
+		</nav>
 
 	</div>

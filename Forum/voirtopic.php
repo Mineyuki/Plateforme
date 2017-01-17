@@ -11,8 +11,8 @@ require('constants.php');
 		<meta charset="utf-8"/>
 		  <meta name="viewport" content="width=device-width, initial-scale=1">
 		<title> Sujet </title>
-		<link rel="stylesheet" href="../css/provisoire.css"/>
-		<link rel="stylesheet" href="../css/bootstrap.css"/>
+		<link rel="stylesheet" href="css/provisoire.css"/>
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
@@ -100,7 +100,8 @@ require('constants.php');
 			{
 				//Si tout roule on affiche notre tableau puis on remplit avec une boucle
 				?>
-				<table class="tableauForum">
+				<div class="table-responsive">
+				<table class="tableauTopic">
 				<tr>
 					<th class="vt_auteur"><strong>Auteurs</strong></th>             
 					<th class="vt_mess"><strong>Messages</strong></th>       
@@ -111,7 +112,7 @@ require('constants.php');
 					//On commence à afficher le pseudo du créateur du message :
 					//On vérifie les droits du membre
 					//(partie du code commentée plus tard)
-					echo'<tr><td class="interieurTableau"><strong>
+					echo'<tr><td class="enteteTableauForum"><strong>
 					<a href="./voirprofil.php?m='.$data['membre_id'].'&amp;action=consulter">
 					'.stripslashes(htmlspecialchars($data['membre_pseudo'])).'</a></strong></td>';
 			   
@@ -122,32 +123,34 @@ require('constants.php');
 	   
 					if ($id == $data['post_createur'])
 					{
-						echo'<td class="interieurTableau" id=p_'.$data['post_id'].'>Posté à '.date('H\hi \l\e d M y',$data['post_time']).'
+						echo'<td class="enteteTableauForum" id=p_'.$data['post_id'].'>Posté à '.date('H\hi \l\e d M y',$data['post_time']).'
 						<a href="./poster.php?p='.$data['post_id'].'&amp;action=delete">
 						<img src="./image/supprimer.gif" alt="Supprimer"
-						title="Supprimer ce message" /></a>   
+						title="Supprimer ce message" class="imgAvatar" /></a>   
 						<a href="./poster.php?p='.$data['post_id'].'&amp;action=edit">
 						<img src="./image/editer.gif" alt="Editer"
-						title="Editer ce message" /></a></td></tr>';
+						title="Editer ce message" height="18" width="22" class="imgAvatar"/></a></td></tr>';
 					}
 					else
 					{
-						echo'<td class="interieurTableau">
+						echo'<td class="enteteTableauForum">
 						Posté à '.date('H\hi \l\e d M y',$data['post_time']).'
 						</td></tr>';
 					}
 		   
 					//Détails sur le membre qui a posté
 					echo'<tr><td class="interieurTableau">
-					<img src="image/avatars/'.$data['membre_avatar'].'" alt="" /></td>';
+					<img src="image/avatars/'.$data['membre_avatar'].'" alt="" height="45px" width="45px" style="text-align:center;"/></td>';
 				   
 					//Message
 					echo'<td class="interieurTableau">'.code(nl2br(stripslashes(htmlspecialchars($data['post_texte'])))).'</td></tr>';
+					
 				} //Fin de la boucle ! \o/
 				$query->CloseCursor();
-				?>
+				?><br/>
 				</table>
 				
+				</div>
 				
 				<?php
 				
@@ -163,7 +166,7 @@ require('constants.php');
 				$query->bindValue(':topic',$topic,PDO::PARAM_INT);
 				$query->execute();
 				$query->CloseCursor();
-
+			echo '<br/>';
 			} //Fin du if qui vérifiait si le topic contenait au moins un message
 			//On affiche les pages 1-2-3 etc...
 			for ($i = 1 ; $i <= $nombreDePages ; $i++)

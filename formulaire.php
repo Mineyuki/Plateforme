@@ -94,16 +94,17 @@
 							$req->bindValue(':mail', $email);
 							$req->bindValue(':nom', $nom);
 							$req->bindValue(':prenom', $prenom);
-
+							$pseudo = $nom.' '.$prenom;
 							$req-> execute();
 
 							$existe = $req->rowCount(); // Compte nombre de ligne
 
 							if($existe == 0){ // Vérification si le nom, la personne et l'email est présent dans la base
-								$insertUsr = $bd->prepare("INSERT INTO membres (nom, prenom, mail, motdepasse) VALUES (:nom, :prenom, :mail, :mdp)");
+								$insertUsr = $bd->prepare("INSERT INTO membres (nom, prenom, membre_pseudo, mail, motdepasse) VALUES (:nom, :prenom, :pseudo, :mail, :mdp)");
 								$insertUsr->bindValue(':mail', $email);
 								$insertUsr->bindValue(':nom', $nom);
 								$insertUsr->bindValue(':prenom', $prenom);
+								$insertUsr->bindValue(':pseudo',$pseudo);
 								$insertUsr->bindValue(':mdp',$mdp);
 								$insertUsr->execute();
 								echo '<script>

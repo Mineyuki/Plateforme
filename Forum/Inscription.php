@@ -32,7 +32,20 @@
 						</div>
 					</div>
 				</div>
-
+				<div class="row">
+					<div class="col-md-offset-2 col-md-6">
+					<label for="Formation">Votre formation: </label>
+						<select name="formation" class="form-control">
+							<option value="DIU">Modulaire et Diplômante Interuniversitaire</option>
+							<option value="GCRHM">Gestion, Comptabilité, Ressources Humaines et Management</option>
+							<option value="CJ">Juridique, Notariat et Finance</option>
+							<option value="INFO">Informatique, Systèmes et Logiciels</option>
+							<option value="RT">Réseaux et Télécommunications</option>
+							<option value="GEII">Electronique, Electricité, Informatique Industrielle et Nanotechnologies</option>
+						</select>
+					</div>
+				</div>
+				<br>
 				<div class="row">
 					<div class="col-md-offset-2 col-md-6">
 						<div class="form-group">
@@ -89,10 +102,10 @@ print_r($_POST);
 
 */
 
-if (isset($_POST['email']) && isset($_POST['mdp']) && isset($_POST['mdp2']) && isset($_POST['categorie']) && isset($_POST['nom']) && isset($_POST['prenom'])) 
+if (isset($_POST['email']) && isset($_POST['mdp']) && isset($_POST['mdp2']) && isset($_POST['categorie']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['formation']))
 {
 	
-	if(trim($_POST['email']) !="" and trim($_POST['mdp']) !="" and trim($_POST['mdp2']) !="" && trim($_POST['categorie']) != "" && trim($_POST['nom']) != '' && trim($_POST['prenom']) != '')
+	if(trim($_POST['email']) !="" and trim($_POST['mdp']) !="" and trim($_POST['mdp2']) !="" && trim($_POST['categorie']) != "" && trim($_POST['nom']) != '' && trim($_POST['prenom']) != '' && trim($_POST['formation']) != '')
 	{
 		$nom = htmlspecialchars($_POST["nom"]);
 		$prenom = htmlspecialchars($_POST["prenom"]);
@@ -103,11 +116,11 @@ if (isset($_POST['email']) && isset($_POST['mdp']) && isset($_POST['mdp2']) && i
 
 			if(filter_var($email,FILTER_VALIDATE_EMAIL))
 			{
-				$req = $bd->prepare("SELECT * FROM membres where mail = :mail ");
+				$req = $bd->prepare("SELECT count(*) as nbr FROM membres where mail = :mail ");
 				$req->bindValue(':mail', $email);
 				$req-> execute();
-				$existe = $req->rowCount();
-				if($existe == 0)
+				$existe = $req->fetch(PDO::FETCH_ASSOC);
+				if($existe['nbr'] == 0)
 				{
 
 					if($mdp == $mdp2)
@@ -115,12 +128,12 @@ if (isset($_POST['email']) && isset($_POST['mdp']) && isset($_POST['mdp2']) && i
 						$reqID = $bd->prepare('select LAST_INSERT_ID() as id from membres');
 						$reqID->execute();
 						$res = $reqID->fetch(PDO::FETCH_NUM);
-						$insertUsr = $bd->prepare("INSERT INTO membres (nom, prenom, membre_pseudo, mail, motdepasse, categorie) VALUES (:nom, :prenom, :pseudo, :mail, :mdp, :cate)");
+						$insertUsr = $bd->prepare("INSERT INTO membres (nom, prenom, membre_pseudo, mail, motdepasse, categorie, formation) VALUES (:nom, :prenom, :pseudo, :mail, :mdp, :cate, :formation)");
 						$insertUsr->bindValue(':mail', $email);
 						$insertUsr->bindValue(':mdp', $mdp);
 						$insertUsr->bindValue(':nom', $nom);
 						$insertUsr->bindValue(':prenom', $prenom);
-						
+						$insertUsr->bindValue(':formation', $_POST['formation']);
 						$insertUsr->bindValue(':pseudo', $pseudo);
 						$insertUsr->bindValue(':cate', $_POST['categorie']);
 						$insertUsr->execute();
@@ -130,6 +143,7 @@ if (isset($_POST['email']) && isset($_POST['mdp']) && isset($_POST['mdp2']) && i
 						$_SESSION['prenom'] = $prenom;
 						$_SESSION['pseudo'] = $pseudo;
 						$_SESSION['categorie'] = $_POST['categorie'];
+						$_SESSION['formation'] = $_POST['formation'];
 						$insertUsr->CloseCursor();
 						$req = $bd-> prepare('select membre_id, membre_rang from membres where mail = :mail');
 						$req->bindValue(':mail', $_SESSION['email']);

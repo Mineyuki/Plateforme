@@ -11,8 +11,8 @@ require('constants.php');
 		<meta charset="utf-8"/>
 		  <meta name="viewport" content="width=device-width, initial-scale=1">
 		<title> Rendez-vous </title>
-		<link rel="stylesheet" href="../css/provisoire.css"/>
-		<link rel="stylesheet" href="../css/bootstrap.css"/>
+		<link rel="stylesheet" href="css/provisoire.css"/>
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.css"/>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
@@ -20,6 +20,10 @@ require('constants.php');
 		<?php 
 		$id=(isset($_SESSION['id']))?(int) $_SESSION['id']:0;
 		require('Navigation.php'); 
+		
+		if(verif_auth(ADMIN)){
+			echo '<p><i>Vous pouvez administrer le forum par</i> <a href="./admin.php">la </a></p>';
+		}
 		$forum = (int) $_GET['f'];
 		$query=$bd->prepare('SELECT forum_name, forum_topic, auth_view, auth_topic FROM forum_forum where forum_id = :forum');
 		$query->bindValue(':forum',$forum,PDO::PARAM_INT);
@@ -34,7 +38,8 @@ require('constants.php');
 		?>
 		
 		<?php
-		echo '<p><i>Vous êtes ici</i> : <a href="./Forum.php?f='.$forum.'">'.stripslashes(htmlspecialchars($data['forum_name'])).'</a>';
+		echo '<p><i>Vous êtes ici</i> : <a href="./Forum.php?f='.$forum.'">'.stripslashes(htmlspecialchars($data['forum_name'])).'</a>
+		<br> <i>Envoyer des messages privés par</i> <a href="./messagesprives.php"> ici </a></p>';
 
 		//Nombre de pages
 
@@ -43,17 +48,7 @@ require('constants.php');
 
 		//On affiche les pages 1-2-3, etc.
 		echo '<p>Page : ';
-		for ($i = 1 ; $i <= $nombreDePages ; $i++)
-		{
-			if ($i == $page) //On ne met pas de lien sur la page actuelle
-			{
-				echo $i;
-			}
-			else
-			{
-				echo '<a href="Forum.php?f='.$forum.'&amp;page='.$i.'">'.$i.'</a>';
-			}
-		}
+			echo get_list_page($page, $nombreDePages, './Forum.php?f='.$forum);
 		echo '</p>';
 
 
@@ -89,6 +84,7 @@ require('constants.php');
 		if ($query->rowCount()>0)
 		{
 		?>
+
 			<table class="tableauForum">   
 			<tr>
 				<th class="enteteForum">Annonce</th>
@@ -105,17 +101,17 @@ require('constants.php');
                 //Si le topic est une annonce on l'affiche en haut
                 //mega echo de bourrain pour tout remplir
                
-                echo'<tr><td class="interieurTableau"><img src="./image/annonce.gif" alt="Annonce" /></td>
+                echo'<tr><td class="interieurTableauForumForum"><img src="./image/annonce.gif" alt="Annonce" /></td>
 
-                <td id="titre class="interieurTableau""><strong>Annonce : </strong>
+                <td id="titre class="interieurTableauForumForum""><strong>Annonce : </strong>
                 <strong><a href="./voirtopic.php?t='.$data['topic_id'].'"                 
                 title="Topic commencé à
                 '.date('H\hi \l\e d M,y',$data['topic_time']).'">
                 '.stripslashes(htmlspecialchars($data['topic_titre'])).'</a></strong></td>
 
-                <td class="nombremessages interieurTableau">'.$data['topic_post'].'</td>
+                <td class="nombremessages interieurTableauForum">'.$data['topic_post'].'</td>
 
-                <td class="interieurTableau"><a href="./voirprofil.php?m='.$data['topic_createur'].'
+                <td class="interieurTableauForum"><a href="./voirprofil.php?m='.$data['topic_createur'].'
                 &amp;action=consulter">
                 '.stripslashes(htmlspecialchars($data['membre_pseudo_createur'])).'</a></td>';
 
@@ -123,7 +119,7 @@ require('constants.php');
 				$nbr_post = $data['topic_post'] +1;
 				$page = ceil($nbr_post / $nombreDeMessagesParPage);
 
-                echo '<td class="derniermessage interieurTableau">Par
+                echo '<td class="derniermessage interieurTableauForum">Par
                 <a href="./voirprofil.php?m='.$data['post_createur'].'
                 &amp;action=consulter">
                 '.stripslashes(htmlspecialchars($data['membre_pseudo_last_posteur'])).'</a><br />
@@ -157,6 +153,7 @@ require('constants.php');
 		if ($query->rowCount()>0)
 		{
 			?>
+			
 			<table class="tableauForum">
 			<tr>
 				<th class="enteteForum">Message</th>
@@ -171,17 +168,17 @@ require('constants.php');
 			while ($data = $query->fetch())
 			{
                 //Ah bah tiens... re vla l'echo de fou
-                echo'<tr><td class="interieurTableau"><img src="image/message.gif" alt="Message" /></td>
+                echo'<tr><td class="interieurTableauForum"><img src="image/message.gif" alt="Message" /></td>
 
-                <td class="titre interieurTableau">
+                <td class="titre interieurTableauForum">
                 <strong><a href="./voirtopic.php?t='.$data['topic_id'].'"                 
                 title="Topic commencé à
                 '.date('H\hi \l\e d M,y',$data['topic_time']).'">
                 '.stripslashes(htmlspecialchars($data['topic_titre'])).'</a></strong></td>
 
-                <td class="nombremessages interieurTableau">'.$data['topic_post'].'</td>
+                <td class="nombremessages interieurTableauForum">'.$data['topic_post'].'</td>
 
-                <td class="interieurTableau"><a href="./voirprofil.php?m='.$data['topic_createur'].'
+                <td class="interieurTableauForum"><a href="./voirprofil.php?m='.$data['topic_createur'].'
                 &amp;action=consulter">
                 '.stripslashes(htmlspecialchars($data['membre_pseudo_createur'])).'</a></td>';
 
@@ -190,12 +187,11 @@ require('constants.php');
 				$nbr_post = $data['topic_post'] +1;
 				$page = ceil($nbr_post / $nombreDeMessagesParPage);
 
-                echo '<td class="derniermessage interieurTableau">Par
+                echo '<td class="derniermessage interieurTableauForum">Par
                 <a href="./voirprofil.php?m='.$data['post_createur'].'
                 &amp;action=consulter">
                 '.stripslashes(htmlspecialchars($data['membre_pseudo_last_posteur'])).'</a><br />
                 A <a href="./voirtopic.php?t='.$data['topic_id'].'&amp;page='.$page.'#p_'.$data['post_id'].'">'.date('H\hi \l\e d M y',$data['post_time']).'</a></td></tr>';
-
 			}
 			?>
 			</table>
