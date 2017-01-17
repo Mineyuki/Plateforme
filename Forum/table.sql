@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS membres (
  membre_pseudo varchar(128) DEFAULT NULL,
  mail varchar(64) NOT NULL,
  motdepasse varchar(50) DEFAULT NULL,
- membre_avatar varchar(100) DEFAULT 'no-avatar.png',
+ membre_avatar varchar(100) DEFAULT 'no_avatar.png',
  membre_post int(11) DEFAULT NULL,
  membre_rang tinyint(4) DEFAULT '2',
  categorie varchar(50) DEFAULT NULL,
